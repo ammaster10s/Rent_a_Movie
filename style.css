@@ -407,8 +407,7 @@ label {
   }
   
   .remove-button {
-    background-color
-
+    background-color: #ff0000; /* Example color */
   }
 
 /* General Reset */
@@ -416,7 +415,7 @@ label {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
   
   body {
     font-family: Arial, sans-serif;
