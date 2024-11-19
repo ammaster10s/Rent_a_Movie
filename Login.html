@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
+    <title>Login</title>
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+</head>
+<body>
     <div class="LOGIN">
-      <div class="div">
-        <div class="overlap">
-          <div class="text-wrapper">Remember password?</div>
-          <div class="rectangle"></div>
-          <div class="rectangle-2"></div>
-          <div class="rectangle-3"></div>
-          <div class="text-wrapper-2">LOGIN</div>
-          <div class="group">
-            <div class="overlap-group"><div class="text-wrapper-3">LOG IN</div></div>
-          </div>
-          <div class="text-wrapper-4">Email address</div>
-          <div class="overlap-2">
-            <div class="text-wrapper-5">Password</div>
-            <div class="text-wrapper-5">Password</div>
-            <div class="text-wrapper-5">Password</div>
-          </div>
-          <p class="p">Don’t have account? Click here!</p>
-        </div>
-        <div class="search-bar">
-          <div class="overlap-3">
-            <div class="navbar-wrapper">
-              <div class="navbar">
-                <div class="text-wrapper-6">RENTING MOVIE SYSTEM</div>
-                <div class="text-wrapper-7">SIGNUP</div>
-                <div class="text-wrapper-8">LOGIN</div>
-                <div class="text-wrapper-9">MOVIES</div>
-                <div class="text-wrapper-10">WISHLIST</div>
-                <div class="text-wrapper-11">HOME</div>
-                <div class="text-wrapper-12">TV SERIES</div>
-                <div class="div-wrapper"><div class="text-wrapper-13">Search...</div></div>
-                <img class="element" src="img/1413908-1.png" />
-              </div>
+        <div class="div">
+            <div class="overlap">
+                <form action="handle_request.php" method="post">
+                    <div class="text-wrapper">Remember password?</div>
+                    <input type="checkbox" name="remember_password">
+                    <div class="rectangle"></div>
+                    <div class="text-wrapper-2">LOGIN</div>
+                    <label for="email" class="text-wrapper-4">Email address</label>
+                    <input type="email" id="email" name="email" class="input-field" required>
+                    <label for="password" class="text-wrapper-5">Password</label>
+                    <input type="password" id="password" name="password" class="input-field" required>
+                    <button type="submit" class="submit-button">LOG IN</button>
+                </form>
+                <p class="p">Don’t have an account? <a href="Signin.html">Click here!</a></p>
             </div>
-            <img class="image" src="img/image-11.png" />
-            <div class="text-wrapper-14">HISTORY</div>
-          </div>
+            <div class="search-bar">
+                <div class="overlap-3">
+                    <div class="navbar-wrapper">
+                        <div class="navbar">
+                            <div class="text-wrapper-6">RENTING MOVIE SYSTEM</div>
+                            <div class="text-wrapper-7">SIGNUP</div>
+                            <div class="text-wrapper-8">LOGIN</div>
+                            <div class="text-wrapper-9">MOVIES</div>
+                            <div class="text-wrapper-10">WISHLIST</div>
+                            <div class="text-wrapper-11">HOME</div>
+                            <div class="text-wrapper-12">TV SERIES</div>
+                            <div class="div-wrapper"><div class="text-wrapper-13">Search...</div></div>
+                            <img class="element" src="img/1413908-1.png" />
+                        </div>
+                    </div>
+                    <img class="image" src="img/image-11.png" />
+                    <div class="text-wrapper-14">HISTORY</div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </body>
+</body>
 </html>

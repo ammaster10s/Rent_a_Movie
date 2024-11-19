@@ -1,9 +1,8 @@
-
 <?php
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "database_name";
+$servername = "localhost:8889";  // ใช้ 8889 ละกัน
+$username = "root"; 
+$password = "root";
+$dbname = "MovieRentalSystem";  // ใช้อันนี้นะ
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
