@@ -1,41 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Renting Movie System</title>
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="text-wrapper-4">RENTING MOVIE SYSTEM</div>
+        <a href="Home.html" class="text-wrapper-9">HOME</a>
+        <a href="history.html" class="text-wrapper-12">HISTORY</a>
+        <a href="wishlist.html" class="text-wrapper-8">WISHLIST</a>
+        <a href="tv_series.html" class="text-wrapper-10">TV SERIES</a>
+        <a href="movies.html" class="text-wrapper-7">MOVIES</a>
+        <a href="Signin.html" class="text-wrapper-5">SIGNUP</a>
+        <a href="Login.html" class="text-wrapper-6">LOGIN</a>
+        <div class="search-container">
+          <input type="text" placeholder="Search..." aria-label="Search" />
+          <img src="img/1413908-1.png" alt="Search Icon" />
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Page Content -->
     <div class="mainpage">
-      <div class="div">
+      <div class="content">
         <p class="text-wrapper">
-          Unlike movie streaming services, we delivery your movie to you and you return back to us.
+          Unlike movie streaming services, we deliver your movie to you, and you return it back to us.
         </p>
-        <div class="text-wrapper-2">Trending Movies</div>
-        <div class="text-wrapper-3">Thriller Movies</div>
-        <div class="sci-fi-fantasy">Sci-Fi &amp; Fantasy Movies</div>
-        <p class="rent-movies-to-watch">Rent Movies to Watch on DVD &amp; Blu-ray</p>
-        <img class="image" src="img/image-1.png" />
-        <img class="img" src="img/image-2.png" />
-        <img class="image-2" src="img/image-3.png" />
-        <div class="search-bar">
-          <div class="overlap">
-            <div class="group">
-              <div class="navbar">
-                <div class="text-wrapper-4">RENTING MOVIE SYSTEM</div>
-                <div class="text-wrapper-5">SIGNUP</div>
-                <div class="text-wrapper-6">LOGIN</div>
-                <div class="text-wrapper-7">MOVIES</div>
-                <div class="text-wrapper-8">WISHLIST</div>
-                <div class="text-wrapper-9">HOME</div>
-                <div class="text-wrapper-10">TV SERIES</div>
-                <div class="overlap-group"><div class="text-wrapper-11">Search...</div></div>
-                <img class="element" src="img/1413908-1.png" />
-              </div>
-            </div>
-            <img class="image-3" src="img/image-11.png" />
-            <div class="text-wrapper-12">HISTORY</div>
-          </div>
+
+        <div class="categories">
+          <h2 class="text-wrapper-2">Trending Movies</h2>
+          <h2 class="text-wrapper-3">Thriller Movies</h2>
+          <h2 class="sci-fi-fantasy">Sci-Fi &amp; Fantasy Movies</h2>
+        </div>
+
+        <p class="rent-movies-to-watch">
+          Rent Movies to Watch on DVD &amp; Blu-ray
+        </p>
+
+        <div class="images">
+          <img class="image" src="img/image-1.png" alt="Trending Movies" />
+          <img class="img" src="img/image-2.png" alt="Thriller Movies" />
+          <img class="image-2" src="img/image-3.png" alt="Sci-Fi & Fantasy Movies" />
         </div>
       </div>
     </div>
