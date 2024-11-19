@@ -1,0 +1,1944 @@
+.mainpage {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.mainpage .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 1801px;
+  position: relative;
+}
+
+.mainpage .text-wrapper {
+  position: absolute;
+  width: 1330px;
+  top: 132px;
+  left: 28px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .text-wrapper-2 {
+  position: absolute;
+  top: 211px;
+  left: 28px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .text-wrapper-3 {
+  position: absolute;
+  top: 725px;
+  left: 29px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .sci-fi-fantasy {
+  position: absolute;
+  top: 1254px;
+  left: 29px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .rent-movies-to-watch {
+  position: absolute;
+  top: 96px;
+  left: 28px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .image {
+  width: 1401px;
+  height: 408px;
+  top: 247px;
+  left: 19px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.mainpage .img {
+  width: 1391px;
+  height: 405px;
+  top: 770px;
+  left: 28px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.mainpage .image-2 {
+  width: 1387px;
+  height: 404px;
+  top: 1290px;
+  left: 29px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.mainpage .search-bar {
+  position: absolute;
+  width: 1440px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.mainpage .overlap {
+  position: relative;
+  width: 1456px;
+  height: 64px;
+}
+
+.mainpage .group {
+  position: absolute;
+  width: 1456px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.mainpage .navbar {
+  position: relative;
+  width: 1440px;
+  height: 64px;
+  background-color: #d9d9d9;
+}
+
+.mainpage .text-wrapper-4 {
+  position: absolute;
+  top: 19px;
+  left: 18px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .text-wrapper-5 {
+  top: 20px;
+  left: 1248px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .text-wrapper-6 {
+  top: 19px;
+  left: 1328px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .text-wrapper-7 {
+  top: 19px;
+  left: 684px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .text-wrapper-8 {
+  top: 20px;
+  left: 469px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .text-wrapper-9 {
+  top: 20px;
+  left: 302px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .text-wrapper-10 {
+  position: absolute;
+  top: 19px;
+  left: 565px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .overlap-group {
+  position: absolute;
+  width: 305px;
+  height: 32px;
+  top: 14px;
+  left: 784px;
+  background-color: #ffffff;
+}
+
+.mainpage .text-wrapper-11 {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.mainpage .element {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 14px;
+  left: 1107px;
+  object-fit: cover;
+}
+
+.mainpage .image-3 {
+  width: 32px;
+  height: 32px;
+  top: 15px;
+  left: 1397px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.mainpage .text-wrapper-12 {
+  position: absolute;
+  top: 20px;
+  left: 378px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.SIGNIN .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+}
+
+.SIGNIN .overlap {
+  position: absolute;
+  width: 665px;
+  height: 860px;
+  top: 128px;
+  left: 402px;
+  background-color: #d9d9d9;
+}
+
+.SIGNIN .group {
+  position: absolute;
+  width: 581px;
+  height: 39px;
+  top: 736px;
+  left: 43px;
+}
+
+.SIGNIN .overlap-group {
+  position: relative;
+  width: 579px;
+  height: 39px;
+  background-color: #ffffff;
+}
+
+.SIGNIN .text-wrapper {
+  position: absolute;
+  top: 4px;
+  left: 182px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .rectangle {
+  top: 321px;
+  left: 43px;
+  background-color: #ffffff;
+  position: absolute;
+  width: 579px;
+  height: 39px;
+}
+
+.SIGNIN .rectangle-2 {
+  top: 428px;
+  left: 43px;
+  background-color: #ffffff;
+  position: absolute;
+  width: 579px;
+  height: 39px;
+}
+
+.SIGNIN .rectangle-3 {
+  top: 532px;
+  left: 43px;
+  background-color: #ffffff;
+  position: absolute;
+  width: 579px;
+  height: 39px;
+}
+
+.SIGNIN .rectangle-4 {
+  top: 114px;
+  left: 43px;
+  background-color: #ffffff;
+  position: absolute;
+  width: 579px;
+  height: 39px;
+}
+
+.SIGNIN .rectangle-5 {
+  top: 638px;
+  left: 43px;
+  background-color: #ffffff;
+  position: absolute;
+  width: 579px;
+  height: 39px;
+}
+
+.SIGNIN .img {
+  top: 214px;
+  left: 44px;
+  position: absolute;
+  width: 579px;
+  height: 39px;
+}
+
+.SIGNIN .text-wrapper-2 {
+  position: absolute;
+  top: 30px;
+  left: 44px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-3 {
+  position: absolute;
+  top: 75px;
+  left: 43px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-4 {
+  position: absolute;
+  top: 599px;
+  left: 44px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .p {
+  position: absolute;
+  top: 797px;
+  left: 211px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-5 {
+  position: absolute;
+  top: 174px;
+  left: 44px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-6 {
+  position: absolute;
+  top: 281px;
+  left: 45px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-7 {
+  position: absolute;
+  top: 393px;
+  left: 43px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-8 {
+  position: absolute;
+  top: 495px;
+  left: 43px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .search-bar {
+  position: absolute;
+  width: 1440px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.SIGNIN .overlap-2 {
+  position: relative;
+  width: 1456px;
+  height: 64px;
+}
+
+.SIGNIN .navbar-wrapper {
+  position: absolute;
+  width: 1456px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.SIGNIN .navbar {
+  position: relative;
+  width: 1440px;
+  height: 64px;
+  background-color: #d9d9d9;
+}
+
+.SIGNIN .text-wrapper-9 {
+  position: absolute;
+  top: 19px;
+  left: 18px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-10 {
+  top: 20px;
+  left: 1248px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-11 {
+  top: 19px;
+  left: 1328px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-12 {
+  top: 19px;
+  left: 684px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-13 {
+  top: 20px;
+  left: 469px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-14 {
+  top: 20px;
+  left: 302px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .text-wrapper-15 {
+  position: absolute;
+  top: 19px;
+  left: 565px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .div-wrapper {
+  position: absolute;
+  width: 305px;
+  height: 32px;
+  top: 14px;
+  left: 784px;
+  background-color: #ffffff;
+}
+
+.SIGNIN .text-wrapper-16 {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.SIGNIN .element {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 14px;
+  left: 1107px;
+  object-fit: cover;
+}
+
+.SIGNIN .image {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 15px;
+  left: 1397px;
+  object-fit: cover;
+}
+
+.SIGNIN .text-wrapper-17 {
+  position: absolute;
+  top: 20px;
+  left: 378px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.LOGIN .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+}
+
+.LOGIN .overlap {
+  position: absolute;
+  width: 665px;
+  height: 515px;
+  top: 238px;
+  left: 402px;
+  background-color: #d9d9d9;
+}
+
+.LOGIN .text-wrapper {
+  position: absolute;
+  top: 318px;
+  left: 95px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .rectangle {
+  width: 579px;
+  height: 39px;
+  top: 130px;
+  left: 43px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.LOGIN .rectangle-2 {
+  width: 579px;
+  height: 39px;
+  top: 255px;
+  left: 44px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.LOGIN .rectangle-3 {
+  width: 29px;
+  height: 30px;
+  top: 319px;
+  left: 44px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.LOGIN .text-wrapper-2 {
+  position: absolute;
+  top: 22px;
+  left: 43px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .group {
+  position: absolute;
+  width: 581px;
+  height: 39px;
+  top: 397px;
+  left: 44px;
+}
+
+.LOGIN .overlap-group {
+  position: relative;
+  width: 579px;
+  height: 39px;
+  background-color: #ffffff;
+}
+
+.LOGIN .text-wrapper-3 {
+  position: absolute;
+  top: 4px;
+  left: 247px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-4 {
+  position: absolute;
+  top: 91px;
+  left: 43px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .overlap-2 {
+  position: absolute;
+  width: 85px;
+  height: 29px;
+  top: 216px;
+  left: 44px;
+}
+
+.LOGIN .text-wrapper-5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .p {
+  position: absolute;
+  top: 460px;
+  left: 219px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .search-bar {
+  position: absolute;
+  width: 1440px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.LOGIN .overlap-3 {
+  position: relative;
+  width: 1456px;
+  height: 64px;
+}
+
+.LOGIN .navbar-wrapper {
+  position: absolute;
+  width: 1456px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.LOGIN .navbar {
+  position: relative;
+  width: 1440px;
+  height: 64px;
+  background-color: #d9d9d9;
+}
+
+.LOGIN .text-wrapper-6 {
+  position: absolute;
+  top: 19px;
+  left: 18px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-7 {
+  top: 20px;
+  left: 1248px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-8 {
+  top: 19px;
+  left: 1328px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-9 {
+  top: 19px;
+  left: 684px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-10 {
+  top: 20px;
+  left: 469px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-11 {
+  top: 20px;
+  left: 302px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .text-wrapper-12 {
+  position: absolute;
+  top: 19px;
+  left: 565px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .div-wrapper {
+  position: absolute;
+  width: 305px;
+  height: 32px;
+  top: 14px;
+  left: 784px;
+  background-color: #ffffff;
+}
+
+.LOGIN .text-wrapper-13 {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.LOGIN .element {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 14px;
+  left: 1107px;
+  object-fit: cover;
+}
+
+.LOGIN .image {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 15px;
+  left: 1397px;
+  object-fit: cover;
+}
+
+.LOGIN .text-wrapper-14 {
+  position: absolute;
+  top: 20px;
+  left: 378px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.ORDER .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+}
+
+.ORDER .overlap {
+  position: absolute;
+  width: 1123px;
+  height: 276px;
+  top: 237px;
+  left: 157px;
+}
+
+.ORDER .group {
+  position: absolute;
+  width: 724px;
+  height: 273px;
+  top: 0;
+  left: 0;
+}
+
+.ORDER .overlap-group {
+  position: relative;
+  width: 718px;
+  height: 273px;
+  background-color: #d9d9d9;
+}
+
+.ORDER .text-wrapper {
+  position: absolute;
+  top: 17px;
+  left: 39px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-2 {
+  left: 356px;
+  position: absolute;
+  top: 17px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-3 {
+  left: 494px;
+  position: absolute;
+  top: 17px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-4 {
+  left: 307px;
+  position: absolute;
+  top: 17px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-5 {
+  left: 467px;
+  position: absolute;
+  top: 17px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .overlap-wrapper {
+  position: absolute;
+  width: 839px;
+  height: 29px;
+  top: 64px;
+  left: 39px;
+}
+
+.ORDER .overlap-2 {
+  position: relative;
+  height: 29px;
+}
+
+.ORDER .overlap-group-wrapper {
+  position: absolute;
+  width: 839px;
+  height: 29px;
+  top: 0;
+  left: 0;
+}
+
+.ORDER .overlap-group-2 {
+  position: relative;
+  width: 835px;
+  height: 29px;
+}
+
+.ORDER .text-wrapper-6 {
+  position: absolute;
+  width: 835px;
+  top: 0;
+  left: 0;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-7 {
+  position: absolute;
+  top: 0;
+  left: 559px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-8 {
+  top: 0;
+  left: 404px;
+  position: absolute;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-9 {
+  position: absolute;
+  top: 0;
+  left: 314px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-10 {
+  top: 108px;
+  left: 443px;
+  position: absolute;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .div-wrapper {
+  position: absolute;
+  width: 837px;
+  height: 29px;
+  top: 109px;
+  left: 39px;
+}
+
+.ORDER .overlap-3 {
+  position: relative;
+  width: 839px;
+  height: 29px;
+}
+
+.ORDER .group-2 {
+  position: absolute;
+  width: 386px;
+  height: 276px;
+  top: 0;
+  left: 737px;
+  background-color: #d9d9d9;
+}
+
+.ORDER .text-wrapper-11 {
+  position: absolute;
+  top: 16px;
+  left: 857px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-12 {
+  position: absolute;
+  top: 78px;
+  left: 874px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 36px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .group-3 {
+  position: absolute;
+  width: 215px;
+  height: 62px;
+  top: 197px;
+  left: 827px;
+}
+
+.ORDER .overlap-4 {
+  position: relative;
+  width: 213px;
+  height: 62px;
+  background-color: #ffffff;
+}
+
+.ORDER .text-wrapper-13 {
+  position: absolute;
+  width: 162px;
+  top: 16px;
+  left: 47px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.ORDER .text-wrapper-14 {
+  position: absolute;
+  top: 174px;
+  left: 157px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-15 {
+  position: absolute;
+  top: 589px;
+  left: 157px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .image {
+  width: 1123px;
+  height: 327px;
+  top: 639px;
+  left: 149px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.ORDER .search-bar {
+  position: absolute;
+  width: 1440px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.ORDER .overlap-5 {
+  position: relative;
+  width: 1456px;
+  height: 64px;
+}
+
+.ORDER .navbar-wrapper {
+  position: absolute;
+  width: 1456px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.ORDER .navbar {
+  position: relative;
+  width: 1440px;
+  height: 64px;
+  background-color: #d9d9d9;
+}
+
+.ORDER .text-wrapper-16 {
+  position: absolute;
+  top: 19px;
+  left: 18px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-17 {
+  top: 20px;
+  left: 1248px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-18 {
+  top: 19px;
+  left: 1328px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-19 {
+  top: 19px;
+  left: 684px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-20 {
+  top: 20px;
+  left: 469px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-21 {
+  top: 20px;
+  left: 302px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .text-wrapper-22 {
+  position: absolute;
+  top: 19px;
+  left: 565px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .overlap-6 {
+  position: absolute;
+  width: 305px;
+  height: 32px;
+  top: 14px;
+  left: 784px;
+  background-color: #ffffff;
+}
+
+.ORDER .text-wrapper-23 {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.ORDER .element {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 14px;
+  left: 1107px;
+  object-fit: cover;
+}
+
+.ORDER .img {
+  width: 32px;
+  height: 32px;
+  top: 15px;
+  left: 1397px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.ORDER .text-wrapper-24 {
+  position: absolute;
+  top: 20px;
+  left: 378px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.PAYMENT .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+}
+
+.PAYMENT .overlap {
+  position: absolute;
+  width: 871px;
+  height: 681px;
+  top: 237px;
+  left: 81px;
+}
+
+.PAYMENT .group {
+  width: 871px;
+  height: 681px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.PAYMENT .overlap-group {
+  position: relative;
+  width: 847px;
+  height: 681px;
+  background-color: #d9d9d9;
+}
+
+.PAYMENT .rectangle {
+  width: 489px;
+  height: 32px;
+  top: 181px;
+  left: 303px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .rectangle-2 {
+  width: 489px;
+  height: 32px;
+  top: 475px;
+  left: 303px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .rectangle-3 {
+  width: 66px;
+  height: 32px;
+  top: 241px;
+  left: 303px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .rectangle-4 {
+  width: 142px;
+  height: 32px;
+  top: 353px;
+  left: 303px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .rectangle-5 {
+  width: 489px;
+  height: 32px;
+  top: 412px;
+  left: 303px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .rectangle-6 {
+  width: 231px;
+  height: 32px;
+  top: 244px;
+  left: 561px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .rectangle-7 {
+  width: 231px;
+  height: 32px;
+  top: 353px;
+  left: 561px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .text-wrapper {
+  position: absolute;
+  top: 555px;
+  left: 77px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-2 {
+  position: absolute;
+  top: 590px;
+  left: 99px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 36px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-3 {
+  position: absolute;
+  top: 40px;
+  left: 45px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-4 {
+  top: 112px;
+  left: 130px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-5 {
+  top: 185px;
+  left: 103px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-6 {
+  position: absolute;
+  top: 353px;
+  left: 471px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-7 {
+  position: absolute;
+  top: 415px;
+  left: 184px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-8 {
+  position: absolute;
+  top: 474px;
+  left: 122px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-9 {
+  position: absolute;
+  top: 244px;
+  left: 218px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-10 {
+  position: absolute;
+  top: 356px;
+  left: 226px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .p {
+  position: absolute;
+  top: 298px;
+  left: 351px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-11 {
+  position: absolute;
+  top: 244px;
+  left: 410px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .rectangle-8 {
+  width: 489px;
+  height: 32px;
+  top: 39px;
+  left: 303px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .rectangle-9 {
+  width: 489px;
+  height: 32px;
+  top: 111px;
+  left: 303px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .rectangle-10 {
+  width: 213px;
+  height: 62px;
+  top: 564px;
+  left: 445px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .polygon {
+  position: absolute;
+  width: 10px;
+  height: 8px;
+  top: 52px;
+  left: 773px;
+}
+
+.PAYMENT .text-wrapper-12 {
+  position: absolute;
+  width: 162px;
+  top: 580px;
+  left: 528px;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.PAYMENT .rectangle-11 {
+  width: 25px;
+  height: 25px;
+  top: 300px;
+  left: 303px;
+  border-radius: 5px;
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.PAYMENT .overlap-2 {
+  position: absolute;
+  width: 442px;
+  height: 317px;
+  top: 245px;
+  left: 955px;
+}
+
+.PAYMENT .image-wrapper {
+  width: 442px;
+  height: 317px;
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.PAYMENT .image {
+  width: 79px;
+  height: 60px;
+  top: 184px;
+  left: 43px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.PAYMENT .text-wrapper-13 {
+  top: 16px;
+  left: 24px;
+  position: absolute;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .element {
+  position: absolute;
+  width: 127px;
+  height: 127px;
+  top: 49px;
+  left: 19px;
+  object-fit: cover;
+}
+
+.PAYMENT .mastercard-icon {
+  position: absolute;
+  width: 71px;
+  height: 55px;
+  top: 85px;
+  left: 184px;
+  object-fit: cover;
+}
+
+.PAYMENT .visa {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  top: 68px;
+  left: 293px;
+  object-fit: cover;
+}
+
+.PAYMENT .text-wrapper-14 {
+  top: 174px;
+  left: 67px;
+  position: absolute;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .search-bar {
+  position: absolute;
+  width: 1440px;
+  height: 64px;
+  top: 0;
+  left: 0;
+}
+
+.PAYMENT .overlap-3 {
+  position: relative;
+  width: 1456px;
+  height: 64px;
+}
+
+.PAYMENT .navbar-wrapper {
+  width: 1456px;
+  height: 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.PAYMENT .navbar {
+  position: relative;
+  width: 1440px;
+  height: 64px;
+  background-color: #d9d9d9;
+}
+
+.PAYMENT .text-wrapper-15 {
+  position: absolute;
+  top: 19px;
+  left: 18px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-16 {
+  top: 20px;
+  left: 1248px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-17 {
+  top: 19px;
+  left: 1328px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-18 {
+  top: 19px;
+  left: 684px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-19 {
+  top: 20px;
+  left: 469px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-20 {
+  top: 20px;
+  left: 302px;
+  position: absolute;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .text-wrapper-21 {
+  position: absolute;
+  top: 19px;
+  left: 565px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .div-wrapper {
+  position: absolute;
+  width: 305px;
+  height: 32px;
+  top: 14px;
+  left: 784px;
+  background-color: #ffffff;
+}
+
+.PAYMENT .text-wrapper-22 {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.PAYMENT .img {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 14px;
+  left: 1107px;
+  object-fit: cover;
+}
+
+.PAYMENT .image-2 {
+  width: 32px;
+  height: 32px;
+  top: 15px;
+  left: 1397px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.PAYMENT .text-wrapper-23 {
+  position: absolute;
+  top: 20px;
+  left: 378px;
+  font-family: "Istok Web-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
