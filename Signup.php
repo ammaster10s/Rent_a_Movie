@@ -112,7 +112,7 @@
           <!-- Submit Button -->
           <button type="submit" name="register" class="submit-button">CREATE ACCOUNT</button>
           <!-- Apply Button -->
-          <button type="Apply" class="apply-button">CREATE ACCOUNT</button>
+          <!-- <button type="Apply" class="apply-button">CREATE ACCOUNT</button> -->
 
           <!-- Redirect to Login -->
           <p>Already have an account? <a href="Login.php">Click here!</a></p>
