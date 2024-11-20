@@ -1,3 +1,8 @@
+<?php
+session_start();
+$errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,20 +20,22 @@
         <a href="wishlist.php">WISHLIST</a>
         <a href="tv_series.php">TV SERIES</a>
         <a href="movies.php">MOVIES</a>
-        <div class="search-container">
-          <input type="text" placeholder="Search..." aria-label="Search" />
-          <img src="img/1413908-1.png" alt="Search Icon" />
-        </div>
-      </nav>
-      
-      
-    
+    </nav>
 
     <!-- Login Form Section -->
     <div class="LOGIN">
         <div class="form-container">
             <form action="handle_request.php" method="post">
                 <h2 class="form-title">Login</h2>
+
+                <!-- Display Errors -->
+                <?php if (!empty($errors)): ?>
+                    <div class="error-messages">
+                        <?php foreach ($errors as $error): ?>
+                            <p style="color: red;"><?php echo $error; ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
 
                 <!-- Email Address -->
                 <label for="email">Email Address</label>
@@ -38,20 +45,8 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" class="input-field" placeholder="Enter your password" required />
 
-                <!-- Remember Password -->
-                <div class="checkbox-container">
-                    <label for="remember_password">
-                        Remember Password?
-                        <input type="checkbox" id="remember_password" name="remember_password" />
-                    </label>
-                </div>
-                
-
                 <!-- Submit Button -->
-                <button type="submit" class="submit-button">LOG IN</button>
-
-                <!-- Redirect to Signup -->
-                <p class="redirect-text">Don’t have an account? <a href="Signup.php">Click here!</a></p>
+                <button type="submit" name="login" class="submit-button">LOG IN</button>
             </form>
         </div>
     </div>

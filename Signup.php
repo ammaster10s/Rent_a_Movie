@@ -20,10 +20,7 @@
         <img src="img/1413908-1.png" alt="Search Icon" />
       </div>
     </nav>
-    
-    
-  
-    
+     
     <!-- Sign-Up Form Section -->
     <div class="signup">
       <div class="container">
@@ -99,7 +96,7 @@
           />
 
           <!-- Submit Button -->
-          <button type="submit" class="submit-button">CREATE ACCOUNT</button>
+          <button type="submit" name="register" class="submit-button">CREATE ACCOUNT</button>
 
           <!-- Redirect to Login -->
           <p>Already have an account? <a href="Login.php">Click here!</a></p>
