@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['l_name'])) $errors[] = "Last Name is required.";
     if (empty($_POST['password'])) $errors[] = "Password is required.";
     if (empty($_POST['email_address'])) $errors[] = "Email Address is required.";
-   
+    
     // Display errors if any
     if (!empty($errors)) {
         foreach ($errors as $error) {
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $l_name = $_POST['l_name'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
     $email_address = $_POST['email_address'];
- 
+    
     echo "<p>Sanitized Inputs:</p>";
     echo "<ul>";
     echo "<li>Username: $username</li>";
@@ -49,15 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<p>SQL Prepare successful.</p>";
     }
 
-    // Bind parameters
     $stmt->bind_param("sssss", $username, $f_name, $l_name, $password, $email_address);
 
     // Execute statement
     if ($stmt->execute()) {
         echo "<p style='color:green;'>Data inserted successfully.</p>";
         $_SESSION['username'] = $username;
-        echo "<p>Redirecting to Mainpage.html...</p>";
-        header("Location: Mainpage.html");
+        echo "<p>Redirecting to Mainpage.php...</p>";
+        header("Location: Mainpage.php");
         $stmt->close();
         exit();
     } else {
@@ -68,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Display current data in the `Users` table for verification
 echo "<h3>Existing Data in Users Table:</h3>";
-
 $result = $conn->query("SELECT * FROM Users");
 if ($result && $result->num_rows > 0) {
     echo "<table border='1'>";
@@ -84,6 +82,19 @@ if ($result && $result->num_rows > 0) {
     echo "</table>";
 } else {
     echo "<p>No data found in Users table.</p>";
+}
+
+// Display all databases on the system
+echo "<h3>All Databases on the System:</h3>";
+$result = $conn->query("SHOW DATABASES");
+if ($result && $result->num_rows > 0) {
+    echo "<ul>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<li>{$row['Database']}</li>";
+    }
+    echo "</ul>";
+} else {
+    echo "<p>No databases found.</p>";
 }
 
 $conn->close();

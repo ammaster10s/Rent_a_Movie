@@ -1,3 +1,6 @@
+<?php
+include 'auth_check.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,11 +16,11 @@
   <nav class="navbar">
     <!-- Centered Navigation Links and Search Bar -->
     <div class="navbar-center">
-      <a href="Mainpage.html">HOME</a>
-      <a href="history.html">HISTORY</a>
-      <a href="wishlist.html">WISHLIST</a>
-      <a href="tv_series.html">TV SERIES</a>
-      <a href="movies.html">MOVIES</a>
+      <a href="Mainpage.php">HOME</a>
+      <a href="history.php">HISTORY</a>
+      <a href="wishlist.php">WISHLIST</a>
+      <a href="tv_series.php">TV SERIES</a>
+      <a href="movies.php">MOVIES</a>
   
       <!-- Search Bar -->
       <div class="search-container">
@@ -28,8 +31,8 @@
   
     <!-- Right-side Items -->
     <div class="navbar-right">
-      <a href="Signup.html">SIGNUP</a>
-      <a href="Login.html">LOGIN</a>
+      <a href="Signup.php">SIGNUP</a>
+      <a href="Login.php">LOGIN</a>
       <img class="profile-icon" src="img/profile-icon.png" alt="Profile Icon" />
     </div>
   </nav>
