@@ -1,3 +1,6 @@
+<?php
+include 'auth_check.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +15,7 @@
     <nav class="navbar">
     <!-- Centered Navigation Links and Search Bar -->
     <div class="navbar-center">
-      <a href="Home.php">HOME</a>
+      <a href="Mainpage.php">HOME</a>
       <a href="history.php">HISTORY</a>
       <a href="wishlist.php">WISHLIST</a>
       <a href="tv_series.php">TV SERIES</a>
