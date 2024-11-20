@@ -5,6 +5,7 @@ unset($_SESSION['errors']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,15 +13,12 @@ unset($_SESSION['errors']);
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <a href="Mainpage.php">HOME</a>
-        <a href="history.php">HISTORY</a>
-        <a href="wishlist.php">WISHLIST</a>
-        <a href="tv_series.php">TV SERIES</a>
-        <a href="movies.php">MOVIES</a>
-    </nav>
+    <?php
+    include 'navigate.php';
+    ?>
 
     <!-- Login Form Section -->
     <div class="LOGIN">
@@ -51,4 +49,5 @@ unset($_SESSION['errors']);
         </div>
     </div>
 </body>
+
 </html>
