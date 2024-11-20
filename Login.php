@@ -10,17 +10,28 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="Mainpage.php">HOME</a>
-        <a href="history.php">HISTORY</a>
-        <a href="wishlist.php">WISHLIST</a>
-        <a href="tv_series.php">TV SERIES</a>
-        <a href="movies.php">MOVIES</a>
-        <div class="search-container">
-          <input type="text" placeholder="Search..." aria-label="Search" />
-          <img src="img/1413908-1.png" alt="Search Icon" />
-        </div>
-      </nav>
-      
+    <!-- Centered Navigation Links and Search Bar -->
+    <div class="navbar-center">
+      <a href="Mainpage.php">HOME</a>
+      <a href="history.php">HISTORY</a>
+      <a href="wishlist.php">WISHLIST</a>
+      <a href="tv_series.php">TV SERIES</a>
+      <a href="movies.php">MOVIES</a>
+  
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" placeholder="Search..." aria-label="Search" />
+        <img src="img/search-icon.png" alt="Search Icon" />
+      </div>
+    </div>
+  
+    <!-- Right-side Items -->
+    <div class="navbar-right">
+      <a href="Signup.php">SIGNUP</a>
+      <a href="Login.php">LOGIN</a>
+      <img class="profile-icon" src="img/profile-icon.png" alt="Profile Icon" />
+    </div>
+  </nav>
       
     
 
