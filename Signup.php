@@ -8,19 +8,33 @@
   </head>
   <body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <!-- Centered Navigation Links and Search Bar -->
+    <div class="navbar-center">
       <a href="Mainpage.php">HOME</a>
       <a href="history.php">HISTORY</a>
       <a href="wishlist.php">WISHLIST</a>
       <a href="tv_series.php">TV SERIES</a>
       <a href="movies.php">MOVIES</a>
+  
+      <!-- Search Bar -->
       <div class="search-container">
         <input type="text" placeholder="Search..." aria-label="Search" />
-        <img src="img/1413908-1.png" alt="Search Icon" />
+        <img src="img/search-icon.png" alt="Search Icon" />
       </div>
-    </nav>
-     
+    </div>
+  
+    <!-- Right-side Items -->
+    <div class="navbar-right">
+      <a href="Signup.php">SIGNUP</a>
+      <a href="Login.php">LOGIN</a>
+      <img class="profile-icon" src="img/profile-icon.png" alt="Profile Icon" />
+    </div>
+  </nav>
+    
+  
+    
     <!-- Sign-Up Form Section -->
     <div class="signup">
       <div class="container">
@@ -97,6 +111,8 @@
 
           <!-- Submit Button -->
           <button type="submit" name="register" class="submit-button">CREATE ACCOUNT</button>
+          <!-- Apply Button -->
+          <button type="Apply" class="apply-button">CREATE ACCOUNT</button>
 
           <!-- Redirect to Login -->
           <p>Already have an account? <a href="Login.php">Click here!</a></p>
@@ -107,7 +123,7 @@
     <!-- Include Scripts (Optional for Dynamic Features) -->
     <script>
       // Example: Add password match validation
-      document.querySelector('form').addEventListener('submit', function (e) {
+      document.querySelector('form').addEventListener('apply', function (e) {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirm_password').value;
         if (password !== confirmPassword) {

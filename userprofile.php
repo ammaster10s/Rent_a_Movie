@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="globals.css" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <!-- Centered Navigation Links and Search Bar -->
     <div class="navbar-center">
@@ -16,14 +17,14 @@
       <a href="wishlist.php">WISHLIST</a>
       <a href="tv_series.php">TV SERIES</a>
       <a href="movies.php">MOVIES</a>
-
+  
       <!-- Search Bar -->
       <div class="search-container">
         <input type="text" placeholder="Search..." aria-label="Search" />
         <img src="img/search-icon.png" alt="Search Icon" />
       </div>
     </div>
-
+  
     <!-- Right-side Items -->
     <div class="navbar-right">
       <a href="Signup.php">SIGNUP</a>
@@ -31,46 +32,55 @@
       <img class="profile-icon" src="img/profile-icon.png" alt="Profile Icon" />
     </div>
   </nav>
-
-
-  <div class="user-container">
-    <h2 class="form-title">User Profile</h2>
-
-    <!-- First Name -->
-    <label for="f_name">First Name</label>
-    <input type="text" id="f_name" name="f_name" placeholder="Enter your first name" aria-required="true" required />
-
-    <!-- Surname -->
-    <label for="l_name">Surname</label>
-    <input type="text" id="l_name" name="l_name" placeholder="Enter your surname" aria-required="true" required />
-
-    <!-- Username -->
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" placeholder="Choose a username (e.g., johndoe123)"
-      aria-required="true" required />
-
-    <!-- Password -->
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="Enter your password (min 8 characters)"
-      minlength="8" aria-required="true" required />
-
-    <!-- Zip -->
-    <label for="Zip">Zip</label>
-    <input type="text" id="zip" name="zip" placeholder="Enter your zip code" aria-required="true" required />
-
-    <!-- Country -->
-    <label for="Country">Country</label>
-    <input type="text" id="country" name="country" placeholder="Enter your country" aria-required="true" required />
-
-    <!-- Email -->
-    <label for="email_address">Email</label>
-    <input type="email" id="email_address" name="email_address" placeholder="Enter your email address"
-      aria-required="true" required />
-
-
-    <!-- Apply Button -->
-    <button type="submit" class="submit-button">Apply Change</button>
-
-  </div>
-
+    <div class="profile-form-container">
+        <h3>Profile</h3>
+        <p>View or update your profile details below.</p>
+        <form action="" method="post">
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user_data['username']); ?>" required>
+            </div>
+            
+            <!-- Name -->
+            <div class="form-group">
+                <label for="f_name">Name:</label>
+                <input type="text" id="f_name" name="f_name" value="<?php echo htmlspecialchars($user_data['f_name']); ?>" required>
+            </div>
+            
+            <!-- Surname -->
+            <div class="form-group">
+                <label for="l_name">Surname:</label>
+                <input type="text" id="l_name" name="l_name" value="<?php echo htmlspecialchars($user_data['l_name']); ?>" required>
+            </div>
+            
+            <!-- ZIP and Country -->
+            <div class="form-group-inline">
+                <div>
+                    <label for="zip">ZIP:</label>
+                    <input type="text" id="zip" name="zip" value="<?php echo htmlspecialchars($user_data['zip']); ?>" required>
+                </div>
+                <div>
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" name="country" value="<?php echo htmlspecialchars($user_data['country']); ?>" required>
+                </div>
+            </div>
+            
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($user_data['address']); ?>" required>
+            </div>
+            
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($user_data['phone']); ?>" required>
+            </div>
+            
+            <!-- Apply Button -->
+            <button type="apply" class="apply-button">APPLY CHANGE</button>
+        </form>
+    </div>
+</body>
 </html>
