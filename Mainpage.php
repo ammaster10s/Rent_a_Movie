@@ -1,6 +1,6 @@
 <?php
 include 'auth_check.php';
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +21,10 @@ include 'auth_check.php';
     <div class="navbar-center">
         <a href="Mainpage.php">HOME</a>
        
-        <a href="history.php">HISTORY</a>
-        <a href="wishlist.php">WISHLIST</a>
-        <a href="tv_series.php">TV SERIES</a>
-        <a href="movies.php">MOVIES</a>
+            <a href="history.php">HISTORY</a>
+            <a href="wishlist.php">WISHLIST</a>
+            <a href="tv_series.php">TV SERIES</a>
+            <a href="movies.php">MOVIES</a>
         
     </div>
 
