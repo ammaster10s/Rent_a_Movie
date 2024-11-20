@@ -1,9 +1,11 @@
 -- Creating the database
+
+DROP DATABASE IF EXISTS MovieRentalSystem;
 CREATE DATABASE IF NOT EXISTS MovieRentalSystem;
 USE MovieRentalSystem;
 
 -- Creating the User table
-CREATE TABLE User (
+CREATE TABLE Users (
     User_ID INT PRIMARY KEY AUTO_INCREMENT,     -- PK for User
     Username VARCHAR(50) UNIQUE NOT NULL,   
     F_Name VARCHAR(50) NOT NULL,
@@ -22,7 +24,7 @@ CREATE TABLE Movie (
     Released_date DATE,
     Description TEXT,
     Length INT, -- Length in minutes
-    Movie_Name VARCHAR(255) NOT NULL,
+    Movie_Name VARCHAR(255) NOT NULL
 );
 
 
@@ -39,12 +41,12 @@ CREATE TABLE Payment (
     Card_Holder_FName VARCHAR(50),
     Card_Holder_LName VARCHAR(50),
     Payment_Date DATE NOT NULL,  
-    FOREIGN KEY (User_ID) REFERENCES User(User_ID)
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
 
 -- Creating the Order table
-CREATE TABLE Order (
+CREATE TABLE Orders (
     Order_ID INT PRIMARY KEY AUTO_INCREMENT,
     Payment_ID INT,
     FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID)
@@ -55,15 +57,13 @@ CREATE TABLE Place_Order (
     Order_ID INT NOT NULL,
     User_ID INT NOT NULL,
     PRIMARY KEY (Order_ID, User_ID),
-    FOREIGN KEY (Order_ID) REFERENCES Order(Order_ID),
-    FOREIGN KEY (User_ID) REFERENCES User(User_ID)
+    FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
 CREATE TABLE Borrow_History (
-    Borrow_ID INT ,
+    Borrow_ID INT PRIMARY KEY AUTO_INCREMENT,
     Payment_ID INT,
-    User_ID INT,
-    PRIMARY KEY (Borrow_ID, Payment_ID, User_ID),
     FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID)
 );
 
@@ -73,7 +73,7 @@ CREATE TABLE Order_Contain (
     Order_ID INT,
     Movie_ID INT,
     PRIMARY KEY (Order_ID, Movie_ID),
-    FOREIGN KEY (Order_ID) REFERENCES Order(Order_ID),
+    FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
     FOREIGN KEY (Movie_ID) REFERENCES Movie(Movie_ID)
 );
 
@@ -81,10 +81,21 @@ CREATE TABLE Order_Contain (
 
 -- Creating the Wishlist table
 CREATE TABLE Wishlist (
-    WishlistID INT NOT NULL,
+    WishlistID INT PRIMARY KEY AUTO_INCREMENT,
     User_ID INT NOT NULL,
     Movie_ID INT NOT NULL,
-    PRIMARY KEY (WishlistID, User_ID, Movie_ID),
-    FOREIGN KEY (User_ID) REFERENCES User(User_ID),
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID),
     FOREIGN KEY (Movie_ID) REFERENCES Movie(Movie_ID)
+);
+
+
+
+
+-- Linking User with Borrow_History for access rights (many-to-many relationship)
+CREATE TABLE User_Access_BorrowHistory (
+    Borrow_ID INT NOT NULL,
+    User_ID INT NOT NULL,
+    PRIMARY KEY (Borrow_ID, User_ID),
+    FOREIGN KEY (Borrow_ID) REFERENCES Borrow_History(Borrow_ID),
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
