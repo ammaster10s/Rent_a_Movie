@@ -10,21 +10,29 @@
   <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-      <div class="navbar-container">
-        <div class="brand">RENTING MOVIE SYSTEM</div>
-        <a href="Home.html">HOME</a>
-        <a href="history.html">HISTORY</a>
-        <a href="wishlist.html">WISHLIST</a>
-        <a href="tv_series.html">TV SERIES</a>
-        <a href="movies.html">MOVIES</a>
-        <a href="Signin.html">SIGNUP</a>
-        <a href="Login.html">LOGIN</a>
-        <div class="search-container">
-          <input type="text" placeholder="Search..." aria-label="Search" />
-          <img src="img/1413908-1.png" alt="Search Icon" />
-        </div>
+    <!-- Centered Navigation Links and Search Bar -->
+    <div class="navbar-center">
+      <a href="Home.php">HOME</a>
+      <a href="history.php">HISTORY</a>
+      <a href="wishlist.php">WISHLIST</a>
+      <a href="tv_series.php">TV SERIES</a>
+      <a href="movies.php">MOVIES</a>
+  
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" placeholder="Search..." aria-label="Search" />
+        <img src="img/search-icon.png" alt="Search Icon" />
       </div>
-    </nav>
+    </div>
+  
+    <!-- Right-side Items -->
+    <div class="navbar-right">
+      <a href="Signup.php">SIGNUP</a>
+      <a href="Login.php">LOGIN</a>
+      <img class="profile-icon" src="img/profile-icon.png" alt="Profile Icon" />
+    </div>
+  </nav>
+  
 
     <!-- Payment Section -->
     <div class="payment-page">

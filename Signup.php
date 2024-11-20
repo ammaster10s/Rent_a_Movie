@@ -10,11 +10,11 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-      <a href="Mainpage.html">HOME</a>
-      <a href="history.html">HISTORY</a>
-      <a href="wishlist.html">WISHLIST</a>
-      <a href="tv_series.html">TV SERIES</a>
-      <a href="movies.html">MOVIES</a>
+      <a href="Mainpage.php">HOME</a>
+      <a href="history.php">HISTORY</a>
+      <a href="wishlist.php">WISHLIST</a>
+      <a href="tv_series.php">TV SERIES</a>
+      <a href="movies.php">MOVIES</a>
       <div class="search-container">
         <input type="text" placeholder="Search..." aria-label="Search" />
         <img src="img/1413908-1.png" alt="Search Icon" />
@@ -99,7 +99,7 @@
           <button type="submit" class="submit-button">CREATE ACCOUNT</button>
 
           <!-- Redirect to Login -->
-          <p>Already have an account? <a href="Login.html">Click here!</a></p>
+          <p>Already have an account? <a href="Login.php">Click here!</a></p>
         </form>
       </div>
     </div>
