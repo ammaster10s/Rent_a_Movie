@@ -2,7 +2,7 @@
 include 'database.php';
 session_start();
 ob_start(); // Start output buffering
-
+// kuy
 // Debugging output
 echo "<h2>Debugging Output</h2>";
 
