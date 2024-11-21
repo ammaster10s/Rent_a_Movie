@@ -58,7 +58,8 @@ CREATE TABLE Payment (
 CREATE TABLE Orders (
     Order_ID INT PRIMARY KEY AUTO_INCREMENT,
     Payment_ID INT,
-    FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID)
+    FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID),
+    Status ENUM('Pending', 'Paid', 'Cancelled') DEFAULT 'Pending'
 );
 
 -- Creating the Place_Order table (junction table for Order and User)

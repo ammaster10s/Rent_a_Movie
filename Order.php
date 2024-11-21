@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['purchase'])) {
         $conn->begin_transaction();
         try {
             $insert_order = "INSERT INTO Orders (User_ID, Status) VALUES (?, 'Paid')";
+            // Status ENUM('Pending', 'Paid', 'Cancelled') DEFAULT 'Pending' 
             $stmt = $conn->prepare($insert_order);
             $stmt->bind_param("i", $user_id);
             $stmt->execute();
