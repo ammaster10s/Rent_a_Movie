@@ -26,6 +26,7 @@ CREATE TABLE Movie (
     Length INT, -- Length in minutes
     Movie_Name VARCHAR(255) NOT NULL,
     Poster_Path VARCHAR(255) -- For saving the path of the poster ( MYSQL cannot store Poster (BLOB not going to be good ))
+    , Category VARCHAR(255) 
 );
 CREATE TABLE User_Address(
     ADDRESS_ID INT PRIMARY KEY AUTO_INCREMENT,
