@@ -1,6 +1,6 @@
 <?php
 include 'auth_check.php';
-session_start();
+/*session_start();*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,13 +38,15 @@ session_start();
         <div class="payment-methods">
           <label>
             <input type="radio" name="payment_method" value="visa" required />
-            <img src="img/visa-512-1.png" alt="Visa" class="payment-icon" />
+            <img src="img/visa.png" alt="Visa" class="payment-icon" />
           </label>
           <label>
             <input type="radio" name="payment_method" value="mastercard" />
-            <img src="img/mastercard-icon-2048x1587-tygju446-1.png" alt="Mastercard" class="payment-icon" />
+            <img src="img/MasterCard.png" alt="Mastercard" class="payment-icon" />
           </label>
         </div>
+
+
       </fieldset>
 
       <!-- Card Details -->
@@ -58,11 +60,11 @@ session_start();
       </div>
       <div class="form-group">
         <label for="expiration_date">Expiration Date:</label>
-        <input type="month" id="expiration_date" name="expiration_date" required />
+        <input type="month" id="expiration_date" name="expiration_date" placeholder="mm/yy" required />
       </div>
       <div class="form-group">
         <label for="cvc">CVC:</label>
-        <input type="number" id="cvc" name="cvc" placeholder="CVC Code" required />
+        <input type="text" id="cvc" name="cvc" placeholder="CVC Code" required />
       </div>
 
       <!-- Address Details -->
