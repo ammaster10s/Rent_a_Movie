@@ -694,7 +694,7 @@ body {
   color: white;
   font-size: 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 1px;
   cursor: pointer;
 }
 
@@ -771,4 +771,186 @@ body {
   }
 }
 
+/* Address - UserProfile */
+/* Profile Form Container */
+.profile-form-container {
+  max-width: 600px;
+  margin: 20px auto; /* Reduced margin for a compact look */
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
 
+/* Profile Description */
+.profile-description {
+  margin-bottom: 15px; /* Tighter spacing */
+  font-size: 14px;
+  color: #555;
+}
+
+/* Form Inputs */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px; /* Reduced spacing between fields */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 10px; /* Tightened spacing between buttons */
+  justify-content: flex-start;
+}
+
+#add-address-btn,
+#save-changes-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+#add-address-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+#save-changes-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+#add-address-btn:hover {
+  background-color: #217dbb;
+}
+
+#save-changes-btn:hover {
+  background-color: #218838;
+}
+
+
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Form Container */
+.profile-form-container {
+  max-width: 500px; /* Reduced width */
+  margin: 20px auto;
+  padding: 15px; /* Reduced padding */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px; /* Smaller font size */
+}
+
+/* Profile Description */
+.profile-description {
+  margin-bottom: 10px; /* Tightened spacing */
+  font-size: 13px;
+  color: #666;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 10px; /* Reduced spacing between fields */
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 3px; /* Smaller margin */
+}
+
+input {
+  width: 100%;
+  padding: 8px; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 13px; /* Reduced font size */
+}
+
+/* Address Block */
+.address-block {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px; /* Compact spacing */
+  background-color: #f9f9f9;
+  border-radius: 3px;
+}
+
+.address-block h4 {
+  font-size: 14px; /* Smaller header */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.remove-address-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Compact button */
+  font-size: 13px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.remove-address-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 8px; /* Tightened spacing between buttons */
+  justify-content: flex-start;
+}
+
+#add-address-btn,
+#save-changes-btn {
+  padding: 8px 15px; /* Smaller buttons */
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+#add-address-btn {
+  background-color: #6c757d;
+}
+
+#add-address-btn:hover {
+  background-color: #5a6268;
+}
+
+#save-changes-btn:hover {
+  background-color: #0056b3;
+}

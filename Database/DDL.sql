@@ -11,8 +11,8 @@ CREATE TABLE Users (
     F_Name VARCHAR(50) NOT NULL,
     L_Name VARCHAR(50) NOT NULL,
     Password VARCHAR(255) NOT NULL,
-    Email_Address VARCHAR(100) UNIQUE NOT NULL,
-    Phone_number INT(10)
+    Email_Address VARCHAR(100) UNIQUE NOT NULL
+   
 );
 
 -- Creating the Movie table
@@ -24,7 +24,8 @@ CREATE TABLE Movie (
     Released_date DATE,
     Description TEXT,
     Length INT, -- Length in minutes
-    Movie_Name VARCHAR(255) NOT NULL
+    Movie_Name VARCHAR(255) NOT NULL,
+    Poster_Path VARCHAR(255) -- For saving the path of the poster ( MYSQL cannot store Poster (BLOB not going to be good ))
 );
 CREATE TABLE User_Address(
     ADDRESS_ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -32,6 +33,7 @@ CREATE TABLE User_Address(
     House_Address VARCHAR(255),
     Zipcode VARCHAR(10),
     Country VARCHAR(50),
+    Phone_number INT(10),
     FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 

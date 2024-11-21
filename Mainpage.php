@@ -1,6 +1,7 @@
 <?php
-session_start();
+// session_start();
 include 'database.php';
+include 'auth_check.php';
 
 // Function to check if the user profile is complete
 function isProfileComplete($username, $conn)
