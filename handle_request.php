@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (password_verify($password, $row['Password'])) {
                 session_regenerate_id(true); // Secure the session
                 $_SESSION['username'] = $row['Username'];
+                $_SESSION['user_id'] = $row['User_ID'];
                 header("Location: Mainpage.php");
                 exit();
             } else {
