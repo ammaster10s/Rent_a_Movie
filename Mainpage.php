@@ -1,6 +1,6 @@
 <?php
 include 'auth_check.php';
-session_start();
+// session_start();
 ?>
 
 <!DOCTYPE html>

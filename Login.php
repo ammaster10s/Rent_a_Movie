@@ -36,8 +36,8 @@ unset($_SESSION['errors']);
                 <?php endif; ?>
 
                 <!-- Email Address -->
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" class="input-field" placeholder="Enter your email address" required />
+                <label for="email">Username or Email Address </label>
+                <input type="text" id="email" name="email" class="input-field" placeholder="Enter your email address" required />
 
                 <!-- Password -->
                 <label for="password">Password</label>
