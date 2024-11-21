@@ -1079,3 +1079,82 @@ tbody tr:hover {
 td {
   color: #333;
 }
+
+
+/*wishlist*/
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 28px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.wishlist-item {
+  display: flex;
+  margin-bottom: 20px;
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.movie-poster img {
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.movie-details {
+  flex-grow: 1;
+}
+
+.movie-details h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.movie-details p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+.movie-details p strong {
+  color: #000;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+.actions .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.actions .btn:hover {
+  background-color: #333;
+}
