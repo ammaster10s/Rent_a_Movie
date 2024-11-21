@@ -7,7 +7,7 @@ include 'auth_check.php';
 $user_id = $_SESSION['username'];
 $query = "SELECT * FROM Users WHERE Username = ?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i", $Username);
+$stmt->bind_param("s", $user_id); // Correct type for Username
 $stmt->execute();
 $user_data = $stmt->get_result()->fetch_assoc();
 $stmt->close();
@@ -42,13 +42,13 @@ $stmt->close();
             <!-- Username -->
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user_data['username']); ?>" required>
+                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user_data['username'] ?? ''); ?>" required>
             </div>
 
             <!-- Email -->
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_data['email_address']); ?>" required>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_data['email_address'] ?? ''); ?>" required>
             </div>
 
             <!-- Addresses Section -->
