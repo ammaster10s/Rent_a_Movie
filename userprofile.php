@@ -1,10 +1,10 @@
 <?php
-session_start();
+// session_start();
 include 'database.php';
 include 'auth_check.php';
 
 // Fetch user data
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['username'];
 $query = "SELECT * FROM Users WHERE Username = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $Username);

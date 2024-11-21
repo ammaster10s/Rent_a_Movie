@@ -2,35 +2,26 @@
 include 'database.php';
 
 if (isset($_GET['movie_id'])) {
-    $movieId = $_GET['movie_id'];
+    $movie_id = intval($_GET['movie_id']);
 
-    // Query to get movie details from the Movie table
-    $query = "SELECT * FROM Movie WHERE Movie_ID = ?";
+    $query = "SELECT Movie_Name, Description, Price, Released_date, Length, Main_Actor FROM Movie WHERE Movie_ID = ?";
     $stmt = $conn->prepare($query);
-    if (!$stmt) {
-        echo "Error preparing statement.";
-        exit;
-    }
-    $stmt->bind_param("i", $movieId);
+    $stmt->bind_param("i", $movie_id);
     $stmt->execute();
+    $stmt->bind_result($movie_name, $description, $price, $released_date, $length, $main_actor);
+    $stmt->fetch();
 
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        $movie = $result->fetch_assoc();
-
-        // Output movie details
-        echo "<h1>" . htmlspecialchars($movie['Movie_Name']) . "</h1>";
-        echo "<img src='" . htmlspecialchars($movie['Poster_Path']) . "' alt='" . htmlspecialchars($movie['Movie_Name']) . "' class='movie-poster-modal'>";
-        echo "<p><strong>Main Actor:</strong> " . htmlspecialchars($movie['Main_Actor']) . "</p>";
-        echo "<p><strong>Release Date:</strong> " . htmlspecialchars($movie['Released_date']) . "</p>";
-        echo "<p><strong>Price:</strong> $" . htmlspecialchars($movie['Price']) . "</p>";
-        echo "<p><strong>Length:</strong> " . htmlspecialchars($movie['Length']) . " minutes</p>";
-        echo "<p><strong>Description:</strong> " . htmlspecialchars($movie['Description']) . "</p>";
+    if ($movie_name) {
+        echo "<h3>$movie_name</h3>";
+        echo "<p><strong>Description:</strong> $description</p>";
+        echo "<p><strong>Price:</strong> $$price</p>";
+        echo "<p><strong>Release Date:</strong> $released_date</p>";
+        echo "<p><strong>Length:</strong> $length mins</p>";
+        echo "<p><strong>Main Actor:</strong> $main_actor</p>";
     } else {
-        echo "Movie not found.";
+        echo "Movie details not found.";
     }
+
     $stmt->close();
-} else {
-    echo "Invalid request.";
 }
 ?>
