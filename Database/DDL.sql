@@ -31,6 +31,7 @@ CREATE TABLE Movie (
 CREATE TABLE User_Address(
     ADDRESS_ID INT PRIMARY KEY AUTO_INCREMENT,
     User_ID INT,
+    City VARCHAR(50),
     House_Address VARCHAR(255),
     Zipcode VARCHAR(10),
     Country VARCHAR(50),
