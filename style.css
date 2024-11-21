@@ -488,7 +488,11 @@ label {
   }
   
   .remove-button {
-    background-color: #ff0000; /* Example color */
+    width: 60px;
+    height: 40px;
+    padding: 10px;
+    font-size: 9px;
+    background-color: #ff5252; /* Example color */
   }
 
 /* General Reset */
