@@ -26,7 +26,14 @@ CREATE TABLE Movie (
     Length INT, -- Length in minutes
     Movie_Name VARCHAR(255) NOT NULL
 );
-
+CREATE TABLE User_Address(
+    ADDRESS_ID INT PRIMARY KEY AUTO_INCREMENT,
+    User_ID INT,
+    House_Address VARCHAR(255),
+    Zipcode VARCHAR(10),
+    Country VARCHAR(50),
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
+);
 
 -- Creating the Payment table first to resolve FK dependencies
 CREATE TABLE Payment (
@@ -35,13 +42,12 @@ CREATE TABLE Payment (
     CVC CHAR(3) NOT NULL,
     Expiration_Date DATE NOT NULL,
     User_ID INT NOT NULL,
-    House_Address VARCHAR(255),
-    Zipcode VARCHAR(10),
-    Country VARCHAR(50),
+    Address_ID INT,
     Card_Holder_FName VARCHAR(50),
     Card_Holder_LName VARCHAR(50),
     Payment_Date DATE NOT NULL,  
-    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID),
+    FOREIGN KEY (Address_ID) REFERENCES User_Address(User_ID)
 );
 
 

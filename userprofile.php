@@ -1,6 +1,30 @@
 <?php
-include 'auth_check.php';
 session_start();
+include 'database.php';
+
+// Function to check if the user profile is complete
+function isProfileComplete($userId, $conn)
+{
+    $query = "SELECT address FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    if (!$stmt) {
+        return false; // Fail gracefully
+    }
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $address = null;
+    $stmt->bind_result($address);
+    $stmt->fetch();
+    $stmt->close();
+
+    return !empty($address);
+}
+
+// Check user session and profile completion
+$showNotification = false;
+if (isset($_SESSION['user_id'])) {
+    $showNotification = !isProfileComplete($_SESSION['user_id'], $conn);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

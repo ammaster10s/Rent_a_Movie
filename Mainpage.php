@@ -1,6 +1,30 @@
 <?php
-include 'auth_check.php';
-// session_start();
+session_start();
+include 'database.php';
+
+// Function to check if the user profile is complete
+function isProfileComplete($username, $conn)
+{
+    $query = "SELECT ADDRESS_ID FROM User_Address WHERE (SELECT User_ID From Users where Username=?)";
+    $stmt = $conn->prepare($query);
+    if (!$stmt) {
+        return false; // Fail gracefully
+    }
+    $stmt->bind_param("i", $username);
+    $stmt->execute();
+    $address= null;
+    $stmt->bind_result($address);
+    $stmt->fetch();
+    $stmt->close();
+
+    return !empty($address);
+}
+
+// Check user session and profile completion
+$showNotification = false;
+if (isset($_SESSION['username'])) {
+    $showNotification = !isProfileComplete($_SESSION['username'], $conn);
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +43,20 @@ include 'auth_check.php';
   <?php
   include 'navigate.php';
   ?>
+
+
+<!-- Notification Bar -->
+<?php if ($showNotification): ?>
+    <div id="notification" class="notification">
+        <p class="notification-text">
+            🎉 Welcome! It seems your profile is incomplete. 
+            <a href="userprofile.php" class="configure-link">Configure your profile</a> to get personalized movie recommendations.
+        </p>
+        <button id="close-notification" class="close-btn" aria-label="Close Notification">&times;</button>
+    </div>
+<?php endif; ?>
+
+
 
   <!-- Main Page Content -->
   <div class="mainpage">
@@ -64,7 +102,21 @@ include 'auth_check.php';
       </div>
     </div>
   </div>
-
+  <script>
+    // Close Notification Bar
+    document.addEventListener('DOMContentLoaded', () => {
+      const closeNotification = document.getElementById('close-notification');
+      if (closeNotification) {
+        closeNotification.addEventListener('click', () => {
+          const notification = document.getElementById('notification');
+          if (notification) {
+            notification.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
+<?php

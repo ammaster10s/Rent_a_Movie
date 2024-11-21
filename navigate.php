@@ -40,7 +40,7 @@
         <?php if (isset($_SESSION['username'])): ?>
             <!-- Show Logout when logged in -->
             <a href="logout.php">LOGOUT</a>
-            <img class="profile-icon" src="img/profile-icon.png" alt="Profile Icon" />
+            <a href="userprofile.php"><img class="profile-icon" src="img/profile-icon.png" alt="Profile Icon" /></a>
         <?php else: ?>
             <!-- Show Signup and Login when logged out -->
             <a href="Signup.php">SIGNUP</a>
@@ -48,3 +48,5 @@
         <?php endif; ?>
     </div>
 </nav>
+</body>
+</html>
