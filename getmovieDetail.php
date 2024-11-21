@@ -12,16 +12,19 @@ if (isset($_GET['movie_id'])) {
     $stmt->fetch();
 
     if ($movie_name) {
+        echo "<div style='text-align: left;'>"; // Inline style for left alignment
         echo "<h3>$movie_name</h3>";
         echo "<p><strong>Description:</strong> $description</p>";
         echo "<p><strong>Price:</strong> $$price</p>";
         echo "<p><strong>Release Date:</strong> $released_date</p>";
         echo "<p><strong>Length:</strong> $length mins</p>";
         echo "<p><strong>Main Actor:</strong> $main_actor</p>";
+        echo "</div>"; // Close the container div
     } else {
         echo "Movie details not found.";
     }
-
+    
     $stmt->close();
+    
 }
 ?>
