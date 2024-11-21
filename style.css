@@ -980,10 +980,22 @@ input {
 }
 
 .modal-content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: flex; /* Arrange items horizontally */
+  flex-direction: column; /* Ensure the text and button are side by side */
+  justify-content: space-between; /* Space out the items */
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px; /* Add space between the details and the button */
 }
+
+#movie-details {
+  flex: 2; /* Give more space to the details section */
+  text-align: left; /* Align the text content to the left */
+}
+
+#movie-details h3, #movie-details p {
+  margin: 10px 0; /* Add spacing between the elements */
+}
+
 
 .close {
   color: #000;

@@ -132,12 +132,22 @@ if (isset($_SESSION['username'])) {
 
   <!-- Modal Container -->
   <div id="movie-modal" class="modal">
-    <div class="modal-content">
-      <span id="close-modal" class="close">&times;</span>
-      <div id="movie-details"></div>
-      <button id="add-to-cart-btn" class="add-to-cart-btn">Add to Cart</button>
+  <div class="modal-content">
+    <span id="close-modal" class="close">&times;</span>
+    <div id="movie-details">
+      <h3>Minecraft Movie</h3>
+      <div class="movie-info">
+        <p><strong>Description:</strong> An action-packed adventure where players are transported into the Minecraft universe, fighting mobs and building to survive.</p>
+        <p><strong>Price:</strong> $10.99</p>
+        <p><strong>Release Date:</strong> 2025-04-04</p>
+        <p><strong>Length:</strong> 120 mins</p>
+        <p><strong>Main Actor:</strong> Jason Momoa</p>
+      </div>
     </div>
+    <button id="add-to-cart-btn" class="add-to-cart-btn">Add to Cart</button>
   </div>
+</div>
+
 
   <script>
     // Modal Display Logic
