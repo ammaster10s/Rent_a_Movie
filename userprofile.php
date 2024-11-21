@@ -1,26 +1,32 @@
 <?php
-// session_start();
+session_start();
 include 'database.php';
-include 'auth_check.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$username = $_SESSION['username'];
 
 // Fetch user data
-$user_id = $_SESSION['username'];
 $query = "SELECT * FROM Users WHERE Username = ?";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("s", $user_id); // Correct type for Username
+$stmt->bind_param("s", $username);
 $stmt->execute();
 $user_data = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
 // Fetch user's addresses
-$query = "SELECT ADDRESS_ID FROM User_Address WHERE (SELECT User_ID From Users where Username=?)";
+$query = "SELECT * FROM User_Address WHERE User_ID = (SELECT User_ID FROM Users WHERE Username = ?)";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i", $Username);
+$stmt->bind_param("s", $username);
 $stmt->execute();
-$result = $stmt->get_result();
-$addresses = $result->fetch_all(MYSQLI_ASSOC);
+$addresses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -42,13 +48,13 @@ $stmt->close();
             <!-- Username -->
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user_data['username'] ?? ''); ?>" required>
+                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user_data['Username'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required readonly>
             </div>
 
             <!-- Email -->
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_data['email_address'] ?? ''); ?>" required>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user_data['Email_Address'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
             </div>
 
             <!-- Addresses Section -->
@@ -56,21 +62,22 @@ $stmt->close();
                 <?php if (!empty($addresses)): ?>
                     <?php foreach ($addresses as $index => $address): ?>
                         <div class="address-block">
+                            <input type="hidden" name="address_id[]" value="<?php echo htmlspecialchars($address['ADDRESS_ID'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                             <h4>Address <?php echo $index + 1; ?></h4>
-                            <label for="address_label_<?php echo $index; ?>">Label:</label>
-                            <input type="text" name="address_label[]" value="<?php echo htmlspecialchars($address['address_label']); ?>" required>
+                            <label>City:</label>
+                            <input type="text" name="city[]" value="<?php echo htmlspecialchars($address['City'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
 
-                            <label for="address_<?php echo $index; ?>">Address:</label>
-                            <input type="text" name="address[]" value="<?php echo htmlspecialchars($address['address']); ?>" required>
+                            <label>House Address:</label>
+                            <input type="text" name="house_address[]" value="<?php echo htmlspecialchars($address['House_Address'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
 
-                            <label for="zip_<?php echo $index; ?>">ZIP:</label>
-                            <input type="text" name="zip[]" value="<?php echo htmlspecialchars($address['zip']); ?>" required>
+                            <label>ZIP:</label>
+                            <input type="text" name="zipcode[]" value="<?php echo htmlspecialchars($address['Zipcode'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
 
-                            <label for="country_<?php echo $index; ?>">Country:</label>
-                            <input type="text" name="country[]" value="<?php echo htmlspecialchars($address['country']); ?>" required>
+                            <label>Country:</label>
+                            <input type="text" name="country[]" value="<?php echo htmlspecialchars($address['Country'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
 
-                            <label for="phone_<?php echo $index; ?>">Phone:</label>
-                            <input type="text" name="phone[]" value="<?php echo htmlspecialchars($address['phone']); ?>">
+                            <label>Phone:</label>
+                            <input type="text" name="phone_number[]" value="<?php echo htmlspecialchars($address['Phone_number'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
 
                             <button type="button" class="remove-address-btn" onclick="removeAddress(this)">Remove Address</button>
                         </div>
@@ -86,7 +93,7 @@ $stmt->close();
     </div>
 
     <script>
-        document.getElementById('add-address-btn').addEventListener('click', function () {
+        document.getElementById('add-address-btn').addEventListener('click', function() {
             const container = document.getElementById('addresses-container');
             const index = container.children.length;
             const addressBlock = document.createElement('div');
@@ -94,20 +101,21 @@ $stmt->close();
 
             addressBlock.innerHTML = `
                 <h4>Address ${index + 1}</h4>
-                <label for="address_label_${index}">Label:</label>
-                <input type="text" name="address_label[]" required>
+                <input type="hidden" name="address_id[]" value="">
+                <label>City:</label>
+                <input type="text" name="city[]" required>
 
-                <label for="address_${index}">Address:</label>
-                <input type="text" name="address[]" required>
+                <label>House Address:</label>
+                <input type="text" name="house_address[]" required>
 
-                <label for="zip_${index}">ZIP:</label>
-                <input type="text" name="zip[]" required>
+                <label>ZIP:</label>
+                <input type="text" name="zipcode[]" required>
 
-                <label for="country_${index}">Country:</label>
+                <label>Country:</label>
                 <input type="text" name="country[]" required>
 
-                <label for="phone_${index}">Phone:</label>
-                <input type="text" name="phone[]">
+                <label>Phone:</label>
+                <input type="text" name="phone_number[]">
 
                 <button type="button" class="remove-address-btn" onclick="removeAddress(this)">Remove Address</button>
             `;

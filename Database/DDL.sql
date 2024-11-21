@@ -28,6 +28,8 @@ CREATE TABLE Movie (
     Poster_Path VARCHAR(40) -- For saving the path of the poster ( MYSQL cannot store Poster (BLOB not going to be good ))
     , Category VARCHAR(20) 
 );
+
+DROP TABLE IF EXISTS User_Address;
 CREATE TABLE User_Address(
     ADDRESS_ID INT PRIMARY KEY AUTO_INCREMENT,
     User_ID INT,
@@ -55,19 +57,32 @@ CREATE TABLE Payment (
 );
 
 
--- Creating the Order table
-CREATE TABLE Orders (
-    Order_ID INT PRIMARY KEY AUTO_INCREMENT,
-    Payment_ID INT,
-    FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID),
-    Status ENUM('Pending', 'Paid', 'Cancelled') DEFAULT 'Pending'
-);
+-- Creating the Order tablea
 
 -- Creating the Place_Order table (junction table for Order and User)
 CREATE TABLE Place_Order (
     Order_ID INT NOT NULL,
     User_ID INT NOT NULL,
     PRIMARY KEY (Order_ID, User_ID),
+    -- Creating the Orders table
+    CREATE TABLE Orders (
+        Order_ID INT PRIMARY KEY AUTO_INCREMENT,
+        Order_Date DATE NOT NULL,
+        Total_Amount DECIMAL(10, 2) NOT NULL
+    );
+
+    -- Trigger to update payment_time when a payment is made
+    DELIMITER //
+    CREATE TRIGGER update_payment_time
+    AFTER INSERT ON Payment
+    FOR EACH ROW
+    BEGIN
+        UPDATE Payment
+        SET Payment_Date = NOW()
+        WHERE Payment_ID = NEW.Payment_ID;
+    END;
+    //
+    DELIMITER ;
     FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
     FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
