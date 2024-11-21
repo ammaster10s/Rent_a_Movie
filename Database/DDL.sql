@@ -25,8 +25,8 @@ CREATE TABLE Movie (
     Description TEXT,
     Length INT, -- Length in minutes
     Movie_Name VARCHAR(255) NOT NULL,
-    Poster_Path VARCHAR(255) -- For saving the path of the poster ( MYSQL cannot store Poster (BLOB not going to be good ))
-    , Category VARCHAR(255) 
+    Poster_Path VARCHAR(40) -- For saving the path of the poster ( MYSQL cannot store Poster (BLOB not going to be good ))
+    , Category VARCHAR(20) 
 );
 CREATE TABLE User_Address(
     ADDRESS_ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -50,7 +50,7 @@ CREATE TABLE Payment (
     Card_Holder_LName VARCHAR(50),
     Payment_Date DATE NOT NULL,  
     FOREIGN KEY (User_ID) REFERENCES Users(User_ID),
-    FOREIGN KEY (Address_ID) REFERENCES User_Address(User_ID)
+    FOREIGN KEY (Address_ID) REFERENCES User_Address(ADDRESS_ID)
 );
 
 
