@@ -31,6 +31,7 @@
             <div class="search-container">
                 <input type="text" placeholder="Search..." aria-label="Search" />
                 <img src="img/search-icon.png" alt="Search Icon" />
+                <a href = Order.php> <img src="img/Cart-icon.png" alt="Cart Icon" /></a>
             </div>
         <?php endif; ?>
     </div>
