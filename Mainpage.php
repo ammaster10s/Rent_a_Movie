@@ -1,6 +1,10 @@
 <?php
 session_start();
 include 'database.php';
+
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
 include 'auth_check.php';
 
 // Function to check if the user profile is complete
@@ -85,41 +89,46 @@ document.addEventListener('DOMContentLoaded', () => {
         // Loop through each category
         foreach ($categories as $category): ?>
             <div class="categories">
-                <h2 class="text-wrapper-2"><?php echo $category; ?> Movies</h2>
+                <h2 class="text-wrapper-2"><?php echo htmlspecialchars($category); ?> Movies</h2>
                 <div class="image-row">
                     <?php
                     // Prepare and execute query to fetch movies in the current category
                     $query = "SELECT Movie_ID, Movie_Name, Poster_Path FROM Movie WHERE Category = ?";
                     if ($stmt = $conn->prepare($query)) {
-                        $stmt->bind_param("s", $category);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
+                      $stmt->bind_param("s", $category);
+                      $stmt->execute();
+                      $result = $stmt->get_result();
 
-                        // Check if any movies are returned
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()): ?>
-                                <img
-                                    class="image movie-poster"
-                                    src="<?php echo htmlspecialchars($row['Poster_Path']); ?>"
-                                    alt="<?php echo htmlspecialchars($row['Movie_Name']); ?>"
-                                    data-movie-id="<?php echo $row['Movie_ID']; ?>"
-                                    data-movie-name="<?php echo htmlspecialchars($row['Movie_Name']); ?>"
-                                    data-movie-description="This is a placeholder description for <?php echo htmlspecialchars($row['Movie_Name']); ?>." />
-                            <?php endwhile;
-                        } else {
-                            echo "<p>No movies found in the $category category.</p>";
-                        }
+                      // Check if any movies are returned
+                      if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()):
+                          $posterPath = file_exists($row['Poster_Path']) ? htmlspecialchars($row['Poster_Path']) : 'img/default-poster.jpg';
+                          ?>
+                          <img
+                            class="image movie-poster"
+                            src="<?php echo $posterPath; ?>"
+                            alt="<?php echo htmlspecialchars($row['Movie_Name']); ?>"
+                            data-movie-id="<?php echo $row['Movie_ID']; ?>"
+                            data-movie-name="<?php echo htmlspecialchars($row['Movie_Name']); ?>"
+                            data-movie-description="This is a placeholder description for <?php echo htmlspecialchars($row['Movie_Name']); ?>." />
+                        <?php endwhile;
+                      } else {
+                        echo "<p class='no-movies'>No movies found in the $category category.</p>";
+                      }
 
-                        $stmt->close();
+                      $stmt->close();
                     } else {
-                        echo "<p>Error preparing the query for $category category: " . $conn->error . "</p>";
+                      echo "<p class='query-error'>Error preparing the query for $category category.</p>";
                     }
+                    echo "<p>Debug: Finished processing category $category.</p>";
+                    ?>
                     ?>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
+
 
 
    <!-- Modal Container -->
