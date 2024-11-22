@@ -22,8 +22,7 @@
             <!-- Display these links only when the user is logged in -->
             <a href="history.php">HISTORY</a>
             <a href="wishlist.php">WISHLIST</a>
-            <a href="tv_series.php">TV SERIES</a>
-            <a href="movies.php">MOVIES</a>
+            
         <?php endif; ?>
 
         <!-- Search Bar -->
