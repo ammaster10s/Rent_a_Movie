@@ -1,15 +1,18 @@
 TODO
 - จัดให้ Popup ขึ้นกลางจอ
-- Wishlist 
+
 - Search botton
 - หน้า Payment
 
 
 INPROGRESS
-- Borrow History ทำให้ใช้ได้ --BOOM
+
 - Update ที่อยู่ --BOOM
 
 
 
 
 DONE
+
+- Borrow History ทำให้ใช้ได้ --BOOM
+- Wishlist -- First

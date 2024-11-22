@@ -49,6 +49,11 @@ CREATE TABLE Payment (
     Card_Holder_FName VARCHAR(50),             -- First Name of Cardholder
     Card_Holder_LName VARCHAR(50),             -- Last Name of Cardholder
     Payment_Date DATE NOT NULL,                 -- Payment Date
+    City VARCHAR(50),
+    House_Address VARCHAR(255),
+    Zipcode VARCHAR(10),
+    Country VARCHAR(50),
+    Phone_number VARCHAR(15),
     FOREIGN KEY (User_ID) REFERENCES Users(User_ID), 
     FOREIGN KEY (Address_ID) REFERENCES User_Address(Address_ID)
 );

@@ -50,3 +50,34 @@ ORDER BY m.Movie_Name ASC;
 
 
 SELECT * FROM Order_Contain;
+
+
+SELECT 
+    o.Order_ID,
+    m.Movie_Name,
+    m.Price,
+    p.Payment_Date AS Issue_Date,
+    DATE_ADD(p.Payment_Date, INTERVAL 7 DAY) AS Due_Date,
+    DATEDIFF(DATE_ADD(p.Payment_Date, INTERVAL 7 DAY), p.Payment_Date) AS Period
+FROM Orders o
+INNER JOIN Place_Order po ON o.Order_ID = po.Order_ID
+INNER JOIN Order_Contain oc ON o.Order_ID = oc.Order_ID
+INNER JOIN Movie m ON oc.Movie_ID = m.Movie_ID
+INNER JOIN Payment p ON o.Payment_ID = p.Payment_ID
+WHERE po.User_ID = 1
+ORDER BY m.Movie_Name ASC;
+
+SELECT 
+    o.Order_ID,
+    m.Movie_Name,
+    m.Price,
+    p.Payment_Date AS Issue_Date,
+    DATE_ADD(p.Payment_Date, INTERVAL 7 DAY) AS Due_Date,
+    DATEDIFF(DATE_ADD(p.Payment_Date, INTERVAL 7 DAY), p.Payment_Date) AS Period
+FROM Orders o
+INNER JOIN Place_Order po ON o.Order_ID = po.Order_ID
+INNER JOIN Order_Contain oc ON o.Order_ID = oc.Order_ID
+INNER JOIN Movie m ON oc.Movie_ID = m.Movie_ID
+INNER JOIN Payment p ON o.Payment_ID = p.Payment_ID
+WHERE po.User_ID = 1
+ORDER BY o.Order_ID, m.Movie_Name ASC;

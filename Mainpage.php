@@ -82,7 +82,7 @@ if (isset($_SESSION['username'])) {
       foreach ($categories as $category): ?>
         <div class="categories">
           <h2 class="text-wrapper-2"><?php echo htmlspecialchars($category); ?> Movies</h2>
-          <div class="image-row">
+          <div class="image-row <?php echo strtolower($category); ?>">
             <?php
             $query = "SELECT Movie_ID, Movie_Name, Poster_Path, Description, Price, Released_date, Length, Main_Actor FROM Movie WHERE Category = ?";
             if ($stmt = $conn->prepare($query)) {
@@ -102,12 +102,13 @@ if (isset($_SESSION['username'])) {
                   <img class="movie-poster" src="<?php echo htmlspecialchars($row['Poster_Path']); ?>"
                     alt="<?php echo htmlspecialchars($row['Movie_Name']); ?>">
                 </div>
-              <?php endwhile;
+            <?php endwhile;
 
               $stmt->close();
             } ?>
           </div>
         </div>
+
       <?php endforeach; ?>
     </div>
   </div>
@@ -165,14 +166,14 @@ if (isset($_SESSION['username'])) {
 
     function addToCart(movieId) {
       fetch('add_to_cart.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          movieId
-        }),
-      })
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            movieId
+          }),
+        })
         .then(response => response.json())
         .then(data => {
           if (data.success) {
@@ -188,33 +189,30 @@ if (isset($_SESSION['username'])) {
     }
 
     function addToWishlist(movieId) {
-  console.log(`Sending movieId ${movieId} to the server`);
-  fetch('add_to_wishlist.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      movieId,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Response from server:', data);
-      if (data.success) {
-        alert('Movie successfully added to the wishlist!');
-      } else {
-        alert(`Error: ${data.message}`);
-      }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert('An error occurred while adding the movie to the wishlist.');
-    });
-}
-
-
-   
+      console.log(`Sending movieId ${movieId} to the server`);
+      fetch('add_to_wishlist.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            movieId,
+          }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Response from server:', data);
+          if (data.success) {
+            alert('Movie successfully added to the wishlist!');
+          } else {
+            alert(`Error: ${data.message}`);
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('An error occurred while adding the movie to the wishlist.');
+        });
+    }
   </script>
 </body>
 
