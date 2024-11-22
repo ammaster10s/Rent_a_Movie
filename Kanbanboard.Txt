@@ -2,12 +2,14 @@ TODO
 - จัดให้ Popup ขึ้นกลางจอ
 
 - Search botton
-- หน้า Payment
 
+- จัดหน้าตา Website จาก CSS
+
+- Connect Payment to DB
 
 INPROGRESS
 
-- Update ที่อยู่ --BOOM
+- Format Code (CSS) มีปัญหาดึงยากมาก กำลังจัด Css เป็นหมวดๆ  - BOOM
 
 
 
@@ -16,3 +18,7 @@ DONE
 
 - Borrow History ทำให้ใช้ได้ --BOOM
 - Wishlist -- First
+- Update ที่อยู่ --BOOM
+- หน้า Payment -- BOOM
+- จัด Format โค้ด -- BOOM
+- Front and backend of wishlist -- First
