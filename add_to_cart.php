@@ -23,6 +23,20 @@ if (!$movieId) {
 $conn->begin_transaction();
 
 try {
+    // Check if the user exists
+    $query = "SELECT User_ID FROM Users WHERE User_ID = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $userId);
+    $stmt->execute();
+    $stmt->bind_result($existingUserId);
+    $stmt->fetch();
+    $stmt->close();
+    
+    if (!$existingUserId) {
+        echo json_encode(['success' => false, 'message' => 'User does not exist.']);
+        exit;
+    }
+    
     // Check if an order already exists for the user
     $query = "SELECT Order_ID FROM Orders WHERE User_ID = ? AND Payment_ID IS NULL";
     $stmt = $conn->prepare($query);
@@ -59,3 +73,4 @@ try {
 }
 
 $conn->close();
+?>

@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Execute statement
         if ($stmt->execute()) {
             $_SESSION['username'] = $username;
+            $_SESSION['user_id'] = $stmt->insert_id; // Set user_id in session
             header("Location: Mainpage.php");
             exit();
         } else {
@@ -67,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = $_POST['password'];
 
         // Prepare SQL statement
-        $stmt = $conn->prepare("SELECT * FROM Users WHERE Email_Address=? or Username=?");
+        $stmt = $conn->prepare("SELECT * FROM Users WHERE Email_Address=? OR Username=?");
         if (!$stmt) {
             die("SQL Prepare failed: " . $conn->error);
         }
