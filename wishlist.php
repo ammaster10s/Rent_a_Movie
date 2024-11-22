@@ -22,7 +22,7 @@ include 'auth_check.php';
 <?php
     include 'navigate.php';
     ?>
-  <div class="container">
+  <div class="wishlist-container">
     <h1>Wishlist</h1>
     <div class="wishlist-item">
       <div class="movie-poster">
