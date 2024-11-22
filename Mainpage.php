@@ -160,9 +160,30 @@ if (isset($_SESSION['username'])) {
       });
     });
 
+    
     function addToCart(movieId) {
-      alert(`Movie with ID ${movieId} added to cart!`);
-    }
+  fetch('add_to_cart.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ movieId }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Movie successfully added to the cart!');
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred while adding the movie to the cart.');
+    });
+}
+
+
 
     function addToWishlist(movieId) {
       alert(`Movie with ID ${movieId} added to wishlist!`);
