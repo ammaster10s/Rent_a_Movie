@@ -8,16 +8,16 @@ VALUES
     ('789 Oak St', 'Chicago', 'IL', '60007', 1);
 INSERT INTO Payment (CreditCard_Number, CVC, Expiration_Date, User_ID, Payment_Date, Address_ID)
 VALUES 
-    ('1234567812345678', '123', '2025-01-01', 1, '2023-10-01',7),
-    ('2345678923456789', '234', '2025-01-01', 1, '2023-10-02',8),
-    ('3456789034567890', '345', '2025-01-01', 1, '2023-10-03',9);
+    ('1234567812345678', '123', '2025-01-01', 1, '2023-10-01',1),
+    ('2345678923456789', '234', '2025-01-01', 1, '2023-10-02',2),
+    ('3456789034567890', '345', '2025-01-01', 1, '2023-10-03',3);
 
 
-INSERT INTO Orders (Order_ID, Payment_ID, Status)
+INSERT INTO Orders (User_ID ,Order_ID, Payment_ID, Status)
 VALUES
-    (1, 7, 'Paid'),
-    (2, 8, 'Paid'),
-    (3, 9, 'Paid');
+    (1, 1, 10, 'Completed'),
+    (1, 2, 11, 'Completed');
+    -- (1, 3, 12, 'Completed');
 
 
 INSERT INTO Order_Contain (Order_ID, Movie_ID)
@@ -25,8 +25,8 @@ VALUES
     (1, 1), -- Movie 1 in Order 1
     (1, 2), -- Movie 2 in Order 1
     (2, 3), -- Movie 3 in Order 2
-    (3, 1), -- Movie 1 in Order 3
-    (3, 3); -- Movie 3 in Order 3
+    (3, 1); -- Movie 1 in Order 3
+    -- (3, 3); -- Movie 3 in Order 3
 
 
 INSERT INTO Place_Order (Order_ID, User_ID)
