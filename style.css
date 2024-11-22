@@ -1108,12 +1108,63 @@ input {
 
 /*wishlist*/
 .wishlist-container {
-  
-  margin: 20px;
-  background-color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
-  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+  gap: 20px; /* Space between poster and details */
+}
+
+.movie-poster img {
+  width: 250px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.movie-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px; /* Space between title, description, price */
+  text-align: left; /* Force left alignment for text */
+}
+
+.movie-details h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #007bff;
+  text-align: left; /* Left align the title */
+}
+
+.movie-details p {
+  margin: 0;
+  text-align: left; /* Ensure description and price are left-aligned */
+}
+
+.actions {
+  margin-top: 30px; /* Increase margin to push the button further down */
+}
+
+.actions button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: #0056b3;
 }

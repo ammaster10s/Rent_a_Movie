@@ -32,29 +32,30 @@ $stmt->close();
 <body>
 <?php include 'navigate.php'; ?>
 
-  <div class="wishlist-container">
-    <h1>Your Wishlist</h1>
+<div class="wishlist-container">
+  <h1>Your Wishlist</h1>
 
-    <?php if (!empty($wishlist_items)): ?>
-      <?php foreach ($wishlist_items as $item): ?>
-        <div class="wishlist-item">
-          <div class="movie-poster">
-            <img src="<?php echo htmlspecialchars($item['Poster_Path']); ?>" alt="<?php echo htmlspecialchars($item['Movie_Name']); ?>">
-          </div>
-          <div class="movie-details">
-            <h2><?php echo htmlspecialchars($item['Movie_Name']); ?></h2>
-            <p><?php echo htmlspecialchars($item['Description']); ?></p>
-            <p><strong>Price:</strong> $<?php echo htmlspecialchars($item['Price']); ?></p>
-            <div class="actions">
-              <button onclick="addToCart(<?php echo $item['Movie_ID']; ?>)">Add to Cart</button>
-            </div>
+  <?php if (!empty($wishlist_items)): ?>
+    <?php foreach ($wishlist_items as $item): ?>
+      <div class="wishlist-item">
+        <div class="movie-poster">
+          <img src="<?php echo htmlspecialchars($item['Poster_Path']); ?>" alt="<?php echo htmlspecialchars($item['Movie_Name']); ?>">
+        </div>
+        <div class="movie-details">
+          <h2><?php echo htmlspecialchars($item['Movie_Name']); ?></h2>
+          <p><?php echo htmlspecialchars($item['Description']); ?></p>
+          <p><strong>Price:</strong> $<?php echo htmlspecialchars($item['Price']); ?></p>
+          <div class="actions">
+            <button onclick="addToCart(<?php echo $item['Movie_ID']; ?>)">Add to Cart</button>
           </div>
         </div>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <p>Your wishlist is empty. <a href="mainpage.php">Browse movies</a> to add items.</p>
-    <?php endif; ?>
-  </div>
+      </div>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <p>Your wishlist is empty. <a href="mainpage.php">Browse movies</a> to add items.</p>
+  <?php endif; ?>
+</div>
+
 
   <script>
     function addToCart(movieId) {
