@@ -48,7 +48,8 @@ if (isset($_SESSION['username'])) {
     <div id="notification" class="notification">
       <p class="notification-text">
         🎉 Welcome! It seems your profile is incomplete.
-        <a href="userprofile.php" class="configure-link">Configure your profile</a> to get personalized movie recommendations.
+        <a href="userprofile.php" class="configure-link">Configure your profile</a> to get personalized movie
+        recommendations.
       </p>
       <button id="close-notification" class="close-btn" aria-label="Close Notification">&times;</button>
     </div>
@@ -72,7 +73,8 @@ if (isset($_SESSION['username'])) {
   <div class="mainpage">
     <div class="content">
       <p class="rent-movies-to-watch">Rent Movies to Watch on DVD &amp; Blu-ray</p>
-      <p class="text-wrapper">Unlike movie streaming services, we deliver your movie to you, and you return it back to us.</p>
+      <p class="text-wrapper">Unlike movie streaming services, we deliver your movie to you, and you return it back to
+        us.</p>
 
       <?php
       $categories = ['Trending', 'Thriller', 'SciFi_Fantasy'];
@@ -89,8 +91,7 @@ if (isset($_SESSION['username'])) {
               $result = $stmt->get_result();
 
               while ($row = $result->fetch_assoc()): ?>
-                <div class="movie-card"
-                  data-movie-id="<?php echo $row['Movie_ID']; ?>"
+                <div class="movie-card" data-movie-id="<?php echo $row['Movie_ID']; ?>"
                   data-movie-name="<?php echo htmlspecialchars($row['Movie_Name']); ?>"
                   data-description="<?php echo htmlspecialchars($row['Description']); ?>"
                   data-price="<?php echo htmlspecialchars($row['Price']); ?>"
@@ -98,9 +99,10 @@ if (isset($_SESSION['username'])) {
                   data-length="<?php echo htmlspecialchars($row['Length']); ?>"
                   data-main-actor="<?php echo htmlspecialchars($row['Main_Actor']); ?>"
                   data-poster-path="<?php echo htmlspecialchars($row['Poster_Path']); ?>">
-                  <img class="movie-poster" src="<?php echo htmlspecialchars($row['Poster_Path']); ?>" alt="<?php echo htmlspecialchars($row['Movie_Name']); ?>">
+                  <img class="movie-poster" src="<?php echo htmlspecialchars($row['Poster_Path']); ?>"
+                    alt="<?php echo htmlspecialchars($row['Movie_Name']); ?>">
                 </div>
-            <?php endwhile;
+              <?php endwhile;
 
               $stmt->close();
             } ?>
@@ -165,31 +167,54 @@ if (isset($_SESSION['username'])) {
       fetch('add_to_cart.php', {
         method: 'POST',
         headers: {
-        'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-        movieId
+          movieId
         }),
       })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-        alert('Movie successfully added to the cart!');
-        } else {
-        alert(`Error: ${data.message}`);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while adding the movie to the cart.');
-      });
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Movie successfully added to the cart!');
+          } else {
+            alert(`Error: ${data.message}`);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred while adding the movie to the cart.');
+        });
     }
-
-
 
     function addToWishlist(movieId) {
-      alert(`Movie with ID ${movieId} added to wishlist!`);
-    }
+  console.log(`Sending movieId ${movieId} to the server`);
+  fetch('add_to_wishlist.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      movieId,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Response from server:', data);
+      if (data.success) {
+        alert('Movie successfully added to the wishlist!');
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('An error occurred while adding the movie to the wishlist.');
+    });
+}
+
+
+   
   </script>
 </body>
 
