@@ -97,11 +97,15 @@ if ($order_id) {
       </div>
 
       <!-- Pay Button -->
-      <button class="pay-button" onclick="payNow(<?php echo $order_id; ?>)">PAY NOW</button>
+       <form action="Payment.php" method="POST">
+        <input type="hidden" name="order_id" value="<?php echo $order_id; ?>">
+        <button class="pay-button" onclick="return confirm('Paynow');">PAY NOW</button>
+
+      <!-- <button class="pay-button" onclick="payNow(<?php echo $order_id; ?>)">PAY NOW</button> -->
     <?php endif; ?>
 
     <!-- Continue Shopping -->
-    <a href="movies.php" class="continue-shopping">Continue Shopping</a>
+    <a href="mainpage.php" class="continue-shopping">Continue Shopping</a>
   </div>
 
   <script>
@@ -153,7 +157,7 @@ if ($order_id) {
     // Function to pay for the order
     function payNow(orderId) {
       if (confirm("Proceed to payment?")) {
-        fetch(`payOrder.php?order_id=${orderId}`)
+        fetch(`Payment.php.php?order_id=${orderId}`)
           .then(response => response.json())
           .then(data => {
             if (data.success) {
