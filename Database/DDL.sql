@@ -106,6 +106,8 @@ CREATE TABLE User_Access_BorrowHistory (
     FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
+
+DROP TRIGGER IF EXISTS update_payment_time;
 -- Adding a Trigger to Update Payment Date
 DELIMITER //
 CREATE TRIGGER update_payment_time
