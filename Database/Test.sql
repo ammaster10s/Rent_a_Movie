@@ -46,3 +46,7 @@ INNER JOIN Order_Contain oc ON o.Order_ID = oc.Order_ID
 INNER JOIN Movie m ON oc.Movie_ID = m.Movie_ID
 WHERE po.User_ID = 1
 ORDER BY m.Movie_Name ASC;
+
+
+
+SELECT * FROM Order_Contain;

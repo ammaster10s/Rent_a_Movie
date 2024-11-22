@@ -9,7 +9,7 @@ $user_id = $_SESSION['user_id'];
 $query = "SELECT Order_ID FROM Orders WHERE User_ID = ? AND Payment_ID IS NULL";
 $stmt = $conn->prepare($query);
 if (!$stmt) {
-    die("Database error: " . $conn->error);
+  die("Database error: {$conn->error}");
 }
 $stmt->bind_param('i', $user_id);
 $stmt->execute();
@@ -21,27 +21,27 @@ $cart_items = [];
 $total_price = 0; // Initialize total price
 
 if ($order_id) {
-    // Fetch movies in the cart
-    $query = "
+  // Fetch movies in the cart
+  $query = "
         SELECT m.Movie_ID, m.Movie_Name, m.Price 
         FROM Order_Contain oc
         INNER JOIN Movie m ON oc.Movie_ID = m.Movie_ID
         WHERE oc.Order_ID = ?
     ";
-    $stmt = $conn->prepare($query);
-    if (!$stmt) {
-        die("Database error: " . $conn->error);
-    }
-    $stmt->bind_param('i', $order_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $cart_items = $result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
+  $stmt = $conn->prepare($query);
+  if (!$stmt) {
+    die("Database error: " . $conn->error);
+  }
+  $stmt->bind_param('i', $order_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $cart_items = $result->fetch_all(MYSQLI_ASSOC);
+  $stmt->close();
 
-    // Calculate total price
-    foreach ($cart_items as $item) {
-        $total_price += $item['Price'];
-    }
+  // Calculate total price
+  foreach ($cart_items as $item) {
+    $total_price += $item['Price'];
+  }
 }
 ?>
 
@@ -71,7 +71,12 @@ if ($order_id) {
           <div class="order-item" id="movie-<?php echo $item['Movie_ID']; ?>">
             <div class="item-details">
               <h3 class="movie-title"><?php echo htmlspecialchars($item['Movie_Name']); ?></h3>
-              <button class="remove-button" onclick="removeItem(<?php echo $item['Movie_ID']; ?>)">REMOVE</button>
+              <!-- Remove Button -->
+              <form action="Model/removeOrderItem.php" method="POST" style="display:inline;">
+                <input type="hidden" name="movie_id" value="<?php echo $item['Movie_ID']; ?>">
+                <button type="submit" class="remove-button" onclick="return confirm('Are you sure you want to remove this item from your order?');">REMOVE</button>
+              </form>
+
             </div>
             <div class="item-info">
               <span class="quantity">1</span>
@@ -101,42 +106,39 @@ if ($order_id) {
 
   <script>
     // Function to remove an item from the order
-    function removeItem(movieId) {
-      if (confirm("Are you sure you want to remove this item from your order?")) {
-        fetch('Model/removeOrderItem.php', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              movie_id: movieId
-            })
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-          .then(data => {
-            if (data.success) {
-              alert("Item removed successfully!");
-              // Remove the item dynamically from the UI
-              const itemElement = document.getElementById(`movie-${movieId}`);
-              if (itemElement) {
-                itemElement.remove();
-              }
-              updateTotalPrice(); // Update total price dynamically
-            } else {
-              alert("Error: " + (data.message || "Could not remove the item."));
-            }
-          })
-          .catch(error => {
-            console.error("Fetch error:", error);
-            alert("An error occurred while removing the item: " + error.message);
-          });
-      }
-    }
+    //     function removeItem(movieId) {
+    //   if (confirm("Are you sure you want to remove this item from your order?")) {
+    //     fetch('Model/removeOrderItem.php', {
+    //         method: 'POST',
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ movie_id: movieId })
+    //       })
+    //       .then(response => {
+    //         if (!response.ok) {
+    //           throw new Error(`HTTP error! status: ${response.status}`);
+    //         }
+    //         return response.json();
+    //       })
+    //       .then(data => {
+    //         if (data.success) {
+    //           alert("Item removed successfully!");
+    //           const itemElement = document.getElementById(`movie-${movieId}`);
+    //           if (itemElement) {
+    //             itemElement.remove();
+    //           }
+    //           updateTotalPrice();
+    //         } else {
+    //           alert("Error: " + (data.message || "Could not remove the item."));
+    //         }
+    //       })
+    //       .catch(error => {
+    //         console.error("Fetch error:", error);
+    //         alert("An error occurred while removing the item. Please try again.");
+    //       });
+    //   }
+    // }
 
     // Function to update the total price dynamically
     function updateTotalPrice() {
