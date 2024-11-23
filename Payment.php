@@ -13,19 +13,17 @@
   include 'navigate.php';
    ?>
   <form action="process_payment.php" method="post" class="payment-form">
-    <!-- Payment Method -->
     <fieldset>
       <legend>Select Payment Method</legend>
-      <div class="payment-methods">
-        <label>
+       
           <input type="radio" name="payment_method" value="visa" required />
-          <img src="img/visa.png" alt="Visa" />
-        </label>
-        <label>
+    
+        <img src="img/visa.png" alt="Visa" />
+
           <input type="radio" name="payment_method" value="mastercard" />
+
           <img src="img/MasterCard.png" alt="Mastercard" />
-        </label>
-      </div>
+ 
     </fieldset>
 
     <!-- Address Selection -->
@@ -61,7 +59,7 @@
       <label for="credit_card_number">Credit Card Number:</label>
       <input type="text" id="credit_card_number" name="credit_card_number" placeholder="Enter your card number" required />
       <label for="expiry_date">Expiry Date:</label>
-      <input type="month" id="expiry_date" name="expiry_date" required />
+      <input type="month" id="expiry_date" name="expiry_date"  placeholder="mm/yy"  required />
       <label for="cvv">CVV:</label>
       <input type="text" id="cvv" name="cvv" placeholder="CVV" required />
     </fieldset>

@@ -61,38 +61,38 @@ if ($order_id) {
   <?php include 'navigate.php'; ?>
 
   <div class="order-page">
-    <h2>Your Order</h2>
+  <h2>Your Order</h2>
 
-    <?php if (!empty($cart_items)): ?>
-      <?php foreach ($cart_items as $item): ?>
-        <div class="order-item">
-          <div class="item-details">
-            <span class="movie-title"><?php echo htmlspecialchars($item['Movie_Name']); ?></span>
-            <span class="quantity">1</span>
-            <span class="price"><?php echo htmlspecialchars(number_format($item['Price'], 2)) . "$/WEEK"; ?></span>
-          </div>
-          <form action="Model/removeOrderItem.php" method="POST">
-            <input type="hidden" name="movie_id" value="<?php echo $item['Movie_ID']; ?>">
-            <button type="submit" onclick="return confirm('Are you sure?');">Remove</button>
-          </form>
+  <?php if (!empty($cart_items)): ?>
+    <?php foreach ($cart_items as $item): ?>
+      <div class="order-item">
+        <div class="item-details">
+          <span class="movie-title"><?php echo htmlspecialchars($item['Movie_Name']); ?></span>
+          <span class="quantity">1</span>
+          <span class="price"><?php echo htmlspecialchars(number_format($item['Price'], 2)) . "$/WEEK"; ?></span>
         </div>
-      <?php endforeach; ?>
-
-      <div class="total-price">
-        <span>Total Price:</span>
-        <span class="price"><?php echo htmlspecialchars(number_format($total_price, 2)) . "$"; ?></span>
+        <form action="Model/removeOrderItem.php" method="POST">
+          <input type="hidden" name="movie_id" value="<?php echo $item['Movie_ID']; ?>">
+          <button type="submit" onclick="return confirm('Are you sure?');">Remove</button>
+        </form>
       </div>
+    <?php endforeach; ?>
 
-      <form action="Payment.php" method="POST">
-        <input type="hidden" name="order_id" value="<?php echo $order_id; ?>">
-        <button class="pay-button">Pay Now</button>
-      </form>
-    <?php else: ?>
-      <p>No items in your order yet. <a href="movies.php" class="continue-shopping">Start shopping</a>.</p>
-    <?php endif; ?>
+    <div class="total-price">
+      <span>Total Price:</span>
+      <span class="price"><?php echo htmlspecialchars(number_format($total_price, 2)) . "$"; ?></span>
+    </div>
 
-    <a href="mainpage.php" class="continue-shopping">Continue Shopping</a>
-  </div>
+    <form action="Payment.php" method="POST">
+      <input type="hidden" name="order_id" value="<?php echo $order_id; ?>">
+      <button class="pay-button">Pay Now</button>
+    </form>
+  <?php else: ?>
+    <p>No items in your order yet. <a href="movies.php" class="continue-shopping">Start shopping</a>.</p>
+  <?php endif; ?>
+
+  <a href="mainpage.php" class="continue-shopping">Continue Shopping</a>
+</div>
 
 
   <script>

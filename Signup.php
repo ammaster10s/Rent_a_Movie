@@ -19,7 +19,7 @@
 
   <!-- Sign-Up Form Section -->
   <div class="signup">
-    <div class="container">
+    
       <form action="handle_request.php" method="post">
         <h2>Sign Up</h2>
 
@@ -93,7 +93,7 @@
         <!-- Redirect to Login -->
         <p class='white'> Already have an account? <a href="Login.php">Click here!</a></p>
       </form>
-    </div>
+   
   </div>
 
   <!-- Include Scripts (Optional for Dynamic Features) -->

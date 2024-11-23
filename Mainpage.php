@@ -78,7 +78,7 @@ if (isset($_SESSION['username'])) {
         us.</p>
 
       <?php
-      $categories = ['Trending', 'Thriller', 'SciFi_Fantasy'];
+      $categories = ['Trending', 'Thriller', 'Sci-Fi'];
 
       foreach ($categories as $category): ?>
         <div class="categories">
@@ -118,52 +118,57 @@ if (isset($_SESSION['username'])) {
   <div id="hover-box" class="hover-box"></div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const hoverBox = document.getElementById('hover-box');
+  document.addEventListener('DOMContentLoaded', () => {
+    const hoverBox = document.getElementById('hover-box');
 
-      // Show hover box when clicking a movie poster
-      document.querySelectorAll('.movie-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-          const {
-            movieId,
-            movieName,
-            description,
-            price,
-            releasedDate,
-            length,
-            mainActor,
-            posterPath
-          } = card.dataset;
+    // Show hover box when clicking a movie poster
+    document.querySelectorAll('.movie-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const {
+          movieId,
+          movieName,
+          description,
+          price,
+          releasedDate,
+          length,
+          mainActor,
+          posterPath
+        } = card.dataset;
 
-          // Populate hover box with movie details
-          hoverBox.innerHTML = `
-        <img src="${posterPath}" alt="${movieName}" style="width: 100%; height: auto; margin-bottom: 10px;">
-        <h3>${movieName}</h3>
-        <p><strong>Description:</strong> ${description}</p>
-        <p class="price"><strong>Price:</strong> $${price}</p>
-        <p><strong>Release Date:</strong> ${releasedDate}</p>
-        <p><strong>Length:</strong> ${length} mins</p>
-        <p><strong>Main Actor:</strong> ${mainActor}</p>
-        <div class="buttons">
-          <button onclick="addToCart(${movieId})">Add to Cart</button>
-          <button onclick="addToWishlist(${movieId})">Add to Wishlist</button>
-        </div>
-      `;
+        // Populate hover box with movie details
+        hoverBox.innerHTML = `
+          <div class="hover-content">
+            <img src="${posterPath}" alt="${movieName}" class="hover-poster">
+            <div class="hover-details">
+              <h3>${movieName}</h3>
+              <p><strong>Description:</strong> ${description}</p>
+              <p class="price"><strong>Price:</strong> $${price}</p>
+              <p><strong>Release Date:</strong> ${releasedDate}</p>
+              <p><strong>Length:</strong> ${length} mins</p>
+              <p><strong>Main Actor:</strong> ${mainActor}</p>
+              <div class="buttons">
+                <button onclick="addToCart(${movieId})">Add to Cart</button>
+                <button onclick="addToWishlist(${movieId})">Add to Wishlist</button>
+              </div>
+            </div>
+          </div>
+        `;
 
-          // Position the hover box
-          hoverBox.style.top = `${e.clientY + window.scrollY}px`;
-          hoverBox.style.left = `${e.clientX}px`;
-          hoverBox.style.display = 'block';
-        });
-      });
-
-      // Hide hover box when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.movie-card') && !e.target.closest('#hover-box')) {
-          hoverBox.style.display = 'none';
-        }
+        // Center the hover box on the page
+     
+        hoverBox.style.display = 'block';
       });
     });
+
+    // Hide hover box when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.movie-card') && !e.target.closest('#hover-box')) {
+        hoverBox.style.display = 'none';
+      }
+    });
+  });
+
+
 
     function addToCart(movieId) {
       fetch('add_to_cart.php', {
