@@ -33,7 +33,7 @@ $stmt->close();
 <?php include 'navigate.php'; ?>
 
 <div class="wishlist-container">
-  <h1>Your Wishlist</h1>
+  <h2>Your Wishlist</h2>
 
   <?php if (!empty($wishlist_items)): ?>
     <?php foreach ($wishlist_items as $item): ?>

@@ -30,89 +30,94 @@ $stmt->close();
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <?php include 'navigate.php'; ?>
-    <div class="profile-container">
-        <h3>Manage Addresses</h3>
-        <form action="handle_addresses.php" method="post">
-            <div id="addresses-container">
-                <?php if (!empty($addresses)): ?>
-                    <?php foreach ($addresses as $index => $address): ?>
-                        <div class="address-block">
-                            <input type="hidden" name="address_id[]" value="<?php echo htmlspecialchars($address['Address_ID'] ?? ''); ?>">
-                            <h4>Address <?php echo $index + 1; ?></h4>
-                            <label>City:</label>
-                            <input type="text" name="city[]" value="<?php echo htmlspecialchars($address['City'] ?? ''); ?>" required>
-                            <label>House Address:</label>
-                            <input type="text" name="house_address[]" value="<?php echo htmlspecialchars($address['House_Address'] ?? ''); ?>" required>
-                            <label>ZIP:</label>
-                            <input type="text" name="zipcode[]" value="<?php echo htmlspecialchars($address['Zipcode'] ?? ''); ?>" required>
-                            <label>Country:</label>
-                            <input type="text" name="country[]" value="<?php echo htmlspecialchars($address['Country'] ?? ''); ?>" required>
-                            <label>Phone:</label>
-                            <input type="text" name="phone_number[]" value="<?php echo htmlspecialchars($address['Phone_number'] ?? ''); ?>">
-                            <button type="button" onclick="markAddressForDeletion(this, '<?php echo $address['Address_ID']; ?>')">Remove Address</button>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No addresses added yet.</p>
-                <?php endif; ?>
+  <?php include 'navigate.php'; ?>
+
+  <!-- Profile Container -->
+  <div class="profile-container">
+    <h3>Manage Addresses</h3>
+    <form action="handle_addresses.php" method="post">
+      <div id="addresses-container">
+        <?php if (!empty($addresses)): ?>
+          <?php foreach ($addresses as $index => $address): ?>
+            <div class="address-block">
+              <input type="hidden" name="address_id[]" value="<?php echo htmlspecialchars($address['Address_ID'] ?? ''); ?>">
+              <h4>Address <?php echo $index + 1; ?></h4>
+              <label>City:</label>
+              <input type="text" name="city[]" value="<?php echo htmlspecialchars($address['City'] ?? ''); ?>" placeholder="Enter city" required>
+              <label>House Address:</label>
+              <input type="text" name="house_address[]" value="<?php echo htmlspecialchars($address['House_Address'] ?? ''); ?>" placeholder="Enter house address" required>
+              <label>ZIP:</label>
+              <input type="text" name="zipcode[]" value="<?php echo htmlspecialchars($address['Zipcode'] ?? ''); ?>" placeholder="Enter ZIP code" required>
+              <label>Country:</label>
+              <input type="text" name="country[]" value="<?php echo htmlspecialchars($address['Country'] ?? ''); ?>" placeholder="Enter country" required>
+              <label>Phone:</label>
+              <input type="text" name="phone_number[]" value="<?php echo htmlspecialchars($address['Phone_number'] ?? ''); ?>" placeholder="Enter phone number">
+              <button type="button" onclick="markAddressForDeletion(this, '<?php echo $address['Address_ID']; ?>')">Remove Address</button>
             </div>
-            <input type="hidden" name="deleted_addresses" id="deleted-addresses" value="">
-            <button type="button" onclick="addAddress()">Add Address</button>
-            <button type="submit">Save Changes</button>
-        </form>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p>No addresses added yet. Add one now.</p>
+        <?php endif; ?>
+      </div>
+      <input type="hidden" name="deleted_addresses" id="deleted-addresses" value="">
+      <div class="button-group">
+  <button type="button" onclick="addAddress()">Add Address</button>
+  <button type="submit">Save Change</button>
+</div>
 
-    </div>
-    <script>
-        function addAddress() {
-            const container = document.getElementById('addresses-container');
-            const index = container.children.length;
-            const addressBlock = document.createElement('div');
-            addressBlock.className = 'address-block';
-            addressBlock.innerHTML = `
-                <h4>Address ${index + 1}</h4>
-                <input type="hidden" name="address_id[]" value="">
-                <label>City:</label>
-                <input type="text" name="city[]" required>
-                <label>House Address:</label>
-                <input type="text" name="house_address[]" required>
-                <label>ZIP:</label>
-                <input type="text" name="zipcode[]" required>
-                <label>Country:</label>
-                <input type="text" name="country[]" required>
-                <label>Phone:</label>
-                <input type="text" name="phone_number[]">
-                <button type="button" onclick="removeAddress(this)">Remove Address</button>
-            `;
-            container.appendChild(addressBlock);
+    </form>
+  </div>
+
+  <script>
+    function addAddress() {
+    const container = document.getElementById('addresses-container');
+    const addressBlock = document.createElement('div');
+    addressBlock.className = 'address-block';
+    addressBlock.innerHTML = `
+        <h4>Address</h4>
+        <input type="hidden" name="address_id[]" value="">
+        <label>City:</label>
+        <input type="text" name="city[]" placeholder="Enter city" required>
+        <label>House Address:</label>
+        <input type="text" name="house_address[]" placeholder="Enter house address" required>
+        <label>ZIP:</label>
+        <input type="text" name="zipcode[]" placeholder="Enter ZIP code" required>
+        <label>Country:</label>
+        <input type="text" name="country[]" placeholder="Enter country" required>
+        <label>Phone:</label>
+        <input type="text" name="phone_number[]" placeholder="Enter phone number">
+        <button type="button" onclick="removeAddress(this)">Remove Address</button>
+    `;
+    container.appendChild(addressBlock);
+    renumberAddresses(); // Ensure numbering is updated after addition
+}
+
+function removeAddress(button) {
+    const addressBlock = button.parentElement;
+    if (addressBlock) {
+        addressBlock.remove();
+        renumberAddresses(); // Ensure numbering is updated after removal
+    }
+}
+
+function renumberAddresses() {
+    const addressBlocks = document.querySelectorAll('.address-block');
+    addressBlocks.forEach((block, index) => {
+        const heading = block.querySelector('h4');
+        if (heading) {
+            heading.textContent = `Address ${index + 1}`; // Always start from 1
         }
+    });
+}
 
-        function removeAddress(button) {
-            const addressBlock = button.parentElement;
-
-            if (addressBlock) {
-                addressBlock.remove();
-                renumberAddresses(); // Ensure sequential numbering after removal
-            }
-        }
-
-        function renumberAddresses() {
-            const addressBlocks = document.querySelectorAll('.address-block');
-            addressBlocks.forEach((block, index) => {
-                const heading = block.querySelector('h4');
-                if (heading) {
-                    heading.textContent = `Address ${index + 1}`;
-                }
-            });
-        }
-    </script>
+  </script>
 </body>
 
 </html>

@@ -6,30 +6,58 @@
 }
 
 body {
+  background: url('/img/background.webp') no-repeat center center fixed;
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   color: #333;
-  line-height: 1.6;
-  padding: 20px;
+  line-height: 1;
+  padding: 5px;
 }
 
-/* Navbar Styling */
+.main-container {
+  margin: 5px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #303148;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+ 
+/*mainpage*/
+
+.rent-movies-to-watch {
+  font-size: 42px;
+  color: #00b7ff;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.text-wrapper-mainpage {
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  line-height: 2;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+
+
+/* Navbar Styling 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #303148;
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 0;
   z-index: 1000;
 }
 
 .navbar a {
   text-decoration: none;
   color: #333;
-  margin: 0 10px;
+  margin: auto;
   font-size: 14px;
 }
 
@@ -53,36 +81,46 @@ body {
 .search-container img {
   width: 20px;
   height: 20px;
-}
+}*/
 
 /* Signup Form Styling */
+.white {
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.white-h1 {
+  color: #ffffff;
+}
+
 .signup,
-.payment-page,
-.profile-form-container,
-.order-page {
+.payment-page
+
+ {
   max-width: 400px;
   margin: 40px auto;
-  background-color: #ffffff;
+  background-color: #303148;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .signup h2,
-.payment-page h2,
-.profile-form-container h2,
-.order-page h2 {
+.payment-page h2
+
+
+{
   text-align: center;
   margin-bottom: 20px;
-  color: #007bff;
+  color: #ffffff;
 }
 
 .signup label,
-.payment-page label,
-.profile-form-container label {
+.payment-page label {
   font-weight: bold;
   margin-bottom: 5px;
   display: block;
+  color: #00b7ff;
 }
 
 .signup input,
@@ -98,7 +136,7 @@ body {
 button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #00b7ff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -123,7 +161,7 @@ p a {
 .categories h2 {
   font-size: 24px;
   font-weight: bold;
-  color: #007bff;
+  color: #00b7ff;
   margin-bottom: 15px;
   text-align: left;
 }
@@ -205,30 +243,40 @@ p a {
 /* Notification */
 .notification {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: #499cf4;
   color: #fff;
-  padding: 15px 20px;
+  padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 15px auto;
-  max-width: 600px;
+  margin-bottom: 15px;
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 15px;
 }
 
 .notification a {
-  color: #ff9100;
+  color: #ffee00;
   font-weight: bold;
   text-decoration: none;
 }
 
-.notification button {
+.notification-close {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
   background: none;
   border: none;
   color: #fff;
-  font-size: 20px;
+  font-size: 16px; 
   cursor: pointer;
+  margin-left: 3px;
+  width: 30px; 
+  height: 30px; 
+ 
+  background-color:  #499cf4;
 }
+
 
 .notification button:hover {
   background-color: rgba(0, 0, 0, 0.1);
@@ -236,9 +284,18 @@ p a {
 
 /* Wishlist */
 .wishlist-container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: 40px auto;
+  background-color: #303148;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-container h2 {
+  margin-bottom: 20px;
+  color: #499cf4;
+
 }
 
 .wishlist-item {
@@ -246,8 +303,9 @@ p a {
   align-items: flex-start;
   margin-bottom: 20px;
   padding: 15px;
-  background-color: #fff;
+  background-color: #303148;
   gap: 20px;
+  border-bottom: 1px solid #ffffff;
 }
 
 .wishlist-item img {
@@ -262,14 +320,20 @@ p a {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: white;
 }
 
 .wishlist-item .actions button {
+  margin-left: 200px;
+  width: 200px;
+  height: auto;
+  margin-top: 100px;
   background-color: #007bff;
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .wishlist-item .actions button:hover {
@@ -298,18 +362,19 @@ p a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #303148;
   padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-radius: 8px;
 }
 
 /* Navbar Links */
 .navbar a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   font-size: 14px;
   font-weight: bold;
   margin: 0 10px;
@@ -317,25 +382,29 @@ p a {
 }
 
 .navbar a:hover {
-  color: #007bff; /* Highlight color on hover */
+  color: #007bff;
+  /* Highlight color on hover */
 }
 
 /* Navbar Centered Section (if applicable) */
 .navbar-center {
-  flex: 1;
-  display: flex;
   justify-content: center;
-  gap: 20px; /* Space between links */
+  flex: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: auto;
+  /* Space between links */
 }
 
 .navbar-center a {
-  color: #333;
+  color: #ffffff;
   font-size: 14px;
   text-decoration: none;
 }
 
 .navbar-center a:hover {
-  color: #555;
+  color: #007bff;
 }
 
 /* Search Bar Styling */
@@ -357,7 +426,6 @@ p a {
   height: 20px;
   cursor: pointer;
 }
-
 /* Right Section (e.g., icons or user profile) */
 .navbar-right {
   display: flex;
@@ -366,7 +434,7 @@ p a {
 }
 
 .navbar-right a {
-  color: #333;
+  color: #ffffff;
   font-size: 14px;
   text-decoration: none;
 }
@@ -375,12 +443,14 @@ p a {
   color: #007bff;
 }
 
-.profile-icon {
+.nav-icon {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   cursor: pointer;
+  filter: invert(1);
 }
+
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 600px) {
@@ -411,7 +481,7 @@ p a {
 /* Login & Signup Specific Styles */
 
 .form-container {
-  background-color: #ffffff;
+  background-color: #303148;
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
@@ -422,28 +492,28 @@ p a {
 .form-container h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #007BFF;
+  color: #ffffff;
 }
 
 .form-container label {
   display: block;
   margin: 10px 0 5px;
   font-weight: bold;
-  color: #333;
+  color: #00b7ff;
 }
 
 .form-container input {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 4px;
 }
 
 .form-container button {
   width: 100%;
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #00b7ff;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -517,7 +587,7 @@ p a {
   transition: opacity 0.3s ease;
 }
 
-.payment-methods input[type="radio"]:checked + img {
+.payment-methods input[type="radio"]:checked+img {
   opacity: 1;
 }
 
@@ -569,7 +639,8 @@ p a {
 }
 
 .address-block input {
-  width: calc(20% - 10px); /* Adjust for inline inputs */
+  width: calc(20% - 10px);
+  /* Adjust for inline inputs */
   padding: 5px;
   margin-right: 5px;
   margin-bottom: 10px;
@@ -633,7 +704,8 @@ p a {
 .payment-form input[type="tel"],
 .payment-form input[type="number"],
 .payment-form input[type="month"] {
-  width: calc(25% - 10px); /* For side-by-side input */
+  width: calc(25% - 10px);
+  /* For side-by-side input */
   padding: 10px;
   margin-right: 10px;
   margin-bottom: 15px;
@@ -704,4 +776,363 @@ p a {
 
 .order-summary a:hover {
   text-decoration: none;
+}
+
+/* Order-Page Container */
+.order-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #303148;
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-page h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #00b7ff;
+}
+
+/* Order Items */
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ffffff;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.quantity,
+.price {
+  font-size: 14px;
+  color: #ccc;
+}
+
+form {
+  display: inline-block;
+}
+
+/* Remove Button */
+.order-page button {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.order-page button:hover {
+  background-color: #c0392b;
+}
+
+/* Total Price Section */
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding-top: 10px;
+
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.total-price .price {
+  color: #ffffff;
+  font-size: 40px;
+}
+
+/* Pay Now Button */
+.pay-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #00b7ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #0056b3;
+}
+
+/* Continue Shopping Link */
+.continue-shopping {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #00b7ff;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.continue-shopping:hover {
+  color: #007BFF;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .total-price {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pay-button {
+    font-size: 14px;
+  }
+
+  .continue-shopping {
+    font-size: 14px;
+  }
+}
+
+/* Profile Container */
+.profile-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #303148;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+.profile-container h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #00b7ff;
+  text-align: center;
+}
+
+/* Address Block Styling */
+.address-block {
+ margin-left: 8px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #303148;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.address-block h4 {
+  font-size: 18px;
+  color: #00b7ff;
+  margin-bottom: 10px;
+}
+
+.address-block label {
+  display: block;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.address-block input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.address-block input::placeholder {
+  color: #a2a2a2;
+}
+
+/* Remove Address Button */
+.address-block button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #ff5252;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.address-block button:hover {
+  background-color: #e53935;
+}
+
+/* Add & Save Buttons (Separate Styling) */
+.button-group {
+  margin-left: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px; /* Adds space between buttons */
+  margin-top: 20px;
+}
+
+.button-group button {
+  flex: 1; /* Ensure buttons are evenly spaced */
+  padding: 10px 20px;
+  background-color: #00b7ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-group button:first-child {
+  margin-right: 10px; /* Extra spacing for the first button */
+}
+
+.button-group button:hover {
+  background-color: #0056b3;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+    gap: 10px; /* Adds spacing between buttons */
+  }
+
+  .button-group button {
+    width: 100%; /* Full-width buttons for mobile */
+  }
+}
+
+/* Borrow History Container */
+.history {
+
+}
+
+.history .container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #303148; /* White background for the container */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Title Styling */
+.history h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #00b7ff;
+}
+
+/* Borrow History Table */
+.history table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  background-color: #ffffff; /* Keep table background white */
+}
+
+.history th,
+.history td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #ffffff;
+  font-size: 14px; /* Consistent font size */
+}
+
+.history th {
+  background-color: #303148;
+  font-weight: bold;
+  color: #ffffff; /* Darker text for headers */
+}
+
+.history tbody tr {
+  background-color: #303148;
+  transition: background-color 0.3s ease;
+}
+
+.history tbody tr:nth-child(even) {
+  background-color: #f4f4f9; /* Subtle difference for alternating rows */
+}
+
+.history tbody tr:hover {
+  background-color: #eaeaea; /* Hover effect for rows */
+}
+
+/* Empty State Styling */
+.history .no-data {
+  text-align: center;
+  padding: 1rem;
+  font-style: italic;
+  color: #ffffff;
+}
+
+/* Button Styling */
+.history button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 1rem;
+  background-color: #00b7ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.history button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .history .container {
+    padding: 15px;
+  }
+
+  .history th,
+  .history td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .history h1 {
+    font-size: 22px;
+  }
 }

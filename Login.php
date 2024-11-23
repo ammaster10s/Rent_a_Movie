@@ -21,7 +21,7 @@ unset($_SESSION['errors']);
     ?>
 
     <!-- Login Form Section -->
-    <div class="LOGIN">
+
         <div class="form-container">
             <form action="handle_request.php" method="post">
                 <h2 class="form-title">Login</h2>
@@ -47,7 +47,7 @@ unset($_SESSION['errors']);
                 <button type="submit" name="login" class="submit-button">LOG IN</button>
             </form>
         </div>
-    </div>
+   
 </body>
 
 </html>

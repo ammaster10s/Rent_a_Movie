@@ -42,8 +42,12 @@ if (isset($_SESSION['username'])) {
 
 <body>
   <?php include 'navigate.php'; ?>
+ 
 
-  <!-- Notification Bar -->
+  <!-- Movie Categories -->
+  
+  <div class="main-container">
+     <!-- Notification Bar -->
   <?php if ($showNotification): ?>
     <div id="notification" class="notification">
       <p class="notification-text">
@@ -51,7 +55,7 @@ if (isset($_SESSION['username'])) {
         <a href="userprofile.php" class="configure-link">Configure your profile</a> to get personalized movie
         recommendations.
       </p>
-      <button id="close-notification" class="close-btn" aria-label="Close Notification">&times;</button>
+      <button id="close-notification" class="notification-close" aria-label="Close Notification">&times;</button>
     </div>
   <?php endif; ?>
 
@@ -68,12 +72,9 @@ if (isset($_SESSION['username'])) {
       }
     });
   </script>
-
-  <!-- Movie Categories -->
-  <div class="mainpage">
     <div class="content">
       <p class="rent-movies-to-watch">Rent Movies to Watch on DVD &amp; Blu-ray</p>
-      <p class="text-wrapper">Unlike movie streaming services, we deliver your movie to you, and you return it back to
+      <p class="text-wrapper-mainpage">Unlike movie streaming services, we deliver your movie to you, and you return it back to
         us.</p>
 
       <?php

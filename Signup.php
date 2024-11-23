@@ -91,7 +91,7 @@
         <!-- <button type="Apply" class="apply-button">CREATE ACCOUNT</button> -->
 
         <!-- Redirect to Login -->
-        <p>Already have an account? <a href="Login.php">Click here!</a></p>
+        <p class='white'> Already have an account? <a href="Login.php">Click here!</a></p>
       </form>
     </div>
   </div>

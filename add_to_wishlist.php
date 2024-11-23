@@ -10,15 +10,10 @@ if (!isset($_SESSION['user_id'])) {
     echo json_encode(['success' => false, 'message' => 'User not logged in.']);
     exit;
 }
-
 $userId = $_SESSION['user_id'];
 $input = json_decode(file_get_contents('php://input'), true);
 $movieId = $input['movieId'] ?? null;
 
-// Debug: Log received data
-error_log("User ID: $userId, Movie ID: $movieId");
-
-// Check if movieId is valid
 if (!$movieId) {
     error_log("Invalid Movie ID received.");
     echo json_encode(['success' => false, 'message' => 'Invalid Movie ID.']);
@@ -31,9 +26,6 @@ try {
     // Debug: Validate user exists
     $query = "SELECT User_ID FROM Users WHERE User_ID = ?";
     $stmt = $conn->prepare($query);
-    if (!$stmt) {
-        throw new Exception("User query prepare failed: " . $conn->error);
-    }
     $stmt->bind_param('i', $userId);
     $stmt->execute();
     $stmt->bind_result($existingUserId);

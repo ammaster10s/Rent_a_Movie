@@ -60,53 +60,40 @@ if ($order_id) {
   <!-- Navigation Bar -->
   <?php include 'navigate.php'; ?>
 
-  <!-- Order Section -->
   <div class="order-page">
-    <h1 class="order-title">Your Order</h1>
+    <h2>Your Order</h2>
 
-    <!-- Order Items -->
-    <div class="order-items">
-      <?php if (!empty($cart_items)): ?>
-        <?php foreach ($cart_items as $item): ?>
-          <div class="order-item" id="movie-<?php echo $item['Movie_ID']; ?>">
-            <div class="item-details">
-              <h3 class="movie-title"><?php echo htmlspecialchars($item['Movie_Name']); ?></h3>
-              <!-- Remove Button -->
-              <form action="Model/removeOrderItem.php" method="POST" style="display:inline;">
-                <input type="hidden" name="movie_id" value="<?php echo $item['Movie_ID']; ?>">
-                <button type="submit" class="remove-button" onclick="return confirm('Are you sure you want to remove this item from your order?');">REMOVE</button>
-              </form>
-
-            </div>
-            <div class="item-info">
-              <span class="quantity">1</span>
-              <span class="price"><?php echo htmlspecialchars(number_format($item['Price'], 2)) . "$/WEEK"; ?></span>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <p>No items in your order yet. <a href="movies.php">Start shopping</a>.</p>
-      <?php endif; ?>
-    </div>
-
-    <!-- Total Price -->
     <?php if (!empty($cart_items)): ?>
+      <?php foreach ($cart_items as $item): ?>
+        <div class="order-item">
+          <div class="item-details">
+            <span class="movie-title"><?php echo htmlspecialchars($item['Movie_Name']); ?></span>
+            <span class="quantity">1</span>
+            <span class="price"><?php echo htmlspecialchars(number_format($item['Price'], 2)) . "$/WEEK"; ?></span>
+          </div>
+          <form action="Model/removeOrderItem.php" method="POST">
+            <input type="hidden" name="movie_id" value="<?php echo $item['Movie_ID']; ?>">
+            <button type="submit" onclick="return confirm('Are you sure?');">Remove</button>
+          </form>
+        </div>
+      <?php endforeach; ?>
+
       <div class="total-price">
-        <span>TOTAL PRICE:</span>
-        <span class="price" id="total-price"><?php echo htmlspecialchars(number_format($total_price, 2)) . "$"; ?></span>
+        <span>Total Price:</span>
+        <span class="price"><?php echo htmlspecialchars(number_format($total_price, 2)) . "$"; ?></span>
       </div>
 
-      <!-- Pay Button -->
-       <form action="Payment.php" method="POST">
+      <form action="Payment.php" method="POST">
         <input type="hidden" name="order_id" value="<?php echo $order_id; ?>">
-        <button class="pay-button" onclick="return confirm('Paynow');">PAY NOW</button>
-
-      <!-- <button class="pay-button" onclick="payNow(<?php echo $order_id; ?>)">PAY NOW</button> -->
+        <button class="pay-button">Pay Now</button>
+      </form>
+    <?php else: ?>
+      <p>No items in your order yet. <a href="movies.php" class="continue-shopping">Start shopping</a>.</p>
     <?php endif; ?>
 
-    <!-- Continue Shopping -->
     <a href="mainpage.php" class="continue-shopping">Continue Shopping</a>
   </div>
+
 
   <script>
     // Function to remove an item from the order
