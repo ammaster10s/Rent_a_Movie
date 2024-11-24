@@ -641,6 +641,14 @@ border-radius: 8px;
   text-align: center;
 }
 
+/* Style for the card icons */
+.card-icon {
+  max-width: 60px; /* Restrict width to 60px */
+  max-height: 40px; /* Restrict height to 40px */
+  display: inline-block;
+  vertical-align: middle; /* Align the icon with text */
+  margin-left: 5px; /* Add some spacing */
+}
 
 
 .payment-methods {
