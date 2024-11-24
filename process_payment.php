@@ -184,6 +184,40 @@ if (!$stmt->execute()) {
 }
 $stmt->close();
 
+// Insert into Borrow_History
+$stmt = $conn->prepare("
+    INSERT INTO Borrow_History (Payment_ID)
+    VALUES (?)
+");
+if (!$stmt) {
+    error_log("SQL Prepare failed for Borrow_History insertion: " . $conn->error);
+    die("SQL Prepare failed for Borrow_History insertion.");
+}
+$stmt->bind_param('i', $payment_id);
+if (!$stmt->execute()) {
+    error_log("SQL Execute failed for Borrow_History insertion: " . $stmt->error);
+    die("SQL Execute failed for Borrow_History insertion.");
+}
+$borrow_id = $stmt->insert_id; // Capture the Borrow_ID for the next step
+$stmt->close();
+
+// Insert into User_Access_BorrowHistory
+$stmt = $conn->prepare("
+    INSERT INTO User_Access_BorrowHistory (Borrow_ID, User_ID)
+    VALUES (?, ?)
+");
+if (!$stmt) {
+    error_log("SQL Prepare failed for User_Access_BorrowHistory insertion: " . $conn->error);
+    die("SQL Prepare failed for User_Access_BorrowHistory insertion.");
+}
+$stmt->bind_param('ii', $borrow_id, $user_id);
+if (!$stmt->execute()) {
+    error_log("SQL Execute failed for User_Access_BorrowHistory insertion: " . $stmt->error);
+    die("SQL Execute failed for User_Access_BorrowHistory insertion.");
+}
+$stmt->close();
+
+
 $_SESSION['success_message'] = "Payment processed and order completed successfully!";
 header('Location: Mainpage.php');
 exit();

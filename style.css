@@ -1117,14 +1117,15 @@ form {
 
 /* Borrow History Container */
 .history {
-
+  display: block; /* Ensure the container is always displayed */
+  opacity: 1; /* Ensure the container is fully visible */
 }
 
 .history .container {
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
-  background: #303148; /* White background for the container */
+  background: #303148; /* Set background color for the container */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
@@ -1156,21 +1157,26 @@ form {
 .history th {
   background-color: #303148;
   font-weight: bold;
-  color: #ffffff; /* Darker text for headers */
+  color: #ffffff; /* Text color for headers */
 }
 
 .history tbody tr {
-  background-color: #303148;
-  transition: background-color 0.3s ease;
+  display: table-row; /* Ensure all rows are visible */
+  opacity: 1; /* Ensure no transparency issues */
+  visibility: visible; /* Ensure content is visible */
 }
 
-.history tbody tr:nth-child(even) {
-  background-color: #f4f4f9; /* Subtle difference for alternating rows */
+.history tbody tr .hidden-content {
+  display: block; /* Ensure nested blocks are displayed */
+  visibility: visible;
+  opacity: 1;
 }
 
-.history tbody tr:hover {
-  background-color: #eaeaea; /* Hover effect for rows */
-}
+/* Optional: Adjust hover effects if needed */
+/* .history tbody tr:hover {
+  background-color: #eaeaea; 
+} */
+
 
 /* Empty State Styling */
 .history .no-data {
@@ -1178,6 +1184,8 @@ form {
   padding: 1rem;
   font-style: italic;
   color: #ffffff;
+  display: table-row; /* Display message as a table row */
+  opacity: 1; /* Fully visible */
 }
 
 /* Button Styling */
@@ -1214,4 +1222,3 @@ form {
     font-size: 22px;
   }
 }
-
