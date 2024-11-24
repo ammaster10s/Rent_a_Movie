@@ -22,7 +22,7 @@ CREATE TABLE Movie (
     Description TEXT,                           -- Movie Description
     Length INT,                                 -- Length in minutes
     Movie_Name VARCHAR(255) NOT NULL,          -- Movie Name
-    Poster_Path VARCHAR(100),                   -- Path for the Poster
+    Poster_Path VARCHAR(40),                   -- Path for the Poster
     Category VARCHAR(20)                       -- Movie Category
 );
 
@@ -114,16 +114,3 @@ CREATE TABLE User_Access_BorrowHistory (
 );
 
 
-DROP TRIGGER IF EXISTS update_payment_time;
--- Adding a Trigger to Update Payment Date
-DELIMITER //
-CREATE TRIGGER update_payment_time
-AFTER INSERT ON Payment
-FOR EACH ROW
-BEGIN
-    UPDATE Payment
-    SET Payment_Date = NOW()
-    WHERE Payment_ID = NEW.Payment_ID;
-END;
-//
-DELIMITER ;

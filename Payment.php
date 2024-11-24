@@ -54,7 +54,7 @@
       <img src="img/MasterCard.png" alt="Mastercard" />
     </label>
   </fieldset>
-  
+
     <!-- Address Selection -->
     <fieldset>
       <legend>Address Details</legend>
@@ -94,7 +94,7 @@
     <fieldset>
       <legend>Credit Card Details</legend>
       <label for="credit_card_number">Credit Card Number:</label>
-      <input type="text" id="credit_card_number" name="credit_card_number" placeholder="Enter your card number" required />
+      <input type="text" id="credit_card_number" name="credit_card_number" placeholder="Enter your card number" value="5105 1051 0510 5100" required />
       <small id="card-error" style="color: red; display: none;">Invalid card number. Please enter a valid Visa or MasterCard number.</small>
       <label for="expiry_date">Expiry Date:</label>
       <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" maxlength="5" required />
