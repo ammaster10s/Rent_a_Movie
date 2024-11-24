@@ -23,7 +23,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
- 
+
 /*mainpage*/
 
 .rent-movies-to-watch {
@@ -99,19 +99,20 @@ body {
 .white {
   color: #ffffff;
   margin-top: 10px;
-  display: flex; /* Make .white a flex container */
-  justify-content: center; /* Center horizontally */
+  display: flex;
+  /* Make .white a flex container */
+  justify-content: center;
+  /* Center horizontally */
   align-items: center;
 }
 
 .white-h1 {
-  
+
   color: #ffffff;
 }
 
 .signup,
-.payment-page
- {
+.payment-page {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -119,7 +120,7 @@ body {
   margin: 40px auto;
   background-color: #303148;
   padding: 15px;
- 
+
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -135,9 +136,8 @@ body {
 }
 
 .signup h2,
-.payment-page h2
-{
-  
+.payment-page h2 {
+
   text-align: center;
   margin-bottom: 20px;
   color: #ffffff;
@@ -145,7 +145,7 @@ body {
 
 .signup label,
 .payment-page label {
-  
+
   font-weight: bold;
   margin-bottom: 5px;
   display: block;
@@ -238,23 +238,26 @@ p a {
   display: none;
   background-color: #303148;
   padding: 20px;
-border-radius: 8px;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 600px;
 }
 
 .hover-box .hover-content {
-  display: flex; /* Use flexbox for side-by-side layout */
+  display: flex;
+  /* Use flexbox for side-by-side layout */
   gap: 20px;
 }
 
 .hover-box .hover-poster {
-  width: 40%; /* Restrict the poster to a smaller section */
+  width: 40%;
+  /* Restrict the poster to a smaller section */
   height: auto;
 }
 
 .hover-box .hover-details {
-  width: 60%; /* Allocate more space for details */
+  width: 60%;
+  /* Allocate more space for details */
 }
 
 .hover-box h3 {
@@ -306,18 +309,18 @@ border-radius: 8px;
 
 .notification-close {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   background: none;
   border: none;
   color: #fff;
-  font-size: 16px; 
+  font-size: 16px;
   cursor: pointer;
   margin-left: 3px;
-  width: 30px; 
-  height: 30px; 
- 
-  background-color:  #499cf4;
+  width: 30px;
+  height: 30px;
+
+  background-color: #499cf4;
 }
 
 
@@ -377,12 +380,14 @@ border-radius: 8px;
   padding: 10px 15px;
   cursor: pointer;
   font-size: 14px;
-  margin-left: 10px; /* Space between Add to Cart and Remove buttons */
+  margin-left: 10px;
+  /* Space between Add to Cart and Remove buttons */
   transition: background-color 0.3s ease;
 }
 
 .actions .remove-from-wishlist:hover {
-  background-color: #c0392b; /* Darker red on hover */
+  background-color: #c0392b;
+  /* Darker red on hover */
 }
 
 /* Styling for the Add to Cart Button */
@@ -398,13 +403,15 @@ border-radius: 8px;
 }
 
 .actions .add-to-cart:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
+  /* Darker blue on hover */
 }
 
 /* Flexbox for Aligning Buttons */
 .actions {
   display: flex;
-  gap: 10px; /* Consistent spacing between buttons */
+  gap: 10px;
+  /* Consistent spacing between buttons */
   align-items: center;
 }
 
@@ -488,7 +495,7 @@ border-radius: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-  
+
 }
 
 .search-container img {
@@ -643,18 +650,117 @@ border-radius: 8px;
 
 
 
-.payment-methods {
+
+/* Payment Form */
+
+.payment-form {
+  margin: auto;
+  margin-top: 20px;
   display: flex;
-  gap: 15px;
-  justify-content: space-between;
+  flex-direction: column;
+  width: 500px;
+  background-color: #303148;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.payment-form label {
+  display: block;
+  margin-bottom: 5px;
+margin-top: 5px;
+  color: #ffffff;
+}
+
+.payment-form input,
+.payment-form select {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
   margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.checkbox-container {
+  border-top: 1px solid #ffffff;
+  padding-top: 25px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the checkbox and label */
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 20px; /* Adjust size if needed */
+  height: 20px; /* Adjust size if needed */
+  margin: 0; /* Remove default margin */
+}
+
+.checkbox-container label {
+  font-size: 16px; /* Adjust size if needed */
+  color: #fff; /* Change color to match the dark background */
+  margin: 0; /* Remove extra spacing */
+}
+
+.payment-form .total-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: right;
+  color: #ffffff;
+}
+
+.payment-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.payment-form button:hover {
+  background-color: #0056b3;
+}
+
+.payment-methods {
+ 
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.payment-methods img {
+  width: 80px;
+  height: auto;
+  margin: 0 5px;
+}
+
+
+
+
+
+
+
+
+
+.payment-methods form {
+  border-bottom: 1px solid #ffffff;
 }
 
 .payment-methods label {
   display: flex;
   align-items: center;
-  gap: 10px;
-  cursor: pointer;
+  color: white;
 }
 
 .payment-methods img {
@@ -665,7 +771,7 @@ border-radius: 8px;
 }
 
 .payment-methods input[type="radio"]:checked+img {
-  opacity: 1;
+  margin-left: 10px;
 }
 
 .pay-button {
@@ -740,132 +846,6 @@ border-radius: 8px;
   background-color: #0056b3;
 }
 
-
-/* Payment Form */
-.payment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 800px;
-  margin: 20px auto;
-  background-color: #303148;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.payment-form h2 {
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #ffffff;
-}
-
-.payment-form select {
-  height: 15px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-}
-
-.payment-form fieldset {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  gap: 10px;
-  padding: 10px;
-}
-
-.payment-form legend {
-  font-size: 16px;
-  font-weight: bold;
-  color: #007bff;
-}
-
-.payment-form input[type="radio"] {
- margin: auto;
-}
-
-.payment-form label {
-  font-size: 14px;
-  color: #ffffff;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  display: inline-block;
-}
-
-.payment-form input[type="text"],
-.payment-form input[type="tel"],
-.payment-form input[type="number"],
-.payment-form input[type="month"]
- {
-  width: calc(25% - 10px);
-  height: 20px;
-  padding: 10px;
-  margin-right: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-
-
-.payment-options {
-  display: flex;
-  align-items: center;
-  gap: 20px; /* Space between payment options */
-}
-
-.payment-option {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between radio button and image */
-}
-
-.payment-option input[type="radio"] {
-  margin: 0;
-}
-
-.payment-option label img {
-  width: 50px;
-  height: auto;
-}
-
-#new-address-section {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 10px;
-  background-color: #303148;
- 
-  border-radius: 8px;
-}
-
-#new-address-section .form-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
-
-#new-address-section label {
- margin-left: 15px;
-  font-size: 14px;
-  color: #ffffff;
-  display: inline-block;
-  width: 120px; /* Fixed label width for alignment */
-}
-
-#new-address-section input[type="text"],
-#new-address-section input[type="tel"] {
- 
-  flex-grow: 1;
-  max-width: 300px; /* Optional: Set a max width */
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#new-address-section input[type="checkbox"] {
-  margin-right: 10px;
-}
 
 
 
@@ -987,6 +967,7 @@ form {
 .order-page pay-now:hover {
   background-color: #007BFF;
 }
+
 /* Total Price Section */
 .total-price {
   display: flex;
@@ -1080,7 +1061,7 @@ form {
 
 /* Address Block Styling */
 .address-block {
- margin-left: 8px;
+  margin-left: 8px;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1140,12 +1121,14 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px; /* Adds space between buttons */
+  gap: 20px;
+  /* Adds space between buttons */
   margin-top: 20px;
 }
 
 .button-group button {
-  flex: 1; /* Ensure buttons are evenly spaced */
+  flex: 1;
+  /* Ensure buttons are evenly spaced */
   padding: 10px 20px;
   background-color: #00b7ff;
   color: #ffffff;
@@ -1157,7 +1140,8 @@ form {
 }
 
 .button-group button:first-child {
-  margin-right: 10px; /* Extra spacing for the first button */
+  margin-right: 10px;
+  /* Extra spacing for the first button */
 }
 
 .button-group button:hover {
@@ -1168,25 +1152,30 @@ form {
 @media (max-width: 600px) {
   .button-group {
     flex-direction: column;
-    gap: 10px; /* Adds spacing between buttons */
+    gap: 10px;
+    /* Adds spacing between buttons */
   }
 
   .button-group button {
-    width: 100%; /* Full-width buttons for mobile */
+    width: 100%;
+    /* Full-width buttons for mobile */
   }
 }
 
 /* Borrow History Container */
 .history {
-  display: block; /* Ensure the container is always displayed */
-  opacity: 1; /* Ensure the container is fully visible */
+  display: block;
+  /* Ensure the container is always displayed */
+  opacity: 1;
+  /* Ensure the container is fully visible */
 }
 
 .history .container {
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
-  background: #303148; /* Set background color for the container */
+  background: #303148;
+  /* Set background color for the container */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
@@ -1204,7 +1193,8 @@ form {
   width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
-  background-color: #ffffff; /* Keep table background white */
+  background-color: #ffffff;
+  /* Keep table background white */
 }
 
 .history th,
@@ -1212,23 +1202,29 @@ form {
   padding: 0.75rem;
   text-align: left;
   border: 1px solid #ffffff;
-  font-size: 14px; /* Consistent font size */
+  font-size: 14px;
+  /* Consistent font size */
 }
 
 .history th {
   background-color: #303148;
   font-weight: bold;
-  color: #ffffff; /* Text color for headers */
+  color: #ffffff;
+  /* Text color for headers */
 }
 
 .history tbody tr {
-  display: table-row; /* Ensure all rows are visible */
-  opacity: 1; /* Ensure no transparency issues */
-  visibility: visible; /* Ensure content is visible */
+  display: table-row;
+  /* Ensure all rows are visible */
+  opacity: 1;
+  /* Ensure no transparency issues */
+  visibility: visible;
+  /* Ensure content is visible */
 }
 
 .history tbody tr .hidden-content {
-  display: block; /* Ensure nested blocks are displayed */
+  display: block;
+  /* Ensure nested blocks are displayed */
   visibility: visible;
   opacity: 1;
 }
@@ -1245,8 +1241,10 @@ form {
   padding: 1rem;
   font-style: italic;
   color: #ffffff;
-  display: table-row; /* Display message as a table row */
-  opacity: 1; /* Fully visible */
+  display: table-row;
+  /* Display message as a table row */
+  opacity: 1;
+  /* Fully visible */
 }
 
 /* Button Styling */
@@ -1283,4 +1281,3 @@ form {
     font-size: 22px;
   }
 }
-
