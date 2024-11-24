@@ -33,7 +33,7 @@ $city = htmlspecialchars($_POST['city'] ?? '');
 $house_address = htmlspecialchars($_POST['address'] ?? '');
 $zipcode = htmlspecialchars($_POST['zip'] ?? '');
 $country = htmlspecialchars($_POST['country'] ?? '');
-$phone_number = htmlspecialchars($_POST['phone'] ?? '');
+$phone_number = htmlspecialchars($_POST['phone-number'] ?? '');
 
 if ($use_existing_address) {
     // Fetch the selected address_id
@@ -72,6 +72,35 @@ if ($use_existing_address) {
     if (empty($country)) $errors[] = "Country is required.";
     if (empty($house_address)) $errors[] = "Address is required.";
     if (empty($zipcode)) $errors[] = "Zip code is required.";
+
+    if (empty($errors)) {
+        // Save the new address into the database
+        $query = "
+            INSERT INTO User_Address (User_ID, City,Country, House_Address, Zipcode, Phone_number)
+            VALUES (?, ?,?, ?, ?, ?)
+        ";
+        $stmt = $conn->prepare($query);
+        if ($stmt) {
+            $stmt->bind_param(
+                'isssss',
+                $user_id,
+                $city,
+                $country,
+                $house_address,
+                $zipcode,
+                $phone_number
+            );
+
+            if ($stmt->execute()) {
+                echo "New address saved successfully!";
+            } else {
+                $errors[] = "Error saving address: " . $conn->error;
+            }
+            $stmt->close();
+        } else {
+            $errors[] = "Failed to prepare address saving query: " . $conn->error;
+        }
+    }
 }
 
 if (!empty($errors)) {

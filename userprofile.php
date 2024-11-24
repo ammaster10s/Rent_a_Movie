@@ -47,18 +47,19 @@ $stmt->close();
         <?php if (!empty($addresses)): ?>
           <?php foreach ($addresses as $index => $address): ?>
             <div class="address-block">
-              <input type="hidden" name="address_id[]" value="<?php echo htmlspecialchars($address['Address_ID']); ?>">
+              <input type="hidden" name="address_id[]" value="<?php echo htmlspecialchars($address['Address_ID'] ?? ''); ?>">
+
               <h4>Address <?php echo $index + 1; ?></h4>
               <label>City:</label>
-              <input type="text" name="city[]" value="<?php echo htmlspecialchars($address['City']); ?>" placeholder="Enter city" required>
+              <input type="text" name="city[]" value="<?php echo htmlspecialchars($address['City'] ?? ''); ?>" placeholder="Enter city">
               <label>House Address:</label>
-              <input type="text" name="house_address[]" value="<?php echo htmlspecialchars($address['House_Address']); ?>" placeholder="Enter house address" required>
+              <input type="text" name="house_address[]" value="<?php echo htmlspecialchars($address['House_Address'] ?? ''); ?>" placeholder="Enter house address">
               <label>ZIP:</label>
-              <input type="text" name="zipcode[]" value="<?php echo htmlspecialchars($address['Zipcode']); ?>" placeholder="Enter ZIP code" required>
+              <input type="text" name="zipcode[]" value="<?php echo htmlspecialchars($address['Zipcode'] ?? ''); ?>" placeholder="Enter ZIP code">
               <label>Country:</label>
-              <input type="text" name="country[]" value="<?php echo htmlspecialchars($address['Country']); ?>" placeholder="Enter country" required>
+              <input type="text" name="country[]" value="<?php echo htmlspecialchars($address['Country'] ?? ''); ?>" placeholder="Enter country" required>
               <label>Phone:</label>
-              <input type="text" name="phone_number[]" value="<?php echo htmlspecialchars($address['Phone_number']); ?>" placeholder="Enter phone number">
+              <input type="text" name="phone_number[]" value="<?php echo htmlspecialchars($address['Phone_number'] ?? ''); ?>" placeholder="Enter phone number">
               <button type="button" onclick="markAddressForDeletion(this, '<?php echo $address['Address_ID']; ?>')">Remove Address</button>
             </div>
           <?php endforeach; ?>
@@ -104,7 +105,6 @@ $stmt->close();
       const addressBlock = button.parentElement;
       const addressIdInput = addressBlock.querySelector('input[name="address_id[]"]');
 
-      // Check if the address has an ID (i.e., it's an existing address)
       if (addressIdInput && addressIdInput.value) {
         const deletedAddressesInput = document.getElementById('deleted-addresses');
         const deletedAddresses = JSON.parse(deletedAddressesInput.value || '[]');
@@ -116,6 +116,7 @@ $stmt->close();
       addressBlock.remove();
       renumberAddresses();
     }
+
 
     function markAddressForDeletion(button, addressId) {
       if (addressId) {
