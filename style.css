@@ -84,6 +84,17 @@ body {
 }*/
 
 /* Signup Form Styling */
+
+.error-messages {
+  color: red;
+  background-color: #fdd;
+  padding: 10px;
+  border: 1px solid red;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+
 .white {
   color: #ffffff;
   margin-top: 10px;

@@ -29,7 +29,7 @@ ORDER BY m.Movie_Name ASC;
 $stmt = $conn->prepare($query);
 
 if (!$stmt) {
-    die("Query preparation failed: " . $conn->error);
+    die("Query preparation failed: {$conn->error}");
 }
 
 $stmt->bind_param("i", $user_id);
@@ -38,7 +38,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if (!$result) {
-    die("Query execution failed: " . $stmt->error);
+    die("Query execution failed: {$stmt->error}");
 }
 ?>
 <!DOCTYPE html>
@@ -115,7 +115,9 @@ if (!$result) {
             echo '<tr><td colspan="5" class="no-data">No borrow history found.</td></tr>';
           }
 
-          $stmt->close();
+          if ($stmt) {
+              $stmt->close();
+          }
           $conn->close();
           ?>
         </tbody>
@@ -136,6 +138,6 @@ if (!$result) {
 </html>
 
 <?php
-$stmt->close();
-$conn->close();
+// $stmt->close();
+// $conn->close();
 ?>

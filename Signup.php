@@ -11,17 +11,26 @@
 <body>
 
   <!-- Navigation Bar -->
-  <?php
-  include 'navigate.php';
-  ?>
-
-
+  <?php include 'navigate.php'; ?>
 
   <!-- Sign-Up Form Section -->
   <div class="signup">
     <div class="container">
-      <form action="handle_request.php" method="post">
+      <form action="handle_request.php" method="post" id="signup-form">
         <h2>Sign Up</h2>
+
+        <!-- Display Error Messages -->
+        <?php
+        session_start();
+        if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
+          echo '<div class="error-messages">';
+          foreach ($_SESSION['errors'] as $error) {
+            echo "<p>" . htmlspecialchars($error) . "</p>";
+          }
+          echo '</div>';
+          unset($_SESSION['errors']); // Clear errors after displaying
+        }
+        ?>
 
         <!-- First Name -->
         <label for="f_name">First Name</label>
@@ -87,21 +96,20 @@
 
         <!-- Submit Button -->
         <button type="submit" name="register" class="submit-button">CREATE ACCOUNT</button>
-        <!-- Apply Button -->
-        <!-- <button type="Apply" class="apply-button">CREATE ACCOUNT</button> -->
 
         <!-- Redirect to Login -->
-        <p class='white'> Already have an account? <a href="Login.php">Click here!</a></p>
+        <p class='white'>Already have an account? <a href="Login.php">Click here!</a></p>
       </form>
     </div>
   </div>
 
-  <!-- Include Scripts (Optional for Dynamic Features) -->
+  <!-- Include Scripts -->
   <script>
-    // Example: Add password match validation
-    document.querySelector('form').addEventListener('apply', function(e) {
+    document.getElementById('signup-form').addEventListener('submit', function (e) {
       const password = document.getElementById('password').value;
       const confirmPassword = document.getElementById('confirm_password').value;
+
+      // Password match validation
       if (password !== confirmPassword) {
         e.preventDefault();
         alert('Passwords do not match!');
