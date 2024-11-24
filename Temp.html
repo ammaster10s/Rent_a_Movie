@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  /* General Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Payment Container */
+.payment-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.payment-container h3 {
+  background-color: #e6f7e6;
+  color: #4caf50;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Payment Methods */
+.payment-methods {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.method {
+  text-align: center;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 30%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.method img {
+  max-height: 40px;
+  margin-bottom: 5px;
+}
+
+.method p {
+  margin: 5px 0;
+}
+
+/* Total Amount */
+.amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.amount p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.amount span {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Payment Form */
+.payment-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.payment-form input,
+.payment-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.payment-form select {
+  background: #fff;
+  appearance: none;
+}
+
+/* Expiry Date and CVV */
+.expiry-cvv {
+  display: flex;
+  gap: 10px;
+}
+
+.expiry-cvv div {
+  flex: 1;
+}
+
+/* Address Section */
+fieldset {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+legend {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0 10px;
+  color: #333;
+}
+
+#existing-address-section,
+#new-address-section {
+  display: none; /* Default hidden state for toggling */
+}
+
+.payment-form input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Error Messages */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: none; /* Hidden by default */
+}
+
+/* Submit Button */
+.pay-button {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .payment-methods {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .method {
+    width: 100%;
+  }
+
+  .expiry-cvv {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+</style>
+<body>
+  <div class="payment-container">
+    <h3>Always check the URL to ensure your payment details are secure</h3>
+
+    <!-- Payment Methods -->
+    <div class="payment-methods">
+      <div class="method">
+        <img src="img/visa.png" alt="Visa">
+        <p>Visa Credit</p>
+        <p>5.00 USD - 0.05%</p>
+      </div>
+      <div class="method">
+        <img src="img/MasterCard.png" alt="MasterCard">
+        <p>MasterCard</p>
+        <p>15.00 USD - 0.05%</p>
+      </div>
+      <div class="method">
+        <img src="img/visa-mastercard.png" alt="Visa/MasterCard">
+        <p>Visa/MasterCard Debit</p>
+        <p>15.00 USD - 0.05%</p>
+      </div>
+    </div>
+
+    <!-- Total Amount -->
+    <div class="amount">
+      <p>$475.00 USD</p>
+      <span>The total amount</span>
+    </div>
+
+    <!-- Payment Form -->
+    <form action="process_payment.php" method="post" class="payment-form">
+      <input type="hidden" name="order_id" value="12345">
+
+      <!-- Credit Card Section -->
+      <label for="credit-card-type">Select Credit Card</label>
+      <select id="credit-card-type" name="credit-card-type" required>
+        <option value="" disabled selected>Select</option>
+        <option value="visa">Visa</option>
+        <option value="mastercard">MasterCard</option>
+      </select>
+
+      <label for="card-holder-name">Card Holder Name</label>
+      <input type="text" id="card-holder-name" name="card-holder-name" placeholder="Holder Name" required>
+
+      <label for="card-number">Card Number</label>
+      <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" maxlength="19" required>
+      <small id="card-error" class="error-message">Invalid card number. Please enter a valid Visa or MasterCard number.</small>
+
+      <div class="expiry-cvv">
+        <div>
+          <label for="expiry-date">Card Expire Date</label>
+          <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" maxlength="5" required>
+          <small id="expiry-error" class="error-message">Invalid expiry date. Use format MM/YY.</small>
+        </div>
+        <div>
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" name="cvv" placeholder="CVV" maxlength="3" required>
+        </div>
+      </div>
+
+      <!-- Address Section -->
+      <fieldset>
+        <legend>Address Details</legend>
+        <label>
+          <input type="checkbox" id="use-existing-address" name="use-existing-address">
+          Use an existing address
+        </label>
+
+        <div id="existing-address-section" style="display: none;">
+          <label for="existing-address">Select Address</label>
+          <select id="existing-address" name="existing-address">
+            <option value="">-- Choose Address --</option>
+            <option value="1">123 Main St, USA, ZIP: 12345, Phone: 123-456-7890</option>
+            <option value="2">456 Another Rd, Canada, ZIP: 67890, Phone: 987-654-3210</option>
+          </select>
+        </div>
+
+        <div id="new-address-section">
+          <label for="country">Country</label>
+          <input type="text" id="country" name="country" placeholder="Enter your country">
+          
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" placeholder="Enter your address">
+          
+          <label for="zip">ZIP Code</label>
+          <input type="text" id="zip" name="zip" placeholder="ZIP Code">
+          
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+          <label>
+            <input type="checkbox" name="save-new-address">
+            Save this address
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="pay-button">Pay Now</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
