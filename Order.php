@@ -85,6 +85,7 @@ if ($order_id) {
 
             <form action="Payment.php" method="POST">
                 <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order_id); ?>">
+                <input type="hidden" name="total_price" value="<?php echo htmlspecialchars($total_price); ?>">
                 <button class="pay-button">Pay Now</button>
             </form>
 

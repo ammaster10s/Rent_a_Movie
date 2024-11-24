@@ -52,6 +52,7 @@ CREATE TABLE Payment (
     Country VARCHAR(50),                         -- Temporary Country
     Phone_number VARCHAR(15),                   -- Temporary Phone Number
     Payment_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Card_holder_Name VARCHAR(100),              -- Card Holder Name
     FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
