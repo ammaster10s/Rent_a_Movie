@@ -15,7 +15,7 @@
 
   <!-- Sign-Up Form Section -->
   <div class="signup">
-    <div class="container">
+    
       <form action="handle_request.php" method="post" id="signup-form">
         <h2>Sign Up</h2>
 

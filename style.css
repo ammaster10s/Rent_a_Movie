@@ -123,6 +123,17 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.signup container {
+  display: flex;
+  flex-direction: column;
+  background-color: #303148;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .signup h2,
 .payment-page h2
 {
@@ -355,23 +366,48 @@ border-radius: 8px;
   color: white;
 }
 
-.wishlist-item .actions button {
-  margin-left: 200px;
-  width: 200px;
-  height: auto;
-  margin-top: 100px;
-  background-color: #007bff;
+
+
+/* Styling for the Remove Button */
+.actions .remove-from-wishlist {
+  background-color: #e74c3c;
   color: white;
+  border: none;
+  border-radius: 4px;
   padding: 10px 15px;
-  border-radius: 5px;
-  border-color: #000000;
   cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px; /* Space between Add to Cart and Remove buttons */
   transition: background-color 0.3s ease;
 }
 
-.wishlist-item .actions button:hover {
-  background-color: #0056b3;
+.actions .remove-from-wishlist:hover {
+  background-color: #c0392b; /* Darker red on hover */
 }
+
+/* Styling for the Add to Cart Button */
+.actions .add-to-cart {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.actions .add-to-cart:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Flexbox for Aligning Buttons */
+.actions {
+  display: flex;
+  gap: 10px; /* Consistent spacing between buttons */
+  align-items: center;
+}
+
 
 /* Responsive Design */
 @media (max-width: 600px) {
@@ -452,6 +488,7 @@ border-radius: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+  
 }
 
 .search-container img {
@@ -459,6 +496,8 @@ border-radius: 8px;
   height: 20px;
   cursor: pointer;
 }
+
+
 /* Right Section (e.g., icons or user profile) */
 .navbar-right {
   display: flex;
@@ -478,12 +517,19 @@ border-radius: 8px;
 
 .nav-icon {
   width: 35px;
-  height: 35px;
+  height: auto;
   border-radius: 50%;
   cursor: pointer;
   filter: invert(1);
 }
 
+.nav-profileicon {
+  width: 20px;
+  height: auto;
+  border-radius: 50%;
+  cursor: pointer;
+  filter: invert(1);
+}
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 600px) {
@@ -1168,3 +1214,4 @@ form {
     font-size: 22px;
   }
 }
+
