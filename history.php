@@ -3,8 +3,8 @@ include 'database.php';
 include 'auth_check.php';
 
 if (!isset($_SESSION['user_id'])) {
-    echo "Please log in to view your borrow history.";
-    exit;
+  echo "Please log in to view your borrow history.";
+  exit;
 }
 
 $user_id = $_SESSION['user_id'];
@@ -29,7 +29,7 @@ ORDER BY m.Movie_Name ASC;
 $stmt = $conn->prepare($query);
 
 if (!$stmt) {
-    die("Query preparation failed: {$conn->error}");
+  die("Query preparation failed: {$conn->error}");
 }
 
 $stmt->bind_param("i", $user_id);
@@ -38,7 +38,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if (!$result) {
-    die("Query execution failed: {$stmt->error}");
+  die("Query execution failed: {$stmt->error}");
 }
 ?>
 <!DOCTYPE html>
@@ -81,20 +81,21 @@ if (!$result) {
           $user_id = $_SESSION['user_id'];
           $query = "
           SELECT 
-            o.Order_ID,
-            m.Movie_Name,
-            m.Price,
-            p.Payment_Date AS Issue_Date,
-            DATE_ADD(p.Payment_Date, INTERVAL 7 DAY) AS Due_Date,
-            DATEDIFF(DATE_ADD(p.Payment_Date, INTERVAL 7 DAY), p.Payment_Date) AS Period
+              o.Order_ID,
+              m.Movie_Name,
+              m.Price,
+              p.Payment_Date AS Issue_Date,
+              DATE_ADD(p.Payment_Date, INTERVAL 7 DAY) AS Due_Date,
+              DATEDIFF(DATE_ADD(p.Payment_Date, INTERVAL 7 DAY), p.Payment_Date) AS Period
           FROM Orders o
           INNER JOIN Place_Order po ON o.Order_ID = po.Order_ID
           INNER JOIN Order_Contain oc ON o.Order_ID = oc.Order_ID
           INNER JOIN Movie m ON oc.Movie_ID = m.Movie_ID
           INNER JOIN Payment p ON o.Payment_ID = p.Payment_ID
           WHERE po.User_ID = ?
-          ORDER BY m.Movie_Name ASC;
+          ORDER BY Due_Date ASC; 
           ";
+
 
           $stmt = $conn->prepare($query);
           $stmt->bind_param("i", $user_id);
@@ -116,7 +117,7 @@ if (!$result) {
           }
 
           if ($stmt) {
-              $stmt->close();
+            $stmt->close();
           }
           $conn->close();
           ?>

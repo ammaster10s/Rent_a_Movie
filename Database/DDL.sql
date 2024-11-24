@@ -114,16 +114,3 @@ CREATE TABLE User_Access_BorrowHistory (
 );
 
 
-DROP TRIGGER IF EXISTS update_payment_time;
--- Adding a Trigger to Update Payment Date
-DELIMITER //
-CREATE TRIGGER update_payment_time
-AFTER INSERT ON Payment
-FOR EACH ROW
-BEGIN
-    UPDATE Payment
-    SET Payment_Date = NOW()
-    WHERE Payment_ID = NEW.Payment_ID;
-END;
-//
-DELIMITER ;

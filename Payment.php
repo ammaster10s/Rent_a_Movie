@@ -54,7 +54,7 @@
       <img src="img/MasterCard.png" alt="Mastercard" />
     </label>
   </fieldset>
-  
+
     <!-- Address Selection -->
     <fieldset>
       <legend>Address Details</legend>
@@ -94,7 +94,7 @@
     <fieldset>
       <legend>Credit Card Details</legend>
       <label for="credit_card_number">Credit Card Number:</label>
-      <input type="text" id="credit_card_number" name="credit_card_number" placeholder="Enter your card number" required />
+      <input type="text" id="credit_card_number" name="credit_card_number" placeholder="Enter your card number" value="5105 1051 0510 5100" required />
       <small id="card-error" style="color: red; display: none;">Invalid card number. Please enter a valid Visa or MasterCard number.</small>
       <label for="expiry_date">Expiry Date:</label>
       <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" maxlength="5" required />
@@ -142,28 +142,73 @@
     });
   </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const useExistingAddressCheckbox = document.getElementById('use_existing_address');
-      const existingAddressSection = document.getElementById('existing-address-section');
-      const newAddressSection = document.getElementById('new-address-section');
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const useExistingAddressCheckbox = document.getElementById('use_existing_address');
+    const existingAddressSection = document.getElementById('existing-address-section');
+    const existingAddressSelect = document.getElementById('existing_address');
+    const newAddressSection = document.getElementById('new-address-section');
+    const countryInput = document.getElementById('country');
+    const addressInput = document.getElementById('address');
+    const zipInput = document.getElementById('zip');
+    const phoneInput = document.getElementById('phone');
+    const paymentForm = document.querySelector('.payment-form');
 
-      // Toggle visibility based on checkbox state
-      useExistingAddressCheckbox.addEventListener('change', () => {
-        if (useExistingAddressCheckbox.checked) {
-          existingAddressSection.style.display = 'block';
-          newAddressSection.style.display = 'none';
-        } else {
-          existingAddressSection.style.display = 'none';
-          newAddressSection.style.display = 'block';
-        }
-      });
-
-      // Initialize state to default
-      existingAddressSection.style.display = 'none';
-      newAddressSection.style.display = 'block';
+    // Toggle visibility based on checkbox state
+    useExistingAddressCheckbox.addEventListener('change', () => {
+      if (useExistingAddressCheckbox.checked) {
+        existingAddressSection.style.display = 'block';
+        newAddressSection.style.display = 'none';
+      } else {
+        existingAddressSection.style.display = 'none';
+        newAddressSection.style.display = 'block';
+      }
     });
-  </script>
+
+    // Initialize state to default
+    existingAddressSection.style.display = 'none';
+    newAddressSection.style.display = 'block';
+
+    // Form submission validation
+    paymentForm.addEventListener('submit', (e) => {
+      let valid = true;
+      const errors = [];
+
+      // Check if "Use Existing Address" is selected
+      if (useExistingAddressCheckbox.checked) {
+        if (!existingAddressSelect.value) {
+          valid = false;
+          errors.push('Please select an existing address.');
+        }
+      } else {
+        // Validate new address fields
+        if (!countryInput.value.trim()) {
+          valid = false;
+          errors.push('Country is required.');
+        }
+        if (!addressInput.value.trim()) {
+          valid = false;
+          errors.push('Address is required.');
+        }
+        if (!zipInput.value.trim()) {
+          valid = false;
+          errors.push('ZIP Code is required.');
+        }
+        if (!phoneInput.value.trim()) {
+          valid = false;
+          errors.push('Phone number is required.');
+        }
+      }
+
+      // If validation fails, prevent form submission and show errors
+      if (!valid) {
+        e.preventDefault();
+        alert(errors.join('\n'));
+      }
+    });
+  });
+</script>
+
 </body>
 
 </html>
