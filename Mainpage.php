@@ -78,7 +78,7 @@ if (isset($_SESSION['username'])) {
         us.</p>
 
       <?php
-      $categories = ['Trending', 'Thriller', 'Sci-Fi'];
+      $categories = ['Trending', 'Thriller', 'SciFi_Fantasy'];
 
       foreach ($categories as $category): ?>
         <div class="categories">

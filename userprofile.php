@@ -4,8 +4,8 @@ include 'database.php';
 
 // Ensure the user is logged in
 if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
-    exit;
+  header('Location: login.php');
+  exit;
 }
 
 $username = $_SESSION['username'];
@@ -68,19 +68,21 @@ $stmt->close();
       </div>
       <input type="hidden" name="deleted_addresses" id="deleted-addresses" value="">
       <div class="button-group">
-  <button type="button" onclick="addAddress()">Add Address</button>
-  <button type="submit">Save Change</button>
-</div>
+        <button type="button" onclick="addAddress()">Add Address</button>
+        <button type="submit">Save Change</button>
+      </div>
 
     </form>
   </div>
 
   <script>
+    const deletedAddresses = [];
+
     function addAddress() {
-    const container = document.getElementById('addresses-container');
-    const addressBlock = document.createElement('div');
-    addressBlock.className = 'address-block';
-    addressBlock.innerHTML = `
+      const container = document.getElementById('addresses-container');
+      const addressBlock = document.createElement('div');
+      addressBlock.className = 'address-block';
+      addressBlock.innerHTML = `
         <h4>Address</h4>
         <input type="hidden" name="address_id[]" value="">
         <label>City:</label>
@@ -95,28 +97,36 @@ $stmt->close();
         <input type="text" name="phone_number[]" placeholder="Enter phone number">
         <button type="button" onclick="removeAddress(this)">Remove Address</button>
     `;
-    container.appendChild(addressBlock);
-    renumberAddresses(); // Ensure numbering is updated after addition
-}
-
-function removeAddress(button) {
-    const addressBlock = button.parentElement;
-    if (addressBlock) {
-        addressBlock.remove();
-        renumberAddresses(); // Ensure numbering is updated after removal
+      container.appendChild(addressBlock);
+      renumberAddresses();
     }
-}
 
-function renumberAddresses() {
-    const addressBlocks = document.querySelectorAll('.address-block');
-    addressBlocks.forEach((block, index) => {
+    function removeAddress(button) {
+      const addressBlock = button.parentElement;
+      if (addressBlock) {
+        addressBlock.remove();
+        renumberAddresses();
+      }
+    }
+
+    function markAddressForDeletion(button, addressId) {
+      if (addressId) {
+        deletedAddresses.push(addressId);
+        document.getElementById('deleted-addresses').value = JSON.stringify(deletedAddresses);
+      }
+      removeAddress(button);
+      renumberAddresses();
+    }
+
+    function renumberAddresses() {
+      const addressBlocks = document.querySelectorAll('.address-block');
+      addressBlocks.forEach((block, index) => {
         const heading = block.querySelector('h4');
         if (heading) {
-            heading.textContent = `Address ${index + 1}`; // Always start from 1
+          heading.textContent = `Address ${index + 1}`;
         }
-    });
-}
-
+      });
+    }
   </script>
 </body>
 

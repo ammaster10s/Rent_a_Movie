@@ -39,22 +39,22 @@ CREATE TABLE User_Address (
 );
 
 -- Creating the Payment table
+
 CREATE TABLE Payment (
-    Payment_ID INT PRIMARY KEY AUTO_INCREMENT,  -- Primary Key for Payments
-    CreditCard_Number VARCHAR(20) NOT NULL,     -- Credit Card Number
-    CVC CHAR(3) NOT NULL,                       -- Card CVC
-    Expiration_Date DATE NOT NULL,              -- Expiration Date of Card
-    User_ID INT NOT NULL,                       -- Foreign Key to Users
-    Address_ID INT,                             -- Foreign Key to User_Address
-    Card_Holder_FName VARCHAR(50),             -- First Name of Cardholder
-    Card_Holder_LName VARCHAR(50),             -- Last Name of Cardholder
-    Payment_Date DATE NOT NULL,                 -- Payment Date
-    City VARCHAR(50),
-    House_Address VARCHAR(255),
-    Zipcode VARCHAR(10),
-    Country VARCHAR(50),
-    Phone_number VARCHAR(15),
-    FOREIGN KEY (User_ID) REFERENCES Users(User_ID), 
+    Payment_ID INT PRIMARY KEY AUTO_INCREMENT,   -- Primary Key for Payments
+    CreditCard_Number VARCHAR(20) NOT NULL,      -- Credit Card Number
+    CVC CHAR(3) NOT NULL,                        -- Card CVC
+    Expiration_Date DATE NOT NULL,               -- Expiration Date of Card
+    User_ID INT NOT NULL,                        -- Foreign Key to Users
+    Address_ID INT DEFAULT NULL,                 -- Optional Foreign Key to User_Address
+    Temporary_Address BOOLEAN DEFAULT FALSE,     -- Flag to indicate a temporary address
+    City VARCHAR(50),                            -- Temporary City
+    House_Address VARCHAR(255),                 -- Temporary Address
+    Zipcode VARCHAR(10),                         -- Temporary Zipcode
+    Country VARCHAR(50),                         -- Temporary Country
+    Phone_number VARCHAR(15),                   -- Temporary Phone Number
+    Payment_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID),
     FOREIGN KEY (Address_ID) REFERENCES User_Address(Address_ID)
 );
 
@@ -62,10 +62,12 @@ CREATE TABLE Payment (
 CREATE TABLE Orders (
     Order_ID INT PRIMARY KEY AUTO_INCREMENT,    -- Primary Key for Orders
     Payment_ID INT DEFAULT NULL,                -- Foreign Key to Payments
-    User_ID INT NOT NULL,                       -- Foreign Key to Users
+    User_ID INT NOT NULL,          
+    Address_ID INT,                -- Foreign Key to User_Address
     Status ENUM('Pending','Completed') NOT NULL DEFAULT 'Pending', -- Order Status
     FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID),
-    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID),
+    FOREIGN KEY (Address_ID) REFERENCES User_Address(Address_ID)
 );
 
 -- Creating the Borrow_History table
