@@ -21,7 +21,6 @@ unset($_SESSION['errors']);
     ?>
 
     <!-- Login Form Section -->
-
         <div class="form-container">
             <form action="handle_request.php" method="post">
                 <h2 class="form-title">Login</h2>

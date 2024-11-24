@@ -100,7 +100,7 @@
         <!-- Redirect to Login -->
         <p class='white'>Already have an account? <a href="Login.php">Click here!</a></p>
       </form>
-    </div>
+   
   </div>
 
   <!-- Include Scripts -->
