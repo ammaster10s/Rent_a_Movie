@@ -97,3 +97,6 @@ SELECT
           INNER JOIN Payment p ON o.Payment_ID = p.Payment_ID
           WHERE po.User_ID = 1
           ORDER BY m.Movie_Name ASC;
+
+
+          SELECT COUNT(*) FROM User_Address WHERE Address_ID = 1

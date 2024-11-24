@@ -13,23 +13,28 @@ $user_id = $_SESSION['user_id'];
 // Process deletions
 if (!empty($_POST['deleted_addresses'])) {
     $deletedAddresses = json_decode($_POST['deleted_addresses'], true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        die("JSON decoding error: " . json_last_error_msg());
+    }
 
     foreach ($deletedAddresses as $addressId) {
-        // Check if the address is linked to any orders
-        $checkQuery = "SELECT COUNT(*) FROM Orders WHERE Address_ID = ?";
-        $checkStmt = $conn->prepare($checkQuery);
-        $checkStmt->bind_param("i", $addressId);
-        $checkStmt->execute();
-        $checkStmt->bind_result($count);
-        $checkStmt->fetch();
-        $checkStmt->close();
+        
 
         if ($count == 0) {
+            // Delete the address
             $query = "DELETE FROM User_Address WHERE Address_ID = ? AND User_ID = ?";
             $stmt = $conn->prepare($query);
+            if (!$stmt) {
+                die("Prepare failed: " . $conn->error);
+            }
             $stmt->bind_param("ii", $addressId, $user_id);
-            $stmt->execute();
+            if (!$stmt->execute()) {
+                die("Execute failed: " . $stmt->error);
+            }
+            echo "Address $addressId deleted successfully.<br>";
             $stmt->close();
+        } else {
+            echo "Address $addressId is linked to an order and cannot be deleted.<br>";
         }
     }
 }
