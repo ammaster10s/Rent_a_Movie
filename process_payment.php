@@ -27,50 +27,51 @@ $order_id = (int) $_POST['order_id'];
 // Handle address
 $use_existing_address = isset($_POST['use_existing_address']);
 $save_new_address = isset($_POST['save_new_address']);
-$address_id = $use_existing_address ? ($_POST['existing_address'] ?? null) : null;
+$temporary_address = !$use_existing_address; // Determine if this is a temporary address
 
-$temporary_address = false; // Default flag
-$city = $house_address = $zipcode = $country = $phone_number = null;
+$city = htmlspecialchars($_POST['city'] ?? '');
+$house_address = htmlspecialchars($_POST['address'] ?? '');
+$zipcode = htmlspecialchars($_POST['zip'] ?? '');
+$country = htmlspecialchars($_POST['country'] ?? '');
+$phone_number = htmlspecialchars($_POST['phone'] ?? '');
 
 if ($use_existing_address) {
-    // Validate existing address
+    // Fetch the selected address_id
+    $address_id = $_POST['existing_address'] ?? null;
+
     if (empty($address_id)) {
         $errors[] = "No existing address selected.";
+    } else {
+        // Retrieve address details from the database
+        $query = "SELECT City, House_Address, Zipcode, Country, Phone_number FROM User_Address WHERE Address_ID = ? AND User_ID = ?";
+        $stmt = $conn->prepare($query);
+
+        if (!$stmt) {
+            $errors[] = "Failed to prepare statement for fetching address: " . $conn->error;
+        } else {
+            $stmt->bind_param('ii', $address_id, $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $address = $result->fetch_assoc();
+                $city = $address['City'];
+                $house_address = $address['House_Address'];
+                $zipcode = $address['Zipcode'];
+                $country = $address['Country'];
+                $phone_number = $address['Phone_number'];
+            } else {
+                $errors[] = "The selected address could not be found.";
+            }
+
+            $stmt->close();
+        }
     }
 } else {
-    // Handle new address
-    $country = htmlspecialchars($_POST['country'] ?? '');
-    $house_address = htmlspecialchars($_POST['address'] ?? '');
-    $zipcode = htmlspecialchars($_POST['zip'] ?? '');
-    $phone_number = htmlspecialchars($_POST['phone'] ?? '');
-
+    // Validate new address fields
     if (empty($country)) $errors[] = "Country is required.";
     if (empty($house_address)) $errors[] = "Address is required.";
     if (empty($zipcode)) $errors[] = "Zip code is required.";
-
-    if (empty($errors)) {
-        if ($save_new_address) {
-            // Save the new address to the database
-            $stmt = $conn->prepare("
-                INSERT INTO User_Address (User_ID, Country, House_Address, Zipcode, Phone_Number)
-                VALUES (?, ?, ?, ?, ?)
-            ");
-            if (!$stmt) {
-                error_log("SQL Prepare failed for address insertion: " . $conn->error);
-                die("SQL Prepare failed for address insertion.");
-            }
-            $stmt->bind_param('issss', $user_id, $country, $house_address, $zipcode, $phone_number);
-            if (!$stmt->execute()) {
-                error_log("SQL Execute failed for address insertion: " . $stmt->error);
-                die("SQL Execute failed for address insertion.");
-            }
-            $address_id = $stmt->insert_id; // Use the new address ID
-            $stmt->close();
-        } else {
-            // Treat the address as temporary
-            $temporary_address = true;
-        }
-    }
 }
 
 if (!empty($errors)) {
@@ -117,26 +118,24 @@ if (!empty($errors)) {
     exit();
 }
 
-// Insert payment
+// Insert payment directly with address details
 $stmt = $conn->prepare("
     INSERT INTO Payment (
-        CreditCard_Number, CVC, Expiration_Date, User_ID, Address_ID, Temporary_Address, 
+        CreditCard_Number, CVC, Expiration_Date, User_ID, 
         City, House_Address, Zipcode, Country, Phone_number, Payment_Date
     )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
 ");
 if (!$stmt) {
     error_log("SQL Prepare failed for payment insertion: " . $conn->error);
     die("SQL Prepare failed for payment insertion.");
 }
 $stmt->bind_param(
-    'ssssiisssss',
+    'sssssssss',
     $credit_card_number,
     $cvv,
     $expiry_date_mysql,
     $user_id,
-    $address_id,        // Null if temporary address
-    $temporary_address, // TRUE or FALSE
     $city,
     $house_address,
     $zipcode,
@@ -154,33 +153,17 @@ $stmt->close();
 // Update order
 $stmt = $conn->prepare("
     UPDATE Orders 
-    SET Payment_ID = ?, Status = 'Completed', Address_ID = ? 
+    SET Payment_ID = ?, Status = 'Completed'
     WHERE Order_ID = ? AND User_ID = ?
 ");
 if (!$stmt) {
     error_log("SQL Prepare failed for order update: " . $conn->error);
     die("SQL Prepare failed for order update.");
 }
-$stmt->bind_param('iiii', $payment_id, $address_id, $order_id, $user_id);
+$stmt->bind_param('iii', $payment_id, $order_id, $user_id);
 if (!$stmt->execute()) {
     error_log("SQL Execute failed for order update: " . $stmt->error);
     die("SQL Execute failed for order update.");
-}
-$stmt->close();
-
-// Insert into Place_Order
-$stmt = $conn->prepare("
-    INSERT INTO Place_Order (Order_ID, User_ID) 
-    VALUES (?, ?)
-");
-if (!$stmt) {
-    error_log("SQL Prepare failed for Place_Order insertion: " . $conn->error);
-    die("SQL Prepare failed for Place_Order insertion.");
-}
-$stmt->bind_param('ii', $order_id, $user_id);
-if (!$stmt->execute()) {
-    error_log("SQL Execute failed for Place_Order insertion: " . $stmt->error);
-    die("SQL Execute failed for Place_Order insertion.");
 }
 $stmt->close();
 
@@ -198,7 +181,7 @@ if (!$stmt->execute()) {
     error_log("SQL Execute failed for Borrow_History insertion: " . $stmt->error);
     die("SQL Execute failed for Borrow_History insertion.");
 }
-$borrow_id = $stmt->insert_id; // Capture the Borrow_ID for the next step
+$borrow_id = $stmt->insert_id; // Capture the Borrow_ID
 $stmt->close();
 
 // Insert into User_Access_BorrowHistory
@@ -217,7 +200,23 @@ if (!$stmt->execute()) {
 }
 $stmt->close();
 
+// Insert into Place_Order
+$stmt = $conn->prepare("
+    INSERT INTO Place_Order (Order_ID, User_ID)
+    VALUES (?, ?)
+");
+if (!$stmt) {
+    error_log("SQL Prepare failed for Place_Order insertion: " . $conn->error);
+    die("SQL Prepare failed for Place_Order insertion.");
+}
+$stmt->bind_param('ii', $order_id, $user_id);
+if (!$stmt->execute()) {
+    error_log("SQL Execute failed for Place_Order insertion: " . $stmt->error);
+    die("SQL Execute failed for Place_Order insertion.");
+}
+$stmt->close();
 
 $_SESSION['success_message'] = "Payment processed and order completed successfully!";
 header('Location: Mainpage.php');
 exit();
+

@@ -2,6 +2,7 @@
 session_start();
 include 'database.php';
 
+// Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -14,11 +15,22 @@ if (!empty($_POST['deleted_addresses'])) {
     $deletedAddresses = json_decode($_POST['deleted_addresses'], true);
 
     foreach ($deletedAddresses as $addressId) {
-        $query = "DELETE FROM User_Address WHERE Address_ID = ? AND User_ID = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("ii", $addressId, $user_id);
-        $stmt->execute();
-        $stmt->close();
+        // Check if the address is linked to any orders
+        $checkQuery = "SELECT COUNT(*) FROM Orders WHERE Address_ID = ?";
+        $checkStmt = $conn->prepare($checkQuery);
+        $checkStmt->bind_param("i", $addressId);
+        $checkStmt->execute();
+        $checkStmt->bind_result($count);
+        $checkStmt->fetch();
+        $checkStmt->close();
+
+        if ($count == 0) {
+            $query = "DELETE FROM User_Address WHERE Address_ID = ? AND User_ID = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("ii", $addressId, $user_id);
+            $stmt->execute();
+            $stmt->close();
+        }
     }
 }
 
@@ -37,10 +49,6 @@ for ($i = 0; $i < count($cities); $i++) {
     $zipcode = $zipcodes[$i];
     $country = $countries[$i];
     $phone_number = $phone_numbers[$i];
-
-    if (empty($city) || empty($house_address) || empty($zipcode) || empty($country)) {
-        continue; // Skip invalid inputs
-    }
 
     if (!empty($address_id)) {
         // Update existing address
@@ -61,5 +69,4 @@ for ($i = 0; $i < count($cities); $i++) {
 $_SESSION['message'] = "Your changes have been saved successfully.";
 header('Location: userprofile.php');
 exit();
-
 ?>

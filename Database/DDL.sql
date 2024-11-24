@@ -46,28 +46,23 @@ CREATE TABLE Payment (
     CVC CHAR(3) NOT NULL,                        -- Card CVC
     Expiration_Date DATE NOT NULL,               -- Expiration Date of Card
     User_ID INT NOT NULL,                        -- Foreign Key to Users
-    Address_ID INT DEFAULT NULL,                 -- Optional Foreign Key to User_Address
-    Temporary_Address BOOLEAN DEFAULT FALSE,     -- Flag to indicate a temporary address
     City VARCHAR(50),                            -- Temporary City
     House_Address VARCHAR(255),                 -- Temporary Address
     Zipcode VARCHAR(10),                         -- Temporary Zipcode
     Country VARCHAR(50),                         -- Temporary Country
     Phone_number VARCHAR(15),                   -- Temporary Phone Number
     Payment_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (User_ID) REFERENCES Users(User_ID),
-    FOREIGN KEY (Address_ID) REFERENCES User_Address(Address_ID)
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
 -- Creating the Orders table
 CREATE TABLE Orders (
     Order_ID INT PRIMARY KEY AUTO_INCREMENT,    -- Primary Key for Orders
     Payment_ID INT DEFAULT NULL,                -- Foreign Key to Payments
-    User_ID INT NOT NULL,          
-    Address_ID INT,                -- Foreign Key to User_Address
+    User_ID INT NOT NULL,         
     Status ENUM('Pending','Completed') NOT NULL DEFAULT 'Pending', -- Order Status
     FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID),
-    FOREIGN KEY (User_ID) REFERENCES Users(User_ID),
-    FOREIGN KEY (Address_ID) REFERENCES User_Address(Address_ID)
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
 -- Creating the Borrow_History table
