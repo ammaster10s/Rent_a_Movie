@@ -39,21 +39,27 @@
   $stmt->close();
   ?>
 
-<form action="process_payment.php" method="post" class="payment-form">
-  <!-- Hidden input to pass order_id -->
-  <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order_id); ?>">
+  <form action="process_payment.php" method="post" class="payment-form">
+    <!-- Hidden input to pass order_id -->
+    <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order_id); ?>">
 
-  <fieldset>
-    <legend>Select Payment Method</legend>
-    <label>
-      <input type="radio" name="payment_method" value="visa" required />
-      <img src="img/visa.png" alt="Visa" />
-    </label>
-    <label>
-      <input type="radio" name="payment_method" value="mastercard" />
-      <img src="img/MasterCard.png" alt="Mastercard" />
-    </label>
-  </fieldset>
+    <fieldset>
+      <legend>Select Payment Method</legend>
+      <div class="payment-options">
+        <div class="payment-option">
+          <input type="radio" name="payment_method" value="visa" id="visa" required />
+          <label for="visa">
+            <img src="img/visa.png" alt="Visa" />
+          </label>
+        </div>
+        <div class="payment-option">
+          <input type="radio" name="payment_method" value="mastercard" id="mastercard" />
+          <label for="mastercard">
+            <img src="img/MasterCard.png" alt="Mastercard" />
+          </label>
+        </div>
+      </div>
+    </fieldset>
 
     <!-- Address Selection -->
     <fieldset>
@@ -86,22 +92,30 @@
         <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" />
         <label>
           <input type="checkbox" name="save_new_address" />
-          Save this address for future use
+          Save address
         </label>
       </div>
     </fieldset>
-    <!-- Credit Card Details -->
     <fieldset>
-      <legend>Credit Card Details</legend>
-      <label for="credit_card_number">Credit Card Number:</label>
-      <input type="text" id="credit_card_number" name="credit_card_number" placeholder="Enter your card number" value="5105 1051 0510 5100" required />
-      <small id="card-error" style="color: red; display: none;">Invalid card number. Please enter a valid Visa or MasterCard number.</small>
+  <legend>Credit Card Details</legend>
+  <div id="new-address-section">
+      <label for="credit_card_number">Card Number:</label>
+      <input type="text" id="credit_card_number" name="credit_card_number" placeholder="Enter your card number"
+        value="5105 1051 0510 5100" required />
+      <small id="card-error" class="error-message">Invalid card number. Please enter a valid Visa or MasterCard number.</small>
+   
+  
       <label for="expiry_date">Expiry Date:</label>
       <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" maxlength="5" required />
-      <small id="expiry-error" style="color: red; display: none;">Invalid expiry date. Use format MM/YY.</small>
+      <small id="expiry-error" class="error-message">Invalid expiry date. Use format MM/YY.</small>
+    
+   
       <label for="cvv">CVV:</label>
       <input type="text" id="cvv" name="cvv" placeholder="CVV" maxlength="3" required />
-    </fieldset>
+    
+  </div>
+</fieldset>
+
 
     <!-- Pay Button -->
     <button type="submit" class="pay-button">PAY</button>
@@ -142,72 +156,72 @@
     });
   </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const useExistingAddressCheckbox = document.getElementById('use_existing_address');
-    const existingAddressSection = document.getElementById('existing-address-section');
-    const existingAddressSelect = document.getElementById('existing_address');
-    const newAddressSection = document.getElementById('new-address-section');
-    const countryInput = document.getElementById('country');
-    const addressInput = document.getElementById('address');
-    const zipInput = document.getElementById('zip');
-    const phoneInput = document.getElementById('phone');
-    const paymentForm = document.querySelector('.payment-form');
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const useExistingAddressCheckbox = document.getElementById('use_existing_address');
+      const existingAddressSection = document.getElementById('existing-address-section');
+      const existingAddressSelect = document.getElementById('existing_address');
+      const newAddressSection = document.getElementById('new-address-section');
+      const countryInput = document.getElementById('country');
+      const addressInput = document.getElementById('address');
+      const zipInput = document.getElementById('zip');
+      const phoneInput = document.getElementById('phone');
+      const paymentForm = document.querySelector('.payment-form');
 
-    // Toggle visibility based on checkbox state
-    useExistingAddressCheckbox.addEventListener('change', () => {
-      if (useExistingAddressCheckbox.checked) {
-        existingAddressSection.style.display = 'block';
-        newAddressSection.style.display = 'none';
-      } else {
-        existingAddressSection.style.display = 'none';
-        newAddressSection.style.display = 'block';
-      }
+      // Toggle visibility based on checkbox state
+      useExistingAddressCheckbox.addEventListener('change', () => {
+        if (useExistingAddressCheckbox.checked) {
+          existingAddressSection.style.display = 'block';
+          newAddressSection.style.display = 'none';
+        } else {
+          existingAddressSection.style.display = 'none';
+          newAddressSection.style.display = 'block';
+        }
+      });
+
+      // Initialize state to default
+      existingAddressSection.style.display = 'none';
+      newAddressSection.style.display = 'block';
+
+      // Form submission validation
+      paymentForm.addEventListener('submit', (e) => {
+        let valid = true;
+        const errors = [];
+
+        // Check if "Use Existing Address" is selected
+        if (useExistingAddressCheckbox.checked) {
+          if (!existingAddressSelect.value) {
+            valid = false;
+            errors.push('Please select an existing address.');
+          }
+        } else {
+          // Validate new address fields
+          if (!countryInput.value.trim()) {
+            valid = false;
+            errors.push('Country is required.');
+          }
+          if (!addressInput.value.trim()) {
+            valid = false;
+            errors.push('Address is required.');
+          }
+          if (!zipInput.value.trim()) {
+            valid = false;
+            errors.push('ZIP Code is required.');
+          }
+          if (!phoneInput.value.trim()) {
+            valid = false;
+            errors.push('Phone number is required.');
+          }
+        }
+
+        // If validation fails, prevent form submission and show errors
+        if (!valid) {
+          e.preventDefault();
+          alert(errors.join('\n'));
+        }
+      });
     });
-
-    // Initialize state to default
-    existingAddressSection.style.display = 'none';
-    newAddressSection.style.display = 'block';
-
-    // Form submission validation
-    paymentForm.addEventListener('submit', (e) => {
-      let valid = true;
-      const errors = [];
-
-      // Check if "Use Existing Address" is selected
-      if (useExistingAddressCheckbox.checked) {
-        if (!existingAddressSelect.value) {
-          valid = false;
-          errors.push('Please select an existing address.');
-        }
-      } else {
-        // Validate new address fields
-        if (!countryInput.value.trim()) {
-          valid = false;
-          errors.push('Country is required.');
-        }
-        if (!addressInput.value.trim()) {
-          valid = false;
-          errors.push('Address is required.');
-        }
-        if (!zipInput.value.trim()) {
-          valid = false;
-          errors.push('ZIP Code is required.');
-        }
-        if (!phoneInput.value.trim()) {
-          valid = false;
-          errors.push('Phone number is required.');
-        }
-      }
-
-      // If validation fails, prevent form submission and show errors
-      if (!valid) {
-        e.preventDefault();
-        alert(errors.join('\n'));
-      }
-    });
-  });
-</script>
+  </script>
 
 </body>
 

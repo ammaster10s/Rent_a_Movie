@@ -769,7 +769,7 @@ border-radius: 8px;
 .payment-form fieldset {
   border: 1px solid #ddd;
   border-radius: 8px;
-  margin-bottom: 15px;
+  gap: 10px;
   padding: 10px;
 }
 
@@ -794,7 +794,8 @@ border-radius: 8px;
 .payment-form input[type="text"],
 .payment-form input[type="tel"],
 .payment-form input[type="number"],
-.payment-form input[type="month"] {
+.payment-form input[type="month"]
+ {
   width: calc(25% - 10px);
   height: 20px;
   padding: 10px;
@@ -804,10 +805,70 @@ border-radius: 8px;
   border-radius: 4px;
 }
 
-.payment-form img {
+
+
+.payment-options {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between payment options */
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between radio button and image */
+}
+
+.payment-option input[type="radio"] {
+  margin: 0;
+}
+
+.payment-option label img {
   width: 50px;
   height: auto;
 }
+
+#new-address-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+  background-color: #303148;
+ 
+  border-radius: 8px;
+}
+
+#new-address-section .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+#new-address-section label {
+ margin-left: 15px;
+  font-size: 14px;
+  color: #ffffff;
+  display: inline-block;
+  width: 120px; /* Fixed label width for alignment */
+}
+
+#new-address-section input[type="text"],
+#new-address-section input[type="tel"] {
+ 
+  flex-grow: 1;
+  max-width: 300px; /* Optional: Set a max width */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#new-address-section input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+
+
 
 /* Order Summary */
 .order-summary {
