@@ -3,6 +3,7 @@ session_start();
 include 'database.php';
 
 $errors = [];
+$payment_success = false;
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id']) || !is_numeric($_SESSION['user_id'])) {
@@ -99,6 +100,7 @@ if ($use_existing_address) {
             $stmt->close();
         } else {
             $errors[] = "Failed to prepare address saving query: " . $conn->error;
+            exit();
         }
     }
 }
@@ -116,9 +118,11 @@ $cvv = $_POST['cvv'] ?? '';
 
 if (!preg_match('/^\d{16}$/', $credit_card_number)) {
     $errors[] = "Invalid credit card number.";
+    exit();
 }
 if (!preg_match('/^(0[1-9]|1[0-2])\/\d{2}$/', $expiry_date)) {
     $errors[] = "Invalid expiry date format.";
+    exit();
 } else {
     [$month, $year] = explode('/', $expiry_date);
     $currentYear = (int) date('y');
@@ -131,6 +135,7 @@ if (!preg_match('/^(0[1-9]|1[0-2])\/\d{2}$/', $expiry_date)) {
     // Compare expiry date with current date
     if ($expiry_last_date < time()) {
         $errors[] = "The card is expired.";
+        exit();
     } else {
         // Convert to MySQL-compatible format
         $expiry_date_mysql = date('Y-m-t', $expiry_last_date);
@@ -139,6 +144,7 @@ if (!preg_match('/^(0[1-9]|1[0-2])\/\d{2}$/', $expiry_date)) {
 
 if (!preg_match('/^\d{3}$/', $cvv)) {
     $errors[] = "Invalid CVV.";
+    exit();
 }
 
 if (!empty($errors)) {
@@ -148,6 +154,8 @@ if (!empty($errors)) {
 }
 
 // Insert payment directly with address details
+
+$payment_success = true;
 $stmt = $conn->prepare("
     INSERT INTO Payment (
         CreditCard_Number, CVC, Expiration_Date, User_ID, 
@@ -247,5 +255,25 @@ $stmt->close();
 
 $_SESSION['success_message'] = "Payment processed and order completed successfully!";
 header('Location: Mainpage.php');
+
+
+if ($payment_success) {
+    echo '<script>
+      window.onload = function() {
+        showPopup();
+      };
+    </script>';
+    echo '<div id="payment-success-popup" class="popup" style="display: none;">
+      <div class="popup-content">
+        <h3>Payment Successful!</h3>
+        <p>Your payment has been processed successfully.</p>
+        <button onclick="closePopup()">Close</button>
+      </div>
+    </div>';
+} else {
+    echo '<script>alert("Payment failed! Please try again.");</script>';
+}
+
+
 exit();
 
