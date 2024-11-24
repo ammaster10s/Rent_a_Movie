@@ -22,7 +22,7 @@ CREATE TABLE Movie (
     Description TEXT,                           -- Movie Description
     Length INT,                                 -- Length in minutes
     Movie_Name VARCHAR(255) NOT NULL,          -- Movie Name
-    Poster_Path VARCHAR(40),                   -- Path for the Poster
+    Poster_Path VARCHAR(100),                   -- Path for the Poster
     Category VARCHAR(20)                       -- Movie Category
 );
 
