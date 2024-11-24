@@ -22,6 +22,13 @@
 
   $user_id = $_SESSION['user_id'];
 
+  // Get the order ID
+  if (!isset($_POST['order_id']) || !is_numeric($_POST['order_id'])) {
+    die("Order ID is missing or invalid.");
+  }
+
+  $order_id = (int) $_POST['order_id'];
+
   // Fetch existing addresses for the user
   $query = "SELECT Address_ID, Country, House_Address, Zipcode, Phone_number FROM User_Address WHERE User_ID = ?";
   $stmt = $conn->prepare($query);
@@ -32,18 +39,22 @@
   $stmt->close();
   ?>
 
-  <form action="process_payment.php" method="post" class="payment-form">
-    <fieldset>
-      <legend>Select Payment Method</legend>
-      <label>
-        <input type="radio" name="payment_method" value="visa" required />
-        <img src="img/visa.png" alt="Visa" />
-      </label>
-      <label>
-        <input type="radio" name="payment_method" value="mastercard" />
-        <img src="img/MasterCard.png" alt="Mastercard" />
-      </label>
-    </fieldset>
+<form action="process_payment.php" method="post" class="payment-form">
+  <!-- Hidden input to pass order_id -->
+  <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order_id); ?>">
+
+  <fieldset>
+    <legend>Select Payment Method</legend>
+    <label>
+      <input type="radio" name="payment_method" value="visa" required />
+      <img src="img/visa.png" alt="Visa" />
+    </label>
+    <label>
+      <input type="radio" name="payment_method" value="mastercard" />
+      <img src="img/MasterCard.png" alt="Mastercard" />
+    </label>
+  </fieldset>
+  
     <!-- Address Selection -->
     <fieldset>
       <legend>Address Details</legend>

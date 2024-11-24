@@ -14,6 +14,16 @@ if (!isset($_SESSION['user_id']) || !is_numeric($_SESSION['user_id'])) {
 
 $user_id = (int) $_SESSION['user_id'];
 
+// Retrieve the order_id from the POST request
+if (!isset($_POST['order_id']) || !is_numeric($_POST['order_id'])) {
+    $errors[] = "Order ID is missing or invalid.";
+    $_SESSION['errors'] = $errors;
+    header('Location: debug.php');
+    exit();
+}
+
+$order_id = (int) $_POST['order_id'];
+
 // Handle address
 $use_existing_address = isset($_POST['use_existing_address']);
 $save_new_address = isset($_POST['save_new_address']);
@@ -97,8 +107,6 @@ if (!preg_match('/^(0[1-9]|1[0-2])\/\d{2}$/', $expiry_date)) {
     }
 }
 
-
-
 if (!preg_match('/^\d{3}$/', $cvv)) {
     $errors[] = "Invalid CVV.";
 }
@@ -125,7 +133,7 @@ $stmt->bind_param(
     'ssssiisssss',
     $credit_card_number,
     $cvv,
-    $expiry_date_mysql, // Use the converted MySQL date here
+    $expiry_date_mysql,
     $user_id,
     $address_id,        // Null if temporary address
     $temporary_address, // TRUE or FALSE
@@ -143,19 +151,36 @@ if (!$stmt->execute()) {
 $payment_id = $stmt->insert_id; // Capture the payment ID for the order
 $stmt->close();
 
-// Insert order
+// Update order
 $stmt = $conn->prepare("
-    INSERT INTO Orders (Payment_ID, User_ID, Status, Address_ID)
-    VALUES (?, ?, 'Completed', ?)
+    UPDATE Orders 
+    SET Payment_ID = ?, Status = 'Completed', Address_ID = ? 
+    WHERE Order_ID = ? AND User_ID = ?
 ");
 if (!$stmt) {
-    error_log("SQL Prepare failed for order insertion: " . $conn->error);
-    die("SQL Prepare failed for order insertion.");
+    error_log("SQL Prepare failed for order update: " . $conn->error);
+    die("SQL Prepare failed for order update.");
 }
-$stmt->bind_param('iii', $payment_id, $user_id, $address_id);
+$stmt->bind_param('iiii', $payment_id, $address_id, $order_id, $user_id);
 if (!$stmt->execute()) {
-    error_log("SQL Execute failed for order insertion: " . $stmt->error);
-    die("SQL Execute failed for order insertion.");
+    error_log("SQL Execute failed for order update: " . $stmt->error);
+    die("SQL Execute failed for order update.");
+}
+$stmt->close();
+
+// Insert into Place_Order
+$stmt = $conn->prepare("
+    INSERT INTO Place_Order (Order_ID, User_ID) 
+    VALUES (?, ?)
+");
+if (!$stmt) {
+    error_log("SQL Prepare failed for Place_Order insertion: " . $conn->error);
+    die("SQL Prepare failed for Place_Order insertion.");
+}
+$stmt->bind_param('ii', $order_id, $user_id);
+if (!$stmt->execute()) {
+    error_log("SQL Execute failed for Place_Order insertion: " . $stmt->error);
+    die("SQL Execute failed for Place_Order insertion.");
 }
 $stmt->close();
 
