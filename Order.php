@@ -89,7 +89,7 @@ if ($order_id) {
             </form>
 
         <?php else: ?>
-            <p>No items in your order yet. <a href="movies.php" class="continue-shopping">Start shopping</a>.</p>
+            <p>No items in your order yet. <!--<a href="mainpage.php" class="continue-shopping">Start shopping</a>--></p>
         <?php endif; ?>
 
         <a href="mainpage.php" class="continue-shopping">Continue Shopping</a>

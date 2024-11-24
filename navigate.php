@@ -22,15 +22,16 @@
             <!-- Display these links only when the user is logged in -->
             <a href="history.php">HISTORY</a>
             <a href="wishlist.php">WISHLIST</a>
-            
         <?php endif; ?>
 
         <!-- Search Bar -->
         <?php if (isset($_SESSION['username'])): ?>
             <div class="search-container">
-                <input type="text" placeholder="Search..." aria-label="Search" />
-                <img class="nav-icon" src="img/search-icon.png" alt="Search Icon" />
-                <a href = Order.php> <img class="nav-icon" src="img/Cart-icon.png" alt="Cart Icon" /></a>
+                <form action="search_result.php" method="get" >
+                    <input type="text" name="q" placeholder="Search..." aria-label="Search" required />
+                </form>
+               
+                <a href="Order.php"><img class="nav-icon" src="img/Cart-icon.png" alt="Cart Icon" /></a>
             </div>
         <?php endif; ?>
     </div>
@@ -40,7 +41,7 @@
         <?php if (isset($_SESSION['username'])): ?>
             <!-- Show Logout when logged in -->
             <a href="logout.php">LOGOUT</a>
-            <a href="userprofile.php"><img class="nav-icon" src="img/profile-icon.png" alt="Profile Icon" /></a>
+            <a href="userprofile.php"><img class="nav-profileicon" src="img/profile-icon.png" alt="Profile Icon" /></a>
         <?php else: ?>
             <!-- Show Signup and Login when logged out -->
             <a href="Signup.php">SIGNUP</a>
@@ -49,4 +50,5 @@
     </div>
 </nav>
 </body>
+
 </html>
