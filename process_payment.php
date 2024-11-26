@@ -206,14 +206,14 @@ $stmt->close();
 
 // Insert into Borrow_History
 $stmt = $conn->prepare("
-    INSERT INTO Borrow_History (Payment_ID)
-    VALUES (?)
+    INSERT INTO Borrow_History (Payment_ID, USER_ID)
+    VALUES (?,?)
 ");
 if (!$stmt) {
     error_log("SQL Prepare failed for Borrow_History insertion: " . $conn->error);
     die("SQL Prepare failed for Borrow_History insertion.");
 }
-$stmt->bind_param('i', $payment_id);
+$stmt->bind_param('ii', $payment_id , $user_id);
 if (!$stmt->execute()) {
     error_log("SQL Execute failed for Borrow_History insertion: " . $stmt->error);
     die("SQL Execute failed for Borrow_History insertion.");

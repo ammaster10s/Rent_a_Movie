@@ -69,8 +69,10 @@ CREATE TABLE Orders (
 -- Creating the Borrow_History table
 CREATE TABLE Borrow_History (
     Borrow_ID INT PRIMARY KEY AUTO_INCREMENT,   -- Primary Key for Borrow History
-    Payment_ID INT,                             -- Foreign Key to Payments
-    FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID)
+    Payment_ID INT,
+    User_ID INT ,                            -- Foreign Key to Payments
+    FOREIGN KEY (Payment_ID) REFERENCES Payment(Payment_ID),
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
 -- Creating the Order_Contain table (junction table for Orders and Movies)
