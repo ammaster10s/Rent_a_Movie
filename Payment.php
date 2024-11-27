@@ -211,6 +211,10 @@
       <label for="cvv">CVV:</label>
       <input type="text" id="cvv" name="cvv" maxlength="3" , placeholder="CVV" required />
 
+
+      <label for="CardHolderName">Card Holder Name:</label>
+      <input type="text" id="CardHolderName" name="CardHolderName"  , placeholder="Card Holder Name" required />
+
     </fieldset>
 
     <div class="total-price">Total Price: <?php echo htmlspecialchars($total_price, ENT_QUOTES, 'UTF-8'); ?></div>

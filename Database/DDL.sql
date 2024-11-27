@@ -42,7 +42,7 @@ CREATE TABLE User_Address (
 
 CREATE TABLE Payment (
     Payment_ID INT PRIMARY KEY AUTO_INCREMENT,   -- Primary Key for Payments
-    CreditCard_Number VARCHAR(20) NOT NULL,      -- Credit Card Number
+    CreditCard_Number VARCHAR(255) NOT NULL,      -- Credit Card Number
     CVC CHAR(3) NOT NULL,                        -- Card CVC
     Expiration_Date DATE NOT NULL,               -- Expiration Date of Card
     User_ID INT NOT NULL,                        -- Foreign Key to Users

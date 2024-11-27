@@ -35,6 +35,7 @@ $house_address = htmlspecialchars($_POST['address'] ?? '');
 $zipcode = htmlspecialchars($_POST['zip'] ?? '');
 $country = htmlspecialchars($_POST['country'] ?? '');
 $phone_number = htmlspecialchars($_POST['phone-number'] ?? '');
+$CardHolderName = htmlspecialchars($_POST['CardHolderName'] ?? '');
 
 if ($use_existing_address) {
     // Fetch the selected address_id
@@ -75,32 +76,36 @@ if ($use_existing_address) {
     if (empty($zipcode)) $errors[] = "Zip code is required.";
 
     if (empty($errors)) {
-        // Save the new address into the database
-        $query = "
+
+        if ($save_new_address) {
+
+            // Save the new address into the database
+            $query = "
             INSERT INTO User_Address (User_ID, City,Country, House_Address, Zipcode, Phone_number)
             VALUES (?, ?,?, ?, ?, ?)
         ";
-        $stmt = $conn->prepare($query);
-        if ($stmt) {
-            $stmt->bind_param(
-                'isssss',
-                $user_id,
-                $city,
-                $country,
-                $house_address,
-                $zipcode,
-                $phone_number
-            );
+            $stmt = $conn->prepare($query);
+            if ($stmt) {
+                $stmt->bind_param(
+                    'isssss',
+                    $user_id,
+                    $city,
+                    $country,
+                    $house_address,
+                    $zipcode,
+                    $phone_number
+                );
 
-            if ($stmt->execute()) {
-                echo "New address saved successfully!";
+                if ($stmt->execute()) {
+                    echo "New address saved successfully!";
+                } else {
+                    $errors[] = "Error saving address: " . $conn->error;
+                }
+                $stmt->close();
             } else {
-                $errors[] = "Error saving address: " . $conn->error;
+                $errors[] = "Failed to prepare address saving query: " . $conn->error;
+                exit();
             }
-            $stmt->close();
-        } else {
-            $errors[] = "Failed to prepare address saving query: " . $conn->error;
-            exit();
         }
     }
 }
@@ -113,6 +118,7 @@ if (!empty($errors)) {
 
 // Handle payment
 $credit_card_number = preg_replace('/\D/', '', $_POST['credit_card_number'] ?? '');
+$hashed_credit_card_number = password_hash($credit_card_number, PASSWORD_DEFAULT);
 $expiry_date = $_POST['expiry_date'] ?? '';
 $cvv = $_POST['cvv'] ?? '';
 
@@ -159,17 +165,17 @@ $payment_success = true;
 $stmt = $conn->prepare("
     INSERT INTO Payment (
         CreditCard_Number, CVC, Expiration_Date, User_ID, 
-        City, House_Address, Zipcode, Country, Phone_number, Payment_Date
+        City, House_Address, Zipcode, Country, Phone_number, Payment_Date, Card_holder_Name
     )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(),?)
 ");
 if (!$stmt) {
     error_log("SQL Prepare failed for payment insertion: " . $conn->error);
     die("SQL Prepare failed for payment insertion.");
 }
 $stmt->bind_param(
-    'sssssssss',
-    $credit_card_number,
+    'ssssssssss',
+    $hashed_credit_card_number,
     $cvv,
     $expiry_date_mysql,
     $user_id,
@@ -177,7 +183,8 @@ $stmt->bind_param(
     $house_address,
     $zipcode,
     $country,
-    $phone_number
+    $phone_number,
+    $CardHolderName
 );
 
 if (!$stmt->execute()) {
@@ -213,7 +220,7 @@ if (!$stmt) {
     error_log("SQL Prepare failed for Borrow_History insertion: " . $conn->error);
     die("SQL Prepare failed for Borrow_History insertion.");
 }
-$stmt->bind_param('ii', $payment_id , $user_id);
+$stmt->bind_param('ii', $payment_id, $user_id);
 if (!$stmt->execute()) {
     error_log("SQL Execute failed for Borrow_History insertion: " . $stmt->error);
     die("SQL Execute failed for Borrow_History insertion.");
@@ -276,4 +283,3 @@ if ($payment_success) {
 
 
 exit();
-
