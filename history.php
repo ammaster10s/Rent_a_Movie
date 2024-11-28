@@ -2,10 +2,19 @@
 include 'database.php';
 include 'auth_check.php';
 
-if (!isset($_SESSION['user_id'])) {
-  echo "Please log in to view your borrow history.";
-  exit;
-}
+// if (!isset($_SESSION['user_id'])) {
+//   echo "Please log in to view your borrow history.";
+//   exit;
+// }
+// if (session_status() === PHP_SESSION_NONE) {
+//   session_start();
+// }
+
+// if (!isset($_SESSION['username'])) {
+//   header("Location: Login.php");
+//   exit();
+// }
+
 
 $user_id = $_SESSION['user_id'];
 

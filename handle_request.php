@@ -86,6 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt->bind_param("sssss", $username, $f_name, $l_name, $password, $email_address);
 
+
+        
+
         // Execute statement
         if ($stmt->execute()) {
             $_SESSION['username'] = $username;

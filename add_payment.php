@@ -1,6 +1,7 @@
 <?php
 include 'database.php';
-// session_start();
+session_start();
+// include 'auth_check.php'; 
 
 // Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
