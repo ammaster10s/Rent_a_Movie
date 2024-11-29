@@ -112,3 +112,5 @@ CREATE TABLE User_Access_BorrowHistory (
 );
 
 
+-- 'Pending', 'Completed', 'Cancelled'
+-- ALTER TABLE Users ADD COLUMN Role ENUM('user', 'admin') DEFAULT 'user';
