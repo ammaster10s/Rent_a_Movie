@@ -11,14 +11,12 @@ VALUES
 ('Venom 3', 14.99, 'Tom Hardy', '2024-10-01', 'Continuation of the Venom saga', 140),
 ('Sonic 3', 13.99, 'Ben Schwartz', '2024-12-20', 'Sonic teams up for a new adventure', 110),
 ('Red One', 11.99, 'Dwayne Johnson', '2024-11-15', 'A Christmas-themed action movie', 125),
-
 ('Joker 1', 14.99, 'Joaquin Phoenix', '2019-10-04', 'A psychological exploration of Joker', 122),
 ('Hungergame 1', 13.99, 'Jennifer Lawrence', '2012-03-23', 'A dystopian battle for survival', 142),
 ('Civilwar', 15.99, 'Chris Evans', '2016-05-06', 'Captain America faces Iron Man', 147),
 ('Birdbox', 12.99, 'Sandra Bullock', '2018-12-14', 'Surviving in a world of unseen horrors', 124),
 ('Escape Room: Tournament of Champions', 11.99, 'Taylor Russell', '2021-07-16', 'An intense sequel to Escape Room', 88),
 ('Jurassic Park', 14.99, 'Sam Neill', '1993-06-11', 'Dinosaurs come alive in this classic', 127),
-
 ('Pacific Rims', 13.99, 'Charlie Hunnam', '2013-07-12', 'Humans pilot giant robots to battle monsters', 131),
 ('Interstellar', 15.99, 'Matthew McConaughey', '2014-11-07', 'A journey through space and time', 169),
 ('Edge of Tomorrow', 14.99, 'Tom Cruise', '2014-06-06', 'A time-loop sci-fi action movie', 113),

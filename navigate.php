@@ -11,7 +11,23 @@
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
+<style>
+    .admin-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
 
+.admin-button:hover {
+    background-color: #45a049;
+}
+
+</style>
 <body>
 <nav class="navbar">
     <!-- Centered Navigation Links -->
@@ -39,6 +55,11 @@
     <!-- Right-side Items -->
     <div class="navbar-right">
         <?php if (isset($_SESSION['username'])): ?>
+            <!-- Show Admin Dashboard link if the user is an admin -->
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
+                <a href="admin_dashboard.php" class="admin-button">ADMIN DASHBOARD</a>
+            <?php endif; ?>
+            
             <!-- Show Logout when logged in -->
             <a href="logout.php">LOGOUT</a>
             <a href="userprofile.php"><img class="nav-profileicon" src="img/profile-icon.png" alt="Profile Icon" /></a>

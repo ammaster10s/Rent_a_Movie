@@ -2,9 +2,9 @@
 session_start();
 include 'database.php';
 
-// Check if the user is logged in and is an admin
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
-    header("Location: Login.php");
+// Ensure admin access
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Admin') {
+    header("Location: login.php");
     exit();
 }
 
@@ -20,30 +20,23 @@ if (isset($_GET['order_id'])) {
     $stmt->close();
 }
 
-// Handle form submission for updating order
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $newStatus = $_POST['status']; // Get the selected status from the form
+    $newStatus = $_POST['status'];
 
-    // Define allowed statuses to validate input
+    // Allowed statuses
     $allowedStatuses = ['Pending', 'Completed', 'Cancelled'];
-
-    // Check if the submitted status is valid
     if (!in_array($newStatus, $allowedStatuses)) {
         die("Invalid status selected.");
     }
 
-    // Update the order's status in the database
-    $query = "UPDATE Orders SET Status = ? WHERE Order_ID = ?";
-    $stmt = $conn->prepare($query);
+    $updateQuery = "UPDATE Orders SET Status = ? WHERE Order_ID = ?";
+    $stmt = $conn->prepare($updateQuery);
     $stmt->bind_param("si", $newStatus, $orderId);
-
-    if ($stmt->execute()) {
-        header('Location: admin_dashboard.php'); // Redirect to dashboard
-        exit();
-    } else {
-        echo "Error updating order: " . $stmt->error;
-    }
+    $stmt->execute();
     $stmt->close();
+    header('Location: admin_dashboard.php');
+    exit();
 }
 ?>
 
