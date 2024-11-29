@@ -1289,3 +1289,214 @@ form {
     font-size: 22px;
   }
 }
+
+/* Admin Dashboard Styles */
+
+/* Main Container */
+.admin-dashboard-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+/* Dashboard Title */
+.admin-dashboard-container h1 {
+  font-size: 2em;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.admin-dashboard-container h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* User Table */
+.admin-dashboard-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.admin-dashboard-container table th,
+.admin-dashboard-container table td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.admin-dashboard-container table th {
+  background-color: #303148;
+  color: white;
+}
+
+.admin-dashboard-container table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.admin-dashboard-container table tr:hover {
+  background-color: #ddd;
+}
+
+/* Action Links */
+.admin-dashboard-container a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-dashboard-container a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px 15px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+/* General Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for the Edit Form */
+.edit-user-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: left;
+}
+
+/* Form Title */
+.edit-user-container h1 {
+  font-size: 2em;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form Fields */
+.edit-user-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-user-container label {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.edit-user-container input,
+.edit-user-container select {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  background: #f9f9f9;
+}
+
+.edit-user-container input:focus,
+.edit-user-container select:focus {
+  outline: none;
+  border-color: #007BFF;
+  background: #fff;
+}
+
+/* Save Button */
+.edit-user-container button {
+  padding: 10px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.edit-user-container button:hover {
+  background-color: #007BFF;
+}
+
+/* Back Link */
+.edit-user-container .back-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.edit-user-container .back-link a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+.edit-user-container .back-link a:hover {
+  text-decoration: underline;
+}
+
+/* Orders Table Styling */
+.edit-user-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.edit-user-container table th,
+.edit-user-container table td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.edit-user-container table th {
+  background-color: #007BFF;
+  color: white;
+}
+
+.edit-user-container table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.edit-user-container table tr:hover {
+  background-color: #ddd;
+}
+
+.edit-user-container table a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.edit-user-container table a:hover {
+  text-decoration: underline;
+}

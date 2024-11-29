@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Handle login
 
         // Validate form inputs
-        if (empty($_POST['email'])) $errors[] = "Email is required.";
+        if (empty($_POST['email'])) $errors[] = "Email or Username is required.";
         if (empty($_POST['password'])) $errors[] = "Password is required.";
 
         // If there are errors, redirect with error messages
@@ -136,14 +136,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 session_regenerate_id(true); // Secure the session
                 $_SESSION['username'] = $row['Username'];
                 $_SESSION['user_id'] = $row['User_ID'];
-                $stmt->close();
-                header("Location: Mainpage.php");
+                $_SESSION['role'] = $row['Role']; // Store the user's role in the session
+
+                // Redirect based on role
+                if ($row['Role'] === 'admin') {
+                    header("Location: admin_dashboard.php"); // Redirect admin to admin dashboard
+                } else {
+                    header("Location: Mainpage.php"); // Redirect regular users to the main page
+                }
                 exit();
             } else {
                 $errors[] = "Invalid password.";
             }
         } else {
-            $errors[] = "No user found with this email.";
+            $errors[] = "No user found with this email or username.";
         }
 
         // If there are errors during login
@@ -152,4 +158,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: Login.php");
         exit();
     }
+
 }
