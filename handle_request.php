@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
 
         // Check if the username already exists
-        $email_check_query = "SELECT Username FROM Users WHERE Username = ?";
-        $stmt = $conn->prepare($email_check_query);
+        $username_check_query = "SELECT Username FROM Users WHERE Username = ?";
+        $stmt = $conn->prepare($username_check_query);
 
         if (!$stmt) {
             die("SQL Prepare failed: " . $conn->error);
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            // Email already exists
+            // Username already exists
             $errors[] = "The username is already in use. Please choose another username.";
             $_SESSION['errors'] = $errors;
             $stmt->close();
@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
 
         // Prepare SQL statement for registration
-        $register_query = "INSERT INTO Users (Username, F_Name, L_Name, Password, Email_Address) VALUES (?, ?, ?, ?, ?)";
+        $register_query = "INSERT INTO Users (Username, F_Name, L_Name, Password, Email_Address, Role) VALUES (?, ?, ?, ?, ?, 'User')";
         $stmt = $conn->prepare($register_query);
 
         if (!$stmt) {
@@ -86,13 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt->bind_param("sssss", $username, $f_name, $l_name, $password, $email_address);
 
-
-        
-
         // Execute statement
         if ($stmt->execute()) {
             $_SESSION['username'] = $username;
             $_SESSION['user_id'] = $stmt->insert_id; // Set user_id in session
+            $_SESSION['role'] = 'User'; // Default role for new users
             $stmt->close();
             header("Location: Mainpage.php");
             exit();
@@ -121,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = $_POST['password'];
 
         // Prepare SQL statement
-        $stmt = $conn->prepare("SELECT * FROM Users WHERE Email_Address=? OR Username=?");
+        $stmt = $conn->prepare("SELECT User_ID, Username, Password, Role FROM Users WHERE Email_Address = ? OR Username = ?");
         if (!$stmt) {
             die("SQL Prepare failed: " . $conn->error);
         }
@@ -136,14 +134,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 session_regenerate_id(true); // Secure the session
                 $_SESSION['username'] = $row['Username'];
                 $_SESSION['user_id'] = $row['User_ID'];
+                $_SESSION['role'] = $row['Role']; // Add the user's role to the session
                 $stmt->close();
-                header("Location: Mainpage.php");
+
+                // Redirect based on role
+                if ($row['Role'] === 'admin') {
+                    header("Location: admin_dashboard.php");
+                } else {
+                    header("Location: Mainpage.php");
+                }
                 exit();
             } else {
                 $errors[] = "Invalid password.";
             }
         } else {
-            $errors[] = "No user found with this email.";
+            $errors[] = "No user found with this email or username.";
         }
 
         // If there are errors during login
@@ -153,3 +158,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 }
+?>

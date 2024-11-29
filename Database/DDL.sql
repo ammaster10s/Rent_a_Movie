@@ -5,13 +5,15 @@ USE MovieRentalSystem;
 
 -- Creating the Users table
 CREATE TABLE Users (
-    User_ID INT PRIMARY KEY AUTO_INCREMENT,     -- Primary Key for Users
-    Username VARCHAR(50) UNIQUE NOT NULL,       -- Unique Username
-    F_Name VARCHAR(50) NOT NULL,                -- First Name
-    L_Name VARCHAR(50) NOT NULL,                -- Last Name
-    Password VARCHAR(255) NOT NULL,             -- Password (hashed)
-    Email_Address VARCHAR(100) UNIQUE NOT NULL  -- Unique Email Address
+    User_ID INT PRIMARY KEY AUTO_INCREMENT,        -- Primary Key for Users
+    Username VARCHAR(50) UNIQUE NOT NULL,          -- Unique Username
+    F_Name VARCHAR(50) NOT NULL,                   -- First Name
+    L_Name VARCHAR(50) NOT NULL,                   -- Last Name
+    Password VARCHAR(255) NOT NULL,                -- Password (hashed)
+    Email_Address VARCHAR(100) UNIQUE NOT NULL,    -- Unique Email Address
+    Role ENUM('Admin', 'User') DEFAULT 'User'      -- User Role
 );
+
 
 -- Creating the Movie table
 CREATE TABLE Movie (
